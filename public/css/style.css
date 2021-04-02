@@ -1,6 +1,7 @@
 body{
     padding: 0;
     margin: 0;
+    background-color: #F1F2F4;
     box-sizing: border-box;
 }
 
@@ -18,6 +19,11 @@ body{
     width: 98%;
     /* max-width: 1000px; */
     margin: 0 auto;
+ }
+ .container-x{
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
  }
  .sidebar_main_width{
      min-width: 270px;
@@ -72,6 +78,19 @@ body{
   } */
   .z-index{
     z-index: 999;
+  }
+
+  .login-card{
+    max-width: 550px;
+    margin: 0 auto;
+    background-color: white;
+  }
+
+  .input-border{
+    border: 1px solid lightgray;
+  }
+  .btn_primary{
+     background-color: var(--primary);
   }
   
 
