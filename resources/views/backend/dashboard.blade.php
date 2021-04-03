@@ -8,11 +8,11 @@
                 <div class="">
                     <div class="flex justify-between px-4 py-4">
                         <div>
-                            <p class="text-3xl font-semibold"></p>
+                            <p class="text-3xl font-semibold">200</p>
                             <p class="mt-2">Pending member's</p>
                         </div>
                         <div>
-                            <i class="fas fa-user-plus user-pending text-yellow-300"></i>
+                            <i class="fas fa-user-plus user-pending text-yellow-300 text-4xl"></i>
                         </div>
                     </div>
                     <p
@@ -26,11 +26,11 @@
                 <div class="">
                     <div class="flex justify-between px-4 py-4">
                         <div>
-                            <p class="text-3xl font-semibold"></p>
+                            <p class="text-3xl font-semibold">344</p>
                             <p class="mt-2">Active member's</p>
                         </div>
                         <div>
-                            <i class="fas fa-user-tag user-active text-green-300"></i>
+                            <i class="fas fa-user-tag user-active text-green-300 text-4xl"></i>
                         </div>
                     </div>
                     <p
@@ -44,11 +44,11 @@
                 <div class="">
                     <div class="flex justify-between px-4 py-4">
                         <div>
-                            <p class="text-3xl font-semibold"></p>
+                            <p class="text-3xl font-semibold">899</p>
                             <p class="mt-2">Rejected member's</p>
                         </div>
                         <div>
-                            <i class="fas fa-user-times user-reject text-red-300"></i>
+                            <i class="fas fa-user-times user-reject text-red-300 text-4xl"></i>
                         </div>
                     </div>
                     <p class="p-more-info px-4 py-2 border-red-300 bg-red-600 border-t-2 text-center"><a
@@ -60,11 +60,11 @@
                 <div class="">
                     <div class="flex justify-between px-4 py-4">
                         <div>
-                            <p class="text-3xl font-semibold"></p>
+                            <p class="text-3xl font-semibold">234</p>
                             <p class="mt-2">All member's</p>
                         </div>
                         <div>
-                            <i style="z-index: 0" class=" fas fa-users all-users text-blue-300"></i>
+                            <i style="z-index: 0" class=" fas fa-users all-users text-blue-300 text-4xl"></i>
                         </div>
                     </div>
                     <p class="p-more-info px-4 py-2 border-blue-300 bg-blue-600 border-t-2 text-center">

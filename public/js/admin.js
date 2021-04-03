@@ -55,5 +55,6 @@ $(document).on('click', '.mobile_menu_button_hide', function(){
 $(window).resize(() => {
    if($(window).width() > 640){
       $('.sidebar_main_width').addClass('sm_hidden').removeClass('position_fixed');
+      $('.main-content').addClass('w-full').removeClass('w-4/5');
    }
 })

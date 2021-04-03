@@ -3,6 +3,7 @@
 use App\Http\Controllers\auth\login\LoginController;
 use App\Http\Controllers\auth\login\RegisterController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\products\ProductController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\users\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('backend.dashboard');
     Route::get('/sign-out', [LoginController::class, 'signout'])->name('backend.user.logout');
+    //products
+    Route::get('/products', [ProductController::class, 'index'])->name('backend.products');
+    Route::get('/products/add', [ProductController::class, 'add_product'])->name('backend.product.add');
 });
 //auth check route group
 // user panel routes     

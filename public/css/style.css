@@ -13,6 +13,10 @@ body{
    background-color: var(--primary);
    border-top: 3px solid var(--secondary);
    top: 62px;
+   min-height: 100vh;
+    position: fixed;
+    height: 100vh;
+    width: 347px
 }
 
 .container-root{
@@ -26,7 +30,7 @@ body{
   margin: 0 auto;
  }
  .sidebar_main_width{
-     min-width: 270px;
+     min-width: 347px;
  }
 
  .submenu_ul{
@@ -92,6 +96,32 @@ body{
   .btn_primary{
      background-color: var(--primary);
   }
+  .btn_secondary{
+     background-color: var(--secondary);
+  }
+
+  .border_primary{
+     border-bottom: 1px solid var(--primary);
+  }
+  .border_secondary{
+     border-bottom: 1px solid var(--secondary);
+  }
+  .border-bottom{
+    border-bottom: 1px solid #D3D3D3;
+  }
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+  
   
 
  
