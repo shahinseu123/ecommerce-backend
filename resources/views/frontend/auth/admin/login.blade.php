@@ -33,7 +33,7 @@
                                 <div class="text-red-500">{{ $message }}</div>
                             @enderror
                         </div>
-                        
+                        <p class="mt-4">Not registered? <a class="text-blue-600" href="{{route('admin.register')}}">Register now</a></p>
                         <button type="submit" class="px-10 py-3 rounded text-white btn_primary font-semibold text-sm mt-3">SUBMIT</button>
                     </form>
                 </div>

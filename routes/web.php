@@ -3,6 +3,8 @@
 use App\Http\Controllers\auth\login\LoginController;
 use App\Http\Controllers\auth\login\RegisterController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\frontend\HomeController;
+use App\Http\Controllers\frontend\users\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,21 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('backend.layout.master');
-});
-
 //auth check route group
 // admin panel routes     
 Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('backend.dashboard');
+    Route::get('/sign-out', [LoginController::class, 'signout'])->name('backend.user.logout');
 });
 //auth check route group
 // user panel routes     
-Route::middleware(['first', 'second'])->prefix('user')->group(function () {
-    
+Route::middleware(['isAuth'])->prefix('user')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'profile'])->name('user.profile');
 });
 //do not check auth
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/backend/auth/admin/login', [LoginController::class, 'login_page'])->name('admin.login');
 Route::post('/backend/auth/admin/login/action', [LoginController::class, 'login_action'])->name('admin.login.action');
 Route::get('/backend/auth/admin/register', [RegisterController::class, 'register_page'])->name('admin.register');
