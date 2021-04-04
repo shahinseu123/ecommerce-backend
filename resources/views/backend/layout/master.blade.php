@@ -8,6 +8,7 @@
 	 <!--Responsive Extension Datatables CSS-->
 	 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset("css/picker.min.css")}}">
@@ -156,6 +157,7 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="{{asset("js/picker.min.js")}}"></script>
+    <script type="text/javascript" src="{{asset("js/dropzone.js")}}"></script>
     <script>
        
     </script>

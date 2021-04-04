@@ -16,8 +16,8 @@
                    </div>
 
                    <div class="mb-4">
-                        <label for="short_description" class="font-semibold">Product title <span class="text-red-500">*</span></label>
-                        <textarea class="input-border rounded px-2 py-2 w-full mt-2" name="short_description" id="short_description" cols="30" rows="3"></textarea>
+                        <label for="short_description" class="font-semibold">Short description <span class="text-red-500">*</span></label>
+                        <textarea class="input-border rounded px-2 py-2 w-full mt-2" name="short_description" id="short_description" cols="30" rows="10"></textarea>
                    </div>
 
                    <div class="mb-4">
@@ -148,6 +148,50 @@
                     </div>
                             
                </div>
+               <div class="bg-white shadow-lg rounded p-4 mt-4">
+                <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
+                    <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Featured image</h1>
+                    <div class="w-full sssss">
+                        <img class="w-full object-cover h-48 cursor-pointer" id="category-img-tag"
+                            src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
+                            alt="img">
+                        <input type="hidden" value="" name="page_image" id="news_img" readonly>
+                    </div>
+                </div>
+               </div>
+               <div class="bg-white shadow-lg rounded p-4 mt-4">
+                <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
+                    <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Product gallery</h1>
+                    <form action="/file-upload" class="dropzone image-holder-border">
+                        <div class="fallback">
+                          <input name="file" type="file" multiple />
+                        </div>
+                    </form>
+                </div>
+               </div>
+               <div class="bg-white shadow-lg rounded p-4 mt-4">
+                <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
+                    <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">SEU info</h1>
+                    <div>
+                        <div class="mt-2">
+                            <label for="meta_title">Meta title</label>
+                            <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('meta_title')}}" name="meta_title" id="meta_title">
+                        </div>
+                        <div class="mt-2">
+                            <label for="meta_description">Meta description</label>
+                            <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('meta_description')}}" name="meta_description" id="meta_description">
+                        </div>
+                        <div class="mt-2">
+                            <label for="meta_tags">Meta tags</label>
+                            <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('meta_tags')}}" name="meta_tags" id="meta_tags">
+                        </div>
+                    </div>
+                </div>
+                <div class="border-t-2 border-gray-300">
+                    <button class="w-full py-2 text-white btn_secondary rounded shadow-lg mt-3 mb-4" type="submit">CREATE</button>
+                    <p>NB: <span class="text-red-600"> * </span>marked are required field.</p>
+                </div>
+               </div>
             </div>
         </div>
     </section>
@@ -199,6 +243,9 @@
             padding: 10px;
             word-wrap: break-word;
         }
+        .ck-blurred{
+            min-height: 300px;
+        }
         .picker .pc-element, .picker .pc-trigger {
             display: inline-block;
             padding: 2px 10px;
@@ -233,7 +280,10 @@
             font-size: 11px;
             cursor: pointer;
         }
-
+        .image-holder-border{
+            border: 4px dashed #6366F1;
+            border-radius: 10px;
+        }
 
     </style>
 @endsection
