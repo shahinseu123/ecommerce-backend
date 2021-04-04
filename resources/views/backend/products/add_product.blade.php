@@ -58,7 +58,7 @@
                                         <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">
                                     </div>
                                     <div class="mt-2">
-                                        <label for="sale_price">Sale price<span class="text-red-500">*</span></label>
+                                        <label for="sale_price">Regular price <span class="text-red-500">*</span></label>
                                         <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" required value="{{old('sale_price')}}" name="sale_price" id="sale_price">
                                     </div>
                                     <div class="mt-2">
@@ -108,8 +108,21 @@
                 <h1 class="py-2 font-semibold border-bottom">Additional info</h1>
                     <div>
                         <div class="mt-2">
-                            <label for="product_category">Product category <span class="text-red-500">*</span></label>
-                            <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('product_category')}}" name="product_category" id="product_category">
+                            <label for="product_category">Product category <span class="text-red-500">*</span></label><br>
+                            <select class="mt-4" required name="basic" id="ex-search" multiple>
+                                <option value="1">Shanghai</option>
+                                <option value="2">Karachi</option>
+                                <option value="3">Beijing</option>
+                                <option value="4">Tianjin</option>
+                                <option value="5">Istanbul</option>
+                                <option value="6">Lagos</option>
+                                <option value="7">Tokyo</option>
+                                <option value="8">Guangzhou</option>
+                                <option value="9">Mumbai</option>
+                                <option value="10">Moscow</option>
+                                <option value="11">Dhaka</option>
+                                <option value="12">Cairo</option>
+                            </select>
                         </div>
                         <div class="mt-2">
                             <label for="product_brand">Product brand</label>
@@ -117,7 +130,20 @@
                         </div>
                         <div class="mt-2">
                             <label for="product_attribute">Product attributes</label>
-                            <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('product_attribute')}}" name="product_attribute" id="product_attribute">
+                            <select class="mt-4" required name="basic" id="ex-search-attr" multiple>
+                                <option value="1">Shanghai</option>
+                                <option value="2">Karachi</option>
+                                <option value="3">Beijing</option>
+                                <option value="4">Tianjin</option>
+                                <option value="5">Istanbul</option>
+                                <option value="6">Lagos</option>
+                                <option value="7">Tokyo</option>
+                                <option value="8">Guangzhou</option>
+                                <option value="9">Mumbai</option>
+                                <option value="10">Moscow</option>
+                                <option value="11">Dhaka</option>
+                                <option value="12">Cairo</option>
+                            </select>
                         </div>
                     </div>
                             
@@ -132,6 +158,83 @@
         .ck-rounded-corners{
             top:10px;
         }
+        .picker{
+            margin-top: 8px;
+            width: 100%
+        }
+        .picker .pc-select {
+            position: relative;
+            display: block;
+            max-width: 100%;
+        }
+        .picker .pc-select .pc-trigger {
+            margin-bottom: 5px;
+            padding: 9px;
+            border: 1px solid #D3D3D3;
+            border-radius: 5px;
+        }
+        .picker .pc-select .pc-list input[type=search] {
+            padding: 10px;
+            border: 1px solid #D3D3D3;
+            border-radius: 5px;
+        }
+
+        .picker .pc-select .pc-list {
+            position: absolute;
+            text-align: left;
+            left: 0;
+            top: calc(100% - 6px);
+            width: 100%;
+            border: 1px solid #D3D3D3;
+            z-index: 11;
+            background-color: #fff;
+        }
+
+        .picker .pc-select .pc-list li {
+            display: block;
+            list-style: none;
+            /* padding: 0 0 0 8px; */
+            cursor: pointer;
+            color: #666;
+            padding: 10px;
+            word-wrap: break-word;
+        }
+        .picker .pc-element, .picker .pc-trigger {
+            display: inline-block;
+            padding: 2px 10px;
+            color: #666;
+            position: relative;
+            z-index: 3;
+            border: 1px solid #D3D3D3;
+            border-radius: 2px;
+            word-wrap: break-word;
+            cursor: default;
+            background-color: #fff;
+            margin-right: 7px;
+            margin-bottom: 5px;
+            padding: 0 24px 0 6px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .picker .pc-element{
+            padding: 7px 22px;
+            border-radius: 5px;
+        }
+
+        .picker .pc-element .pc-close{
+            position: absolute;
+            top: 57%;
+            right: 4px;
+            margin-top: -10px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+
+
     </style>
 @endsection
 
@@ -146,5 +249,9 @@
                 .catch( error => {
                     console.error( error );
         } );
+
+        //select picker
+        $('#ex-search').picker({search : true});
+        $('#ex-search-attr').picker({search : true});
     </script>
 @endsection

@@ -10,6 +10,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset("css/picker.min.css")}}">
+    {{-- <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/intellow/x-selectpicker/dist/x-selectpicker.js" defer></script> --}}
+
      @yield('head')
     <title>Tailwind Master Admin</title>
      @yield('title')
@@ -149,7 +154,8 @@
     <script src="{{asset('js/admin.js')}}"></script>
     <script src="https://kit.fontawesome.com/bad080b564.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+	  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="{{asset("js/picker.min.js")}}"></script>
     <script>
        
     </script>
