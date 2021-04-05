@@ -15,5 +15,13 @@ class Category extends Model
     public function Child(){
         return $this->hasMany(Category::class, 'parent_category', 'id');
     }
+    
+    public function getImgPathAttribute(){
+        if($this->category_image){
+            return asset('uploads/media/'.$this->category_image);
+        }else{
+            return null;
+        }
+    }
 }
 

@@ -16,16 +16,25 @@
                     <div class="mb-4">
                         <label for="category_title" class="font-semibold">Title <span class="text-red-500">*</span></label>
                         <input class="input-border rounded px-2 py-2 w-full mt-2" type="text" name="category_title" id="category_title" required value="{{old('category_title')}}">
+                        @error('category_title')
+                            <div class="text-red-500">{{ $message }}</div>
+                        @enderror
                     </div>
  
                     <div class="mb-4">
                          <label for="short_description" class="font-semibold">Short description <span class="text-red-500">*</span></label>
                          <textarea class="input-border rounded px-2 py-2 w-full mt-2" name="short_description" id="short_description" cols="30" rows="4"></textarea>
+                         @error('short_description')
+                            <div class="text-red-500">{{ $message }}</div>
+                         @enderror
                     </div>
  
                     <div class="mb-4">
                          <label for="category_description" class="font-semibold">Description<span class="text-red-500">*</span></label>
                          <textarea class="input-border rounded px-2 py-2 w-full" style="margin-top: 10px;z-index: -1" name="category_description" id="editor" cols="30" rows="5"></textarea>
+                         @error('category_description')
+                            <div class="text-red-500">{{ $message }}</div>
+                         @enderror
                     </div>
                  </div>
             </div>
@@ -66,18 +75,30 @@
                                         @endforeach
                                     @endif
                                 </select>
+                                @error('parent_category')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mt-2">
                                 <label for="meta_title">Meta title</label>
                                 <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('meta_title')}}" name="meta_title" id="meta_title">
+                                @error('meta_title')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mt-2">
                                 <label for="meta_description">Meta description</label>
                                 <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('meta_description')}}" name="meta_description" id="meta_description">
+                                @error('meta_description')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mt-2">
                                 <label for="meta_tags">Meta tags</label>
                                 <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('meta_tags')}}" name="meta_tags" id="meta_tags">
+                                @error('meta_tags')
+                                    <div class="text-red-500">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>

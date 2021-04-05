@@ -33,6 +33,10 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::get('/category', [CategoryController::class, 'index'])->name('backend.category');
     Route::get('/category/add', [CategoryController::class, 'add_category'])->name('backend.category.add');
     Route::post('/category/create', [CategoryController::class, 'create_category'])->name('backend.category.create');
+    Route::get('/category/delete/{id}', [CategoryController::class, 'delete_category'])->name('category.delete');
+    Route::get('/category/edit/{id}', [CategoryController::class, 'edit_category'])->name('category.edit');
+    Route::post('/category/update', [CategoryController::class, 'update_category'])->name('category.update');
+    Route::get('/category/status/update/{id}', [CategoryController::class, 'update_status'])->name('category.status.change');
     // Route::get('/backend/media', 'App\Http\Controllers\backend\MediaController@index')->name('backend.media')->middleware('isAuth');
     //media
     Route::get('/media/ajex', [MediaController::class, 'index_ajex'])->name('backend.media.ajex');

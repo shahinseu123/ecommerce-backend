@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->text('short_description')->nullable();
             $table->text('category_description')->nullable();
             $table->string('category_image')->nullable();
+            $table->string('status')->default('active');
             $table->unsignedBigInteger('parent_category')->nullable();
             $table->foreign('parent_category')->references('id')->on('categories')->onDelete('cascade');
             $table->string('meta_title')->max(255)->nullable();

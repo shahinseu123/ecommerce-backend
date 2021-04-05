@@ -159,6 +159,18 @@
              {{-- main content  --}}
              <div class="container-root " style="margin-top: 70px;">
                  <div class="p-4 overflow-y-auto">
+                  @if(session('message'))
+                  <div style="width: 327px;text-align: center;width: 342px;
+                        text-align: center;
+                        margin-left: 8px;
+                        margin-top: 9px;" class="p-2 mb-2 bg-red-300 text-red-800 noPrint" role="alert">{{session('message')}}</div>
+                  @endif
+                  @if(session('success'))
+                                  <div style="width: 327px;text-align: center;width: 342px;
+                                        text-align: center;
+                                        margin-left: 8px;
+                                        margin-top: 9px;" class="p-2 mb-2 bg-green-300 text-green-800 noPrint" role="alert">{{session('success')}}</div>
+                  @endif
                     @yield('content')
                  </div>
              </div>
@@ -177,7 +189,7 @@
     <script type="text/javascript" src="{{asset("js/dropzone.js")}}"></script>
     <script src="{{asset('js/ckeditor5/ckeditor.js')}}"></script>
     <script>
-       
+       setTimeout(() => $(".noPrint").addClass("hidden"), 2000);
     </script>
     @yield('script')
 </body>

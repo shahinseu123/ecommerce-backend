@@ -16,22 +16,26 @@
                     <tr>
                         <th class="text-left" data-priority="1">#</th>
                         <th class="text-left" data-priority="2">Title</th>
-                        <th class="text-left" data-priority="3">Sub Categories</th>
                         <th class="text-left" data-priority="4">Status</th>
                         <th class="text-left" data-priority="5">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td class="">
-                            <a href="#"><i class="fas fa-edit"></i></a>
-                            <a href="#"><i class="fas fa-trash text-red-500"></i></a>
-                        </td>
-                    </tr>
+                    @if ($category)
+                       @foreach ($category as $item)
+                            <tr>
+                                <td>{{$item->id}}</td>
+                                <td>{{$item->category_title}}</td>
+                                <td>
+                                    <a href="{{route('category.status.change', $item->id)}}" class="{{$item->status === "active" ? "btn_secondary": "btn_danger"}} px-5 py-1 font-semibold uppercase text-white shadow-lg rounded">{{$item->status}}</a>
+                                </td>
+                                <td class="">
+                                    <a href="{{route('category.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
+                                    <a href="{{route('category.delete', $item->id)}}"><i class="fas fa-trash text-red-500"></i></a>
+                                </td>
+                            </tr>
+                       @endforeach 
+                    @endif
                     
                     <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
                 </tbody>             
