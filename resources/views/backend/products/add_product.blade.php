@@ -58,7 +58,7 @@
                                         <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">
                                     </div>
                                     <div class="mt-2">
-                                        <label for="sale_price">Regular price <span class="text-red-500">*</span></label>
+                                        <label for="sale_price">Sale price <span class="text-red-500">*</span></label>
                                         <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" required value="{{old('sale_price')}}" name="sale_price" id="sale_price">
                                     </div>
                                     <div class="mt-2">

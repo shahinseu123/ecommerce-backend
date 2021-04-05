@@ -113,6 +113,9 @@ body{
   .border-bottom{
     border-bottom: 1px solid #D3D3D3;
   }
+  .border-bottom-secondary{
+    border-bottom: 1px solid var(--secondary);
+  }
 
   input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

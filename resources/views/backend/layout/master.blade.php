@@ -111,7 +111,10 @@
                     <li class="text-white py-1 nav_item_li cursor-pointer">
                         <span class="w-10 inline-block"><i style="{{Route::is('backend.category')||Route::is('backend.category.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-th mr-2"></i></span><a class="" style="{{Route::is('backend.category')||Route::is('backend.category.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.category')}}">Category</a>
                     </li>
-                   
+                    <li class="text-white py-1 nav_item_li cursor-pointer">
+                        <span class="w-10 inline-block"><i style="{{Route::is('backend.attribute')||Route::is('backend.attribute.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-drafting-compass mr-2"></i></span><a class="" style="{{Route::is('backend.attribute')||Route::is('backend.attribute.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.attribute')}}">Attribute</a>
+                    </li>
+                    
                     <li class="text-white py-1 nav_item_li item_has_submenu nenu_open cursor-pointer">
                       <span class="w-10 inline-block"><i style="" class="fas fa-user mr-2"></i></span><span class="#" style=""><p style="display: inherit">Frontend <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
                        {{-- submenu  --}}

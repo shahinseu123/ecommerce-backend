@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\auth\login\LoginController;
 use App\Http\Controllers\auth\login\RegisterController;
+use App\Http\Controllers\backend\attribute\AttributeController;
 use App\Http\Controllers\backend\category\CategoryController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\media\MediaController;
@@ -29,6 +30,10 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     //products
     Route::get('/products', [ProductController::class, 'index'])->name('backend.products');
     Route::get('/products/add', [ProductController::class, 'add_product'])->name('backend.product.add');
+    //attribute
+    Route::get('/attribute', [AttributeController::class, 'index'])->name('backend.attribute');
+    Route::post('/attribute/add', [AttributeController::class, 'add_attribute'])->name('backend.attribute.add');
+    Route::post('/attribute/add-item', [AttributeController::class, 'add_attribute_item'])->name('backend.attribute.add-item');
     //category
     Route::get('/category', [CategoryController::class, 'index'])->name('backend.category');
     Route::get('/category/add', [CategoryController::class, 'add_category'])->name('backend.category.add');
