@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\auth\login\LoginController;
 use App\Http\Controllers\auth\login\RegisterController;
+use App\Http\Controllers\backend\category\CategoryController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\media\MediaController;
 use App\Http\Controllers\backend\products\ProductController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\users\ProfileController;
@@ -27,6 +29,17 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     //products
     Route::get('/products', [ProductController::class, 'index'])->name('backend.products');
     Route::get('/products/add', [ProductController::class, 'add_product'])->name('backend.product.add');
+    //category
+    Route::get('/category', [CategoryController::class, 'index'])->name('backend.category');
+    Route::get('/category/add', [CategoryController::class, 'add_category'])->name('backend.category.add');
+    Route::post('/category/create', [CategoryController::class, 'create_category'])->name('backend.category.create');
+    // Route::get('/backend/media', 'App\Http\Controllers\backend\MediaController@index')->name('backend.media')->middleware('isAuth');
+    //media
+    Route::get('/media/ajex', [MediaController::class, 'index_ajex'])->name('backend.media.ajex');
+    Route::get('/media/library', [MediaController::class, 'library'])->name('backend.media.lirary');
+    Route::get('/media/library/add', [MediaController::class, 'library_add'])->name('backend.media.add_new');
+    Route::post('/media/library/create', [MediaController::class, 'library_image_action'])->name('backend.media.create');
+    Route::get('/media/library/image/delete', [MediaController::class, 'library_image_delete'])->name('backend.media.delete');
 });
 //auth check route group
 // user panel routes     

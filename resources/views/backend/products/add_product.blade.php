@@ -162,11 +162,11 @@
                <div class="bg-white shadow-lg rounded p-4 mt-4">
                 <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
                     <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Product gallery</h1>
-                    <form action="/file-upload" class="dropzone image-holder-border">
+                    <div action="/file-upload" class="dropzone image-holder-border">
                         <div class="fallback">
                           <input name="file" type="file" multiple />
                         </div>
-                    </form>
+                    </div>
                 </div>
                </div>
                <div class="bg-white shadow-lg rounded p-4 mt-4">
@@ -188,10 +188,27 @@
                     </div>
                 </div>
                 <div class="border-t-2 border-gray-300">
-                    <button class="w-full py-2 text-white btn_secondary rounded shadow-lg mt-3 mb-4" type="submit">CREATE</button>
+                    <button class="w-full py-2 text-white btn_secondary rounded shadow-lg mt-3 m" type="submit">CREATE</button>
                     <p>NB: <span class="text-red-600"> * </span>marked are required field.</p>
                 </div>
                </div>
+            </div>
+        </div>
+        <div id="preview-template">
+            <div class="dz-preview dz-image-preview" id="dz-preview-template">
+                <div class="dz-image">
+                    <img data-dz-thumbnail>
+                </div>
+              <div class="dz-details">
+                <div class="dz-filename"><span data-dz-name></span></div>
+                <div class="dz-size" data-dz-size></div>
+              </div>
+              <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+              <div class="dz-success-mark"><span></span></div>
+              <div class="dz-error-mark"><span></span></div>
+              <div class="dz-error-message"><span data-dz-errormessage></span></div>
+              {{-- <a class="dz-remove" href="#" data-dz-remove="">Remove file</a> --}}
+              {{-- <input type="text" placeholder="Title"> --}}
             </div>
         </div>
     </section>
@@ -284,12 +301,14 @@
             border: 4px dashed #6366F1;
             border-radius: 10px;
         }
-
+        .dropzone .dz-preview .dz-image {
+            z-index: 5;
+        }
     </style>
 @endsection
 
 @section('script')
-    <script src="{{asset('js/ckeditor5/ckeditor.js')}}"></script>
+    
     <script>
         ClassicEditor
             .create( document.querySelector( '#editor' ) )

@@ -87,53 +87,70 @@
                         <span class="w-10 inline-block"><i style="{{Route::is('backend.dashboard') ? 'color:#6366F1':'color: white'}} " class="fas fa-tachometer-alt mr-2"></i></span><a class="" style="{{Route::is('backend.dashboard') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.dashboard')}}">Dashboard</a>
                     </li>
                     <li class=" py-1 nav_item_li cursor-pointer">
-                        <span class="w-10 inline-block"><i style="{{Route::is('backend.products') || Route::is('backend.product.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-users mr-2"></i></span><a class="" style="{{Route::is('backend.products') || Route::is('backend.product.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.products')}}">Products</a>
+                        <span class="w-10 inline-block"><i style="{{Route::is('backend.products') || Route::is('backend.product.add') ? 'color:#6366F1':'color: white'}}" class="fab fa-product-hunt mr-2"></i></span><a class="" style="{{Route::is('backend.products') || Route::is('backend.product.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.products')}}">Products</a>
                     </li>
                     <li class="item_has_submenu text-white py-1 nav_item_li nenu_open cursor-pointer transition-all duration-1000">
-                        <span class="w-10 inline-block"><i style="color: #6366F1" class="fas fa-user mr-2"></i></span><span class="#" style="color: #6366F1"><p style="display: inherit">Customer <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
+                        <span class="w-10 inline-block"><i style="" class="fas fa-layer-group mr-2"></i></span><span class="#" style=""><p style="display: inherit">Stock <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
                          {{-- submenu  --}}
                          <ul class="submenu_ul hidden">
                              <li class="py-1">
-                                <span class="w-10 inline-block"><i style="color: #6366F1" class="far fa-circle mr-2"></i></span><a class="" style="color: #6366F1" href="">Reseller</a>
+                                <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Adjustment</a>
                              </li>
                              <li class="py-1">
-                                <span class="w-10 inline-block"><i style="color: #6366F1" class="far fa-circle mr-2"></i></span><a class="" style="color: #6366F1" href="">Whole seller</a>
+                                <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Pre alert</a>
                              </li>
                              <li class="py-1">
-                                <span class="w-10 inline-block"><i style="color: #6366F1" class="far fa-circle mr-2"></i></span><a class="" style="color: #6366F1" href="">General customer</a>
+                                <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Alert</a>
                              </li>
                              <li class="py-1">
-                                <span class="w-10 inline-block"><i style="color: #6366F1" class="far fa-circle mr-2"></i></span><a class="" style="color: #6366F1" href="">Special customer</a>
+                                <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Stock out </a>
                              </li>
                          </ul> 
                          {{-- submenu end --}}
                     </li>
                     <li class="text-white py-1 nav_item_li cursor-pointer">
-                        <span class="w-10 inline-block"><i style="color: #6366F1" class="fas fa-user-tag mr-2"></i></span><a class="" style="color: #6366F1" href="">Buyer</a>
+                        <span class="w-10 inline-block"><i style="{{Route::is('backend.category')||Route::is('backend.category.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-th mr-2"></i></span><a class="" style="{{Route::is('backend.category')||Route::is('backend.category.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.category')}}">Category</a>
                     </li>
-                    <li class="text-white py-1 nav_item_li cursor-pointer">
-                        <span class="w-10 inline-block"><i style="color: #6366F1" class="fas fa-cog mr-2"></i></span><a class="" style="color: #6366F1" href="">Settings</a>
-                    </li>
+                   
                     <li class="text-white py-1 nav_item_li item_has_submenu nenu_open cursor-pointer">
-                      <span class="w-10 inline-block"><i style="color: #6366F1" class="fas fa-user mr-2"></i></span><span class="#" style="color: #6366F1"><p style="display: inherit">Authers <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
+                      <span class="w-10 inline-block"><i style="" class="fas fa-user mr-2"></i></span><span class="#" style=""><p style="display: inherit">Frontend <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
                        {{-- submenu  --}}
                        <ul class="submenu_ul hidden">
                            <li class="py-1">
-                              <span class="w-10 inline-block"><i style="color: #6366F1" class="far fa-circle mr-2"></i></span><a class="" style="color: #6366F1" href="">Shahin Alam</a>
+                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">General Settings</a>
                            </li>
                            <li class="py-1">
-                              <span class="w-10 inline-block"><i style="color: #6366F1" class="far fa-circle mr-2"></i></span><a class="" style="color: #6366F1" href="">Sayem Khan</a>
+                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Pages</a>
                            </li>
                            <li class="py-1">
-                              <span class="w-10 inline-block"><i style="color: #6366F1" class="far fa-circle mr-2"></i></span><a class="" style="color: #6366F1" href="">Ornaments</a>
+                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Menu</a>
                            </li>
                            <li class="py-1">
-                              <span class="w-10 inline-block"><i style="color: #6366F1" class="far fa-circle mr-2"></i></span><a class="" style="color: #6366F1" href="">Electric</a>
+                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Slider</a>
+                           </li>
+                           <li class="py-1">
+                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Media size</a>
                            </li>
                        </ul> 
                        {{-- submenu end --}}
                   </li>
-   
+                    <li class="text-white py-1 nav_item_li item_has_submenu nenu_open cursor-pointer">
+                      <span class="w-10 inline-block"><i style="{{Route::is('backend.media.add_new')||Route::is('backend.media.lirary') ? 'color:#6366F1':'color: white'}}" class="fas fa-photo-video mr-2"></i></span><span class="#" style=""><p style="{{Route::is('backend.media.add_new')||Route::is('backend.media.lirary') ? 'color:#6366F1':'color: white'}}; display: inherit">Media <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
+                       {{-- submenu  --}}
+                       <ul class="submenu_ul {{Route::is('backend.media.add_new')||Route::is('backend.media.lirary') ? '':'hidden'}} ">
+                           <li class="py-1">
+                              <span class="w-10 inline-block"><i style="{{Route::is('backend.media.lirary') ? 'color:#6366F1':'color: white'}}"  class="far fa-circle mr-2"></i></span><a class="" style="{{Route::is('backend.media.lirary') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.media.lirary')}}">Library</a>
+                           </li>
+                           <li class="py-1">
+                              <span class="w-10 inline-block"><i style="{{Route::is('backend.media.add_new') ? 'color:#6366F1':'color: white'}}" class="far fa-circle mr-2"></i></span><a class="" style="{{Route::is('backend.media.add_new') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.media.add_new')}}">Add new</a>
+                           </li>
+                       </ul> 
+                       {{-- submenu end --}}
+                  </li>
+                  
+                  <li class="text-white py-1 nav_item_li cursor-pointer">
+                    <span class="w-10 inline-block"><i style="" class="fas fa-cog mr-2"></i></span><a class="" style="" href="">Settings</a>
+                  </li>
                 
                 </ul>
              </div>
@@ -158,6 +175,7 @@
 	  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script type="text/javascript" src="{{asset("js/picker.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("js/dropzone.js")}}"></script>
+    <script src="{{asset('js/ckeditor5/ckeditor.js')}}"></script>
     <script>
        
     </script>

@@ -4,5 +4,76 @@
     .sm_hidden{
         display: none;
     }
+    .child_modal {
+        right: 5%;
+        width: 87%;
+        top: 84px;
+    }
     
+}
+
+@media (min-width: 641px) and (max-width:767px) {
+    .child_modal {
+        right: 5%;
+        width: 87%;
+        top: 84px;
+    }
+
+}
+
+
+/* Medium   Device */
+@media (min-width: 768px) and (max-width:991px) {
+    .child_modal {
+        right: 5%;
+        width: 87%;
+        top: 84px;
+    }
+
+}
+
+/* Large Device */
+@media (min-width: 901px) and (max-width:1000px) {
+    .child_modal {
+        right: 5%;
+        width: 87%;
+        top: 84px;
+    }
+    
+}
+@media (min-width: 1001px) and (max-width:1100px) {
+    .child_modal {
+        right: 10%;
+        top: 89px;
+        width: 80%;
+    }
+    
+}
+@media (min-width: 1101px) and (max-width:1200px) {
+    .child_modal {
+        right: 10%;
+        width: 80%;
+    }
+}
+@media (min-width: 1201px) and (max-width:1300px) {
+    .child_modal {   
+        right: 2%;   
+        width: 96%;
+    }
+}
+@media (min-width: 1301px) and (max-width:1400px) {
+    .child_modal {   
+        right: 4%;   
+    }
+}
+
+@media (min-width: 1401px) and (max-width:1500px) {
+    .child_modal {   
+        right: 6%;   
+    }
+}
+@media (min-width: 1501px) and (max-width:1900px){
+    .child_modal {   
+        right: 9%;   
+    }
 }
