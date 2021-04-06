@@ -29,4 +29,37 @@ class AttributeController extends Controller
        AttributeItem::create($request->all());
        return redirect()->back()->with('success', 'Attribute item created successfully');
     }
+
+    public function edit_attribute_item(Request $request){
+        $item = AttributeItem::findOrFail($request->data_id);
+        return $item;
+    }
+
+    public function update_attribute_item(Request $request){
+        $item = AttributeItem::findOrFail($request->id);
+        $item->update($request->all());
+        return redirect()->back()->with('success', 'Attribute item updated successfully');
+    }
+
+    public function delete_attribute_item(Request $request){
+        AttributeItem::findOrFail($request->data_id)->delete();
+        return ["message", "Attribute item deleted successfully"];
+    }
+
+    public function edit_attribute(Request $request){
+        $attr = Attribute::findOrFail($request->data_id);
+        return $attr;
+       
+    }
+
+    public function update_attribute(Request $request){
+        Attribute::findOrFail($request->id)->update($request->all());
+        return redirect()->back()->with('success', 'Attribute updated successfully');
+    }
+
+    public function delete_attribute($id){
+        $item = Attribute::findOrFail($id);
+        $item->delete();
+        return redirect()->back()->with('message', 'Attribute deleted successfully');
+    }
 }

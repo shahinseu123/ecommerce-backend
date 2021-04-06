@@ -16,6 +16,7 @@
                     <tr>
                         <th class="text-left" data-priority="1">#</th>
                         <th class="text-left" data-priority="2">Title</th>
+                        <th class="text-left" data-priority="2">Sub Categories</th>
                         <th class="text-left" data-priority="4">Status</th>
                         <th class="text-left" data-priority="5">Action</th>
                     </tr>
@@ -26,6 +27,20 @@
                             <tr>
                                 <td>{{$item->id}}</td>
                                 <td>{{$item->category_title}}</td>
+                                <td>
+                                    <ul>
+                                        @foreach ($item->Child as $sub_category)
+                                            <li class="ml-2">
+                                                <a href="{{route('category.edit', $sub_category->id)}}">{{$sub_category->category_title}} </a>
+                                            
+                                                <ul>
+                                                    @foreach ($sub_category->Child as $sub_category)
+                                                        <li><a href="{{route('category.edit', $sub_category->id)}}"># {{$sub_category->category_title}}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                        @endforeach
+                                    </ul>
+                                </td>
                                 <td>
                                     <a href="{{route('category.status.change', $item->id)}}" class="{{$item->status === "active" ? "btn_secondary": "btn_danger"}} px-5 py-1 font-semibold uppercase text-white shadow-lg rounded">{{$item->status}}</a>
                                 </td>

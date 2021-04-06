@@ -33,6 +33,12 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     //attribute
     Route::get('/attribute', [AttributeController::class, 'index'])->name('backend.attribute');
     Route::post('/attribute/add', [AttributeController::class, 'add_attribute'])->name('backend.attribute.add');
+    Route::get('/attribute/edit', [AttributeController::class, 'edit_attribute'])->name('attribute.edit');
+    Route::post('/attribute/update', [AttributeController::class, 'update_attribute'])->name('attribute.update');
+    Route::get('/attribute/delete/{id}', [AttributeController::class, 'delete_attribute'])->name('attribute.delete');
+    Route::get('/attribute/item/edit', [AttributeController::class, 'edit_attribute_item'])->name('attribute.item.edit');
+    Route::get('/attribute/item/delete', [AttributeController::class, 'delete_attribute_item'])->name('attribute.item.delete');
+    Route::post('/attribute/item/update', [AttributeController::class, 'update_attribute_item'])->name('attrinute.item.update');
     Route::post('/attribute/add-item', [AttributeController::class, 'add_attribute_item'])->name('backend.attribute.add-item');
     //category
     Route::get('/category', [CategoryController::class, 'index'])->name('backend.category');

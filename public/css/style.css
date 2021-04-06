@@ -103,7 +103,9 @@ body{
   .btn_danger{
      background-color: var(--danger);
   }
-
+  .bg-secondary{
+    background-color: var(--secondary);
+  }
   .border_primary{
      border-bottom: 1px solid var(--primary);
   }
