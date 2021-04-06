@@ -3,6 +3,7 @@
 use App\Http\Controllers\auth\login\LoginController;
 use App\Http\Controllers\auth\login\RegisterController;
 use App\Http\Controllers\backend\attribute\AttributeController;
+use App\Http\Controllers\backend\brand\BrandController;
 use App\Http\Controllers\backend\category\CategoryController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\media\MediaController;
@@ -30,6 +31,14 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     //products
     Route::get('/products', [ProductController::class, 'index'])->name('backend.products');
     Route::get('/products/add', [ProductController::class, 'add_product'])->name('backend.product.add');
+    // brand
+    Route::get('/brand', [BrandController::class, 'index'])->name('backend.brand');
+    Route::get('/brand/add', [BrandController::class, 'add_brand'])->name('backend.brand.add');
+    Route::post('/brand/create', [BrandController::class, 'create_brand'])->name('backend.brand.create');
+    Route::get('/brand/delete/{id}', [BrandController::class, 'delete_brand'])->name('brand.delete');
+    Route::get('/brand/edit/{id}', [BrandController::class, 'edit_brand'])->name('brand.edit');
+    Route::post('/brand/update', [BrandController::class, 'update_brand'])->name('brand.update');
+    Route::get('/brand/status/change/{id}', [BrandController::class, 'change_status'])->name('brand.status.change');
     //attribute
     Route::get('/attribute', [AttributeController::class, 'index'])->name('backend.attribute');
     Route::post('/attribute/add', [AttributeController::class, 'add_attribute'])->name('backend.attribute.add');
