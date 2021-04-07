@@ -5,6 +5,7 @@ use App\Http\Controllers\auth\login\RegisterController;
 use App\Http\Controllers\backend\attribute\AttributeController;
 use App\Http\Controllers\backend\brand\BrandController;
 use App\Http\Controllers\backend\category\CategoryController;
+use App\Http\Controllers\backend\customer\CustomerController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\media\MediaController;
 use App\Http\Controllers\backend\products\ProductController;
@@ -39,6 +40,14 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::get('/brand/edit/{id}', [BrandController::class, 'edit_brand'])->name('brand.edit');
     Route::post('/brand/update', [BrandController::class, 'update_brand'])->name('brand.update');
     Route::get('/brand/status/change/{id}', [BrandController::class, 'change_status'])->name('brand.status.change');
+    //customers
+    Route::get('/customer', [CustomerController::class, 'index'])->name('backend.customer');
+    Route::get('/customer/status/change/{id}', [CustomerController::class, 'change_status'])->name('customer.status.change');
+    Route::get('/customer/add', [CustomerController::class, 'add_customer'])->name('backend.customer.add');
+    Route::get('/customer/edit/{id}', [CustomerController::class, 'edit_customer'])->name('customer.edit');
+    Route::get('/customer/delete/{id}', [CustomerController::class, 'delete_customer'])->name('customer.delete');
+    Route::post('/customer/create', [CustomerController::class, 'create_customer'])->name('customer.create');
+    Route::post('/customer/update', [CustomerController::class, 'update_customer'])->name('customer.update');
     //attribute
     Route::get('/attribute', [AttributeController::class, 'index'])->name('backend.attribute');
     Route::post('/attribute/add', [AttributeController::class, 'add_attribute'])->name('backend.attribute.add');
