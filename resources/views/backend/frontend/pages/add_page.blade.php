@@ -1,23 +1,23 @@
 @extends('backend.layout.master')
 
 @section('title')
-    <title>Brands</title>
+    <title>Page</title>
 @endsection
 
 @section('content')
     <section>
         @include('backend.inc.media_modal')
-        <h1 class="py-2 font-semibold text-3xl text-gray-600 uppercase">add brand</h1>
-        <form action="{{ route('backend.brand.create') }}" method="post">
+        <h1 class="py-2 font-semibold text-3xl text-gray-600 uppercase">add page</h1>
+        <form action="{{ route('backend.page.create') }}" method="post">
             @csrf
             <div class="lg:flex xl:flex gap-4 mt-3">
                 <div class="lg:w-2/3 xl:w-2/3">
                     <div class="bg-white shadow-lg rounded p-4">
                         <div class="mb-4">
-                            <label for="brand_title" class="font-semibold">Title <span class="text-red-500">*</span></label>
-                            <input class="input-border rounded px-2 py-2 w-full mt-2" type="text" name="brand_title"
-                                id="brand_title" required value="{{ old('brand_title') }}">
-                            @error('brand_title')
+                            <label for="page_title" class="font-semibold">Title <span class="text-red-500">*</span></label>
+                            <input class="input-border rounded px-2 py-2 w-full mt-2" type="text" name="page_title"
+                                id="page_title" required value="{{ old('page_title') }}">
+                            @error('page_title')
                                 <div class="text-red-500">{{ $message }}</div>
                             @enderror
                         </div>
@@ -33,11 +33,11 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="brand_description" class="font-semibold">Description<span
+                            <label for="page_description" class="font-semibold">Description<span
                                     class="text-red-500">*</span></label>
                             <textarea class="input-border rounded px-2 py-2 w-full" style="margin-top: 10px;z-index: -1"
-                                name="brand_description" id="editor" cols="30" rows="5"></textarea>
-                            @error('brand_description')
+                                name="page_description" id="editor" cols="30" rows="5"></textarea>
+                            @error('page_description')
                                 <div class="text-red-500">{{ $message }}</div>
                             @enderror
                         </div>
@@ -51,14 +51,13 @@
                                 <img class="w-full object-cover h-48 cursor-pointer" id="category-img-tag"
                                     src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
                                     alt="img">
-                                <input type="hidden" value="" name="brand_image" id="news_img" readonly>
+                                <input type="hidden" value="" name="page_image" id="news_img" readonly>
                             </div>
                         </div>
                     </div>
                     <div class="bg-white shadow-lg rounded p-4">
-                        <div class="w-full sssss-nav pb-4  cursor-pointer">
+                        <div class="w-full sssss-nav pb-4 cursor-pointer">
                             <div>
-
                                 <div class="mt-2">
                                     <label for="meta_title">Meta title</label>
                                     <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"
@@ -106,6 +105,7 @@
 @endsection
 
 @section('script')
+   
    <script>
         ClassicEditor
             .create( document.querySelector( '#editor' ) )
@@ -115,7 +115,7 @@
                 .catch( error => {
                     console.error( error );
         });
-       
+        // editor end 
         $(document).on('click', '.croxx_btn', () => {
     $('.child_modal').addClass('hidden')
     $('.overlay').addClass('hidden')
@@ -213,5 +213,7 @@ Dropzone.options.myAwesomeDropzone = {
         });
     }
 };
+
+
    </script> 
 @endsection

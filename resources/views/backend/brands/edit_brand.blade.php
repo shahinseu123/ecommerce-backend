@@ -147,7 +147,26 @@ $(document).on('click', '.click_all_page', function() {
     $('.click_recent_page').removeClass('border-blue-500 text-blue-500')
 })
 //end model
-
+function getDataByAjwx() {
+    $.ajax({
+        url: "{{ route('backend.media.ajex') }}",
+        success: (response) => {
+            let html = ''
+            response.forEach(element => {
+                html += '<div class="check_and_img  relative">'
+                html += '<input type="checkbox" id="media_image_box" data-id="' + element.id +
+                    '" value="' + element.media_image +
+                    '" class="subject-list absolute inset-0.5 form-checkbox h-5 w-5 text-yellow-600 media_image_box">'
+                html +=
+                    '<span class=" media_image_all"><img class=" image_uploaded w-full h-28 object-cover" src="/uploads/media/' +
+                    element.media_image + '" alt="Media iamge"><span>'
+                html += '</div>'
+            });
+            $('.image_main_div').html(html)
+        }
+    })
+}
+getDataByAjwx()
 // end
 //click image
 $(document).on('click', '.media_image_all', function() {

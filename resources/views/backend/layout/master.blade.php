@@ -115,24 +115,24 @@
                         <span class="w-10 inline-block"><i style="{{Route::is('backend.attribute')||Route::is('backend.attribute.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-drafting-compass mr-2"></i></span><a class="" style="{{Route::is('backend.attribute')||Route::is('backend.attribute.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.attribute')}}">Attribute</a>
                     </li>
                     <li class="text-white py-1 nav_item_li cursor-pointer">
-                        <span class="w-10 inline-block"><i style="{{Route::is('backend.brand')||Route::is('backend.brand.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-tags mr-2"></i></span><a class="" style="{{Route::is('backend.brand')||Route::is('backend.brand.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.brand')}}">Brand</a>
+                        <span class="w-10 inline-block"><i style="{{Route::is('backend.brand')||Route::is('backend.brand.add')||Route::is('brand.edit') ? 'color:#6366F1':'color: white'}}" class="fas fa-tags mr-2"></i></span><a class="" style="{{Route::is('backend.brand')||Route::is('backend.brand.add')||Route::is('brand.edit') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.brand')}}">Brand</a>
                     </li>
                     <li class="text-white py-1 nav_item_li cursor-pointer">
                         <span class="w-10 inline-block"><i style="{{Route::is('backend.customer')||Route::is('backend.customer.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-users mr-2"></i></span><a class="" style="{{Route::is('backend.customer')||Route::is('backend.customer.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.customer')}}">Customers</a>
                     </li>
                     
                     <li class="text-white py-1 nav_item_li item_has_submenu nenu_open cursor-pointer">
-                      <span class="w-10 inline-block"><i style="" class="fas fa-user mr-2"></i></span><span class="#" style=""><p style="display: inherit">Frontend <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
+                      <span class="w-10 inline-block"><i style="{{Route::is('backend.genetal-settings')||Route::is('backend.menu')||Route::is('backend.page')||Route::is('backend.page.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-user mr-2"></i></span><span class="#" style="{{Route::is('backend.genetal-settings') || Route::is('backend.page')||Route::is('backend.menu')||Route::is('backend.page.add') ? 'color:#6366F1':'color: white'}}"><p style="display: inherit">Frontend <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
                        {{-- submenu  --}}
-                       <ul class="submenu_ul hidden">
+                       <ul class="submenu_ul {{Route::is('backend.genetal-settings')||Route::is('backend.menu')||Route::is('backend.page')||Route::is('backend.page.add') ? '':'hidden'}}">
                            <li class="py-1">
-                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">General Settings</a>
+                              <span class="w-10 inline-block"><i style="{{Route::is('backend.genetal-settings') ? 'color:#6366F1':'color: white'}}" class="far fa-circle mr-2"></i></span><a class="" style="{{Route::is('backend.genetal-settings') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.genetal-settings')}}">General Settings</a>
                            </li>
                            <li class="py-1">
-                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Pages</a>
+                              <span class="w-10 inline-block"><i style="{{Route::is('backend.page')||Route::is('backend.page.add') ? 'color:#6366F1':'color: white'}}" class="far fa-circle mr-2"></i></span><a class="" style="{{Route::is('backend.page')||Route::is('backend.page.add') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.page')}}">Pages</a>
                            </li>
                            <li class="py-1">
-                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Menu</a>
+                              <span class="w-10 inline-block"><i style="{{Route::is('backend.menu') ? 'color:#6366F1':'color: white'}}" class="far fa-circle mr-2"></i></span><a class="" style="{{Route::is('backend.menu') ? 'color:#6366F1':'color: white'}}" href="{{route("backend.menu")}}">Menu</a>
                            </li>
                            <li class="py-1">
                               <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Slider</a>
@@ -194,10 +194,13 @@
     <script src="https://kit.fontawesome.com/bad080b564.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	  <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="{{asset('js/ckeditor5/ckeditor.js')}}"></script>
     <script type="text/javascript" src="{{asset("js/picker.min.js")}}"></script>
     <script type="text/javascript" src="{{asset("js/dropzone.js")}}"></script>
-    <script src="{{asset('js/ckeditor5/ckeditor.js')}}"></script>
-    <script src="{{asset('js/media.js')}}"></script>
+    <script type="text/javascript" src="{{asset("js/jquery-sortable.js")}}"></script>
+    <script type="text/javascript" src="{{asset("js/jquery.nestable.js")}}"></script>
+    <script type="text/javascript" src="{{asset("js/jquery-ui.js")}}"></script>
+    {{-- <script src="{{asset('js/media.js')}}"></script> --}}
     <script>
        setTimeout(() => $(".noPrint").addClass("hidden"), 2000);
     </script>

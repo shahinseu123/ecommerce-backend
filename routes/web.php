@@ -7,7 +7,10 @@ use App\Http\Controllers\backend\brand\BrandController;
 use App\Http\Controllers\backend\category\CategoryController;
 use App\Http\Controllers\backend\customer\CustomerController;
 use App\Http\Controllers\backend\DashboardController;
+use App\Http\Controllers\backend\general_settings\GeneralsettingController;
 use App\Http\Controllers\backend\media\MediaController;
+use App\Http\Controllers\backend\menu\MenuController;
+use App\Http\Controllers\backend\pages\PageController;
 use App\Http\Controllers\backend\products\ProductController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\users\ProfileController;
@@ -48,6 +51,16 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::get('/customer/delete/{id}', [CustomerController::class, 'delete_customer'])->name('customer.delete');
     Route::post('/customer/create', [CustomerController::class, 'create_customer'])->name('customer.create');
     Route::post('/customer/update', [CustomerController::class, 'update_customer'])->name('customer.update');
+    //general settings
+    Route::get('/general-setting', [GeneralsettingController::class, 'index'])->name('backend.genetal-settings');
+    //page
+    Route::get('/page', [PageController::class, 'index'])->name('backend.page');
+    Route::get('/page/status/change/{id}', [PageController::class, 'change_status'])->name('page.status.change');
+    Route::get('/page/add-page', [PageController::class, 'add_page'])->name('backend.page.add');
+    Route::get('/page/edit/{id}', [PageController::class, 'edit_page'])->name('page.edit');
+    Route::get('/page/delete/{id}', [PageController::class, 'delete_page'])->name('page.delete');
+    Route::post('/page/create', [PageController::class, 'create_page'])->name('backend.page.create');
+    Route::post('/page/update', [PageController::class, 'update_page'])->name('backend.page.update');
     //attribute
     Route::get('/attribute', [AttributeController::class, 'index'])->name('backend.attribute');
     Route::post('/attribute/add', [AttributeController::class, 'add_attribute'])->name('backend.attribute.add');
@@ -67,6 +80,14 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::post('/category/update', [CategoryController::class, 'update_category'])->name('category.update');
     Route::get('/category/status/update/{id}', [CategoryController::class, 'update_status'])->name('category.status.change');
     // Route::get('/backend/media', 'App\Http\Controllers\backend\MediaController@index')->name('backend.media')->middleware('isAuth');
+    // menu 
+    Route::get('/menu', [MenuController::class, 'index'])->name('backend.menu');
+    Route::post('/menu/create', [MenuController::class, 'create'])->name('backend.menu.create');
+    Route::post('/menu/delete', [MenuController::class, 'delete_menu'])->name('backend.menu.delete');
+    Route::get('/menu/menu-item/delete', [MenuController::class, 'delete_menu_item'])->name('backend.single-menu-item.delete');
+    Route::post('/menu/update-position', [MenuController::class, 'update_position'])->name('backend.menu-item.updatePosition');
+    Route::post('/menu/menu-item/add', [MenuController::class, 'add_menu_item'])->name('backend.menu-item.add');
+    Route::post('/menu/menu-item/custom-link', [MenuController::class, 'backend_add_link_action'])->name('backend.add.link.action');
     //media
     Route::get('/media/ajex', [MediaController::class, 'index_ajex'])->name('backend.media.ajex');
     Route::get('/media/library', [MediaController::class, 'library'])->name('backend.media.lirary');
