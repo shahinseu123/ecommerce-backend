@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\auth\login\LoginController;
 use App\Http\Controllers\auth\login\RegisterController;
+use App\Http\Controllers\backend\admin\AdminController;
 use App\Http\Controllers\backend\attribute\AttributeController;
 use App\Http\Controllers\backend\brand\BrandController;
 use App\Http\Controllers\backend\category\CategoryController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\backend\media\MediaController;
 use App\Http\Controllers\backend\menu\MenuController;
 use App\Http\Controllers\backend\pages\PageController;
 use App\Http\Controllers\backend\products\ProductController;
+use App\Http\Controllers\backend\slider\SliderController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\users\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -71,6 +73,12 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::get('/attribute/item/delete', [AttributeController::class, 'delete_attribute_item'])->name('attribute.item.delete');
     Route::post('/attribute/item/update', [AttributeController::class, 'update_attribute_item'])->name('attrinute.item.update');
     Route::post('/attribute/add-item', [AttributeController::class, 'add_attribute_item'])->name('backend.attribute.add-item');
+    //slider
+    Route::get('/slider', [SliderController::class, 'index'])->name('backend.slider');
+    Route::post('/slider/create', [SliderController::class, 'create_slider'])->name('slider.create');
+    Route::post('/slider/update', [SliderController::class, 'update_slider'])->name('slider.update');
+    Route::get('/slider/edit/{id}', [SliderController::class, 'edit_slider'])->name('slider.edit');
+    Route::get('/slider/delete', [SliderController::class, 'delete_slider'])->name('slider.delete');
     //category
     Route::get('/category', [CategoryController::class, 'index'])->name('backend.category');
     Route::get('/category/add', [CategoryController::class, 'add_category'])->name('backend.category.add');
@@ -94,6 +102,13 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::get('/media/library/add', [MediaController::class, 'library_add'])->name('backend.media.add_new');
     Route::post('/media/library/create', [MediaController::class, 'library_image_action'])->name('backend.media.create');
     Route::get('/media/library/image/delete', [MediaController::class, 'library_image_delete'])->name('backend.media.delete');
+    //admins
+    Route::get('/admins', [AdminController::class, 'index'])->name('backend.admin');
+    Route::get('/admins/add', [AdminController::class, 'add_admins'])->name('backend.admin.add');
+    Route::post('/admins/create', [AdminController::class, 'create_admins'])->name('admin.create');
+    Route::post('/admins/update', [AdminController::class, 'update_admins'])->name('admin.update');
+    Route::get('/admins/delete/{id}', [AdminController::class, 'delete_admins'])->name('admin.delete');
+    Route::get('/admins/edit/{id}', [AdminController::class, 'edit_admins'])->name('admin.edit');
 });
 //auth check route group
 // user panel routes     

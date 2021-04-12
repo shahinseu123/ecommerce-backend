@@ -9,9 +9,10 @@
 	 <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/dropzone.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset("css/picker.min.css")}}">
+    <link rel="stylesheet" href="{{asset("css/slider.css")}}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset("css/picker.min.css")}}">
     {{-- <script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine-ie11.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/gh/intellow/x-selectpicker/dist/x-selectpicker.js" defer></script> --}}
@@ -122,9 +123,9 @@
                     </li>
                     
                     <li class="text-white py-1 nav_item_li item_has_submenu nenu_open cursor-pointer">
-                      <span class="w-10 inline-block"><i style="{{Route::is('backend.genetal-settings')||Route::is('backend.menu')||Route::is('backend.page')||Route::is('backend.page.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-user mr-2"></i></span><span class="#" style="{{Route::is('backend.genetal-settings') || Route::is('backend.page')||Route::is('backend.menu')||Route::is('backend.page.add') ? 'color:#6366F1':'color: white'}}"><p style="display: inherit">Frontend <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
+                      <span class="w-10 inline-block"><i style="{{Route::is('backend.slider')||Route::is('backend.genetal-settings')||Route::is("slider.edit")||Route::is('backend.menu')||Route::is('backend.page')||Route::is('backend.page.add') ? 'color:#6366F1':'color: white'}}" class="fas fa-user mr-2"></i></span><span class="#" style="{{Route::is('backend.genetal-settings')||Route::is("slider.edit")||Route::is('backend.slider') || Route::is('backend.page')||Route::is('backend.menu')||Route::is('backend.page.add') ? 'color:#6366F1':'color: white'}}"><p style="display: inherit">Frontend <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i></p></span>
                        {{-- submenu  --}}
-                       <ul class="submenu_ul {{Route::is('backend.genetal-settings')||Route::is('backend.menu')||Route::is('backend.page')||Route::is('backend.page.add') ? '':'hidden'}}">
+                       <ul class="submenu_ul {{Route::is("slider.edit")||Route::is('backend.genetal-settings')||Route::is('backend.slider')||Route::is('backend.menu')||Route::is('backend.page')||Route::is('backend.page.add') ? '':'hidden'}}">
                            <li class="py-1">
                               <span class="w-10 inline-block"><i style="{{Route::is('backend.genetal-settings') ? 'color:#6366F1':'color: white'}}" class="far fa-circle mr-2"></i></span><a class="" style="{{Route::is('backend.genetal-settings') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.genetal-settings')}}">General Settings</a>
                            </li>
@@ -135,7 +136,7 @@
                               <span class="w-10 inline-block"><i style="{{Route::is('backend.menu') ? 'color:#6366F1':'color: white'}}" class="far fa-circle mr-2"></i></span><a class="" style="{{Route::is('backend.menu') ? 'color:#6366F1':'color: white'}}" href="{{route("backend.menu")}}">Menu</a>
                            </li>
                            <li class="py-1">
-                              <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Slider</a>
+                              <span class="w-10 inline-block"><i style="{{Route::is("slider.edit")||Route::is('backend.slider')? 'color:#6366F1':'color: white'}}" class="far fa-circle mr-2"></i></span><a class="" style="{{Route::is('backend.slider')? 'color:#6366F1':'color: white'}}" href="{{route("backend.slider")}}">Slider</a>
                            </li>
                            <li class="py-1">
                               <span class="w-10 inline-block"><i style="" class="far fa-circle mr-2"></i></span><a class="" style="" href="">Media size</a>
@@ -157,6 +158,9 @@
                        {{-- submenu end --}}
                   </li>
                   
+                  <li class="text-white py-1 nav_item_li cursor-pointer">
+                    <span class="w-10 inline-block"><i style="{{Route::is('backend.admin')||Route::is('backend.admin.add')||Route::is('admin.edit') ? 'color:#6366F1':'color: white'}}" class="fas fa-user-tag mr-2"></i></span><a class="" style="{{Route::is('backend.admin')||Route::is('backend.admin.add')||Route::is('admin.edit') ? 'color:#6366F1':'color: white'}}" href="{{route('backend.admin')}}">Admins</a>
+                  </li>
                   <li class="text-white py-1 nav_item_li cursor-pointer">
                     <span class="w-10 inline-block"><i style="" class="fas fa-cog mr-2"></i></span><a class="" style="" href="">Settings</a>
                   </li>

@@ -21,7 +21,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
-        'phone'
+        'phone',
+        'user_image'
     ];
 
     /**
@@ -42,4 +43,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getImgPathAttribute(){
+        if($this->user_image){
+            return asset('uploads/media/'.$this->user_image);
+        }else{
+            return null;
+        }
+    }
 }
