@@ -40,7 +40,7 @@ body{
      margin-top: 10px;
      margin-left: 5px;
      margin-bottom: 5px;
-     border-left: 3px solid var(--secondary);
+     border-left: 3px dashed white;
      padding-left: 20px;
  }
 
@@ -55,7 +55,7 @@ body{
  }
  /* width */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
   }
   
   /* Track */
@@ -237,6 +237,11 @@ input[type=number] {
   100% {
       transform: translateX(0px)
   }
+}
+
+.hidden-transition{
+  display: hidden;
+  transition: 1s all linear;
 }
 
 

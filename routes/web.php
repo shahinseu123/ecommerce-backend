@@ -11,9 +11,19 @@ use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\general_settings\GeneralsettingController;
 use App\Http\Controllers\backend\media\MediaController;
 use App\Http\Controllers\backend\menu\MenuController;
+use App\Http\Controllers\backend\order\AllordersController;
+use App\Http\Controllers\backend\order\CompletedController;
+use App\Http\Controllers\backend\order\DeliveredController;
+use App\Http\Controllers\backend\order\NewOrderController;
+use App\Http\Controllers\backend\order\ProcessaingController;
+use App\Http\Controllers\backend\order\ReturnedController;
 use App\Http\Controllers\backend\pages\PageController;
 use App\Http\Controllers\backend\products\ProductController;
 use App\Http\Controllers\backend\slider\SliderController;
+use App\Http\Controllers\backend\stock\adjustment\AdjustmentController;
+use App\Http\Controllers\backend\stock\alert\AlertController;
+use App\Http\Controllers\backend\stock\prealert\PrealertController;
+use App\Http\Controllers\backend\stock\stockout\StockoutController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\users\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -73,6 +83,8 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::get('/attribute/item/delete', [AttributeController::class, 'delete_attribute_item'])->name('attribute.item.delete');
     Route::post('/attribute/item/update', [AttributeController::class, 'update_attribute_item'])->name('attrinute.item.update');
     Route::post('/attribute/add-item', [AttributeController::class, 'add_attribute_item'])->name('backend.attribute.add-item');
+    Route::get('/attribute/get-single-item', [AttributeController::class, 'get_single_item'])->name('get.single.attr');
+    
     //slider
     Route::get('/slider', [SliderController::class, 'index'])->name('backend.slider');
     Route::post('/slider/create', [SliderController::class, 'create_slider'])->name('slider.create');
@@ -96,12 +108,29 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::post('/menu/update-position', [MenuController::class, 'update_position'])->name('backend.menu-item.updatePosition');
     Route::post('/menu/menu-item/add', [MenuController::class, 'add_menu_item'])->name('backend.menu-item.add');
     Route::post('/menu/menu-item/custom-link', [MenuController::class, 'backend_add_link_action'])->name('backend.add.link.action');
+    //general setting
+    Route::post('/general-settings', [GeneralsettingController::class, 'g_settings_update'])->name('general-settings.update');
     //media
     Route::get('/media/ajex', [MediaController::class, 'index_ajex'])->name('backend.media.ajex');
     Route::get('/media/library', [MediaController::class, 'library'])->name('backend.media.lirary');
     Route::get('/media/library/add', [MediaController::class, 'library_add'])->name('backend.media.add_new');
     Route::post('/media/library/create', [MediaController::class, 'library_image_action'])->name('backend.media.create');
     Route::get('/media/library/image/delete', [MediaController::class, 'library_image_delete'])->name('backend.media.delete');
+    //orders
+      //create new
+      Route::get('/order/create-new', [NewOrderController::class, 'index'])->name('backend.neworder');
+      //all orders
+      Route::get('/order/all-orders', [AllordersController::class, 'index'])->name('backend.all-orders');
+      //processing
+      Route::get('/order/processing', [ProcessaingController::class, 'index'])->name('backend.processing');
+      //delivered
+      Route::get('/order/delivered', [DeliveredController::class, 'index'])->name('backend.delivared');
+      //delivered
+      Route::get('/order/completed', [CompletedController::class, 'index'])->name('backend.completed');
+      //delivered
+      Route::get('/order/returned', [ReturnedController::class, 'index'])->name('backend.returned');
+      
+
     //admins
     Route::get('/admins', [AdminController::class, 'index'])->name('backend.admin');
     Route::get('/admins/add', [AdminController::class, 'add_admins'])->name('backend.admin.add');
@@ -109,7 +138,17 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::post('/admins/update', [AdminController::class, 'update_admins'])->name('admin.update');
     Route::get('/admins/delete/{id}', [AdminController::class, 'delete_admins'])->name('admin.delete');
     Route::get('/admins/edit/{id}', [AdminController::class, 'edit_admins'])->name('admin.edit');
-});
+    //stock
+      //adjustment
+      Route::get('/adjustment', [AdjustmentController::class, 'index'])->name('backend.adjustment');
+      Route::get('/adjustment/add', [AdjustmentController::class, 'add_adjustment'])->name('backend.adjustment.add');
+      //prealert
+      Route::get('/prealert', [PrealertController::class, 'index'])->name('backend.prealert'); 
+      //alert
+      Route::get('/alert', [AlertController::class, 'index'])->name('backend.alert'); 
+      //atockout
+      Route::get('/stockout', [StockoutController::class, 'index'])->name('backend.stockout'); 
+    });
 //auth check route group
 // user panel routes     
 Route::middleware(['isAuth'])->prefix('user')->group(function () {

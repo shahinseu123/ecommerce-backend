@@ -30,11 +30,23 @@
                         <div class="shadow-lg p-4 bg-white mt-4">
                             <h2 class="font-semibold border-bottom py-2">Product type <span class="text-red-500">*</span></h2>
                             <div>
-                                <select name="product_type" class="input-border px-2 py-2 rounded w-full mt-4" id="product_type" class="input-border">
+                                <select name="product_type" class="input-border select_product_type px-2 py-2 rounded w-full mt-4" id="product_type" class="input-border">
                                     <option value="simple" selected>Simple</option>
                                     <option value="variable">Variable</option>
                                 </select>
                             </div>
+                        </div>
+                        <div class="mt-4 shadow-lg p-4 bg-white hidden select-attribute">
+                            <label for="product_attribute">Product attributes</label>
+                            <select class="mt-4" name="basic" id="ex-search-attr">
+                                <option selected value="">Select Attribute</option>
+                                @if ($attributes)
+                                    @foreach($attributes as $item)
+                                        <option class="selected-option"  value="{{$item['attr_name']}}">{{$item['attr_name']}}</option>
+                                    @endforeach
+                                @endif        
+                            </select>
+                            <button class="btn-select-attr w-full py-2 text-white btn_secondary rounded shadow-lg mt-3 m">SELECT</button>
                         </div>
                         <div class="shadow-lg p-4 bg-white mt-4">
                             <h2 class="font-semibold border-bottom py-2">Stoct alert <span class="text-red-500">*</span></h2>
@@ -49,54 +61,64 @@
                         </div>
                     </div>
                     <div class="w-2/3 ">
+                        <input type="hidden" name="attr_0" id="attr_0">
+                        <input type="hidden" name="attr_1" id="attr_1">
+                        <div class="add_variation bg-white shadow-lg p-4 mt-4 hidden">
+
+                        </div>
+                        <div class="add_variation_items bg-white shadow-lg p-4 mt-4 hidden">
+
+                        </div>
                          <div class="shadow-lg p-4 bg-white mt-4">
                              <h1 class="py-2 font-semibold border-bottom">Product data</h1>
-                            
-                                <div class="grid grid-cols-3 gap-4">
-                                    <div class="mt-2">
-                                        <label for="regular_price">Regular price</label>
-                                        <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">
-                                    </div>
-                                    <div class="mt-2">
-                                        <label for="sale_price">Sale price <span class="text-red-500">*</span></label>
-                                        <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" required value="{{old('sale_price')}}" name="sale_price" id="sale_price">
-                                    </div>
-                                    <div class="mt-2">
-                                        <label for="sku">SKU</label>
-                                        <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku" id="sku">
-                                    </div>
-                               </div>
-                                <div class="grid grid-cols-3 gap-4">
-                                    <div class="mt-2">
-                                        <label for="shipping_weight">Shipping width(cm)</label>
-                                        <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">
-                                    </div>
-                                    <div class="mt-2">
-                                        <label for="shipping_height">Shipping height(cm) </label>
-                                        <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">
-                                    </div>
-                                    <div class="mt-2">
-                                        <label for="shipping_lenght">Shipping length(cm)</label>
-                                        <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">
-                                    </div>
-                               </div>
-                                <div class="grid grid-cols-3 gap-4">
-                                    <div class="mt-2">
-                                        <label for="rack_number">Rack number</label>
-                                        <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">
-                                    </div>
-                                    <div class="mt-2">
-                                        <label for="unit">Unit <span class="text-red-500">*</span></label>
-                                        <select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">
-                                            <option value="pcs" selected>PCS</option>
-                                            <option value="g">G</option>
-                                            <option value="ml">ML</option>
-                                        </select>
-                                    </div>
-                                    <div class="mt-2">
-                                        <label for="unit_amount">Unit amount*</label>
-                                        <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">
-                                    </div>
+                             
+                               <div class="simple_product_data">
+                                   <div class="grid grid-cols-3 gap-4">
+                                       <div class="mt-2">
+                                           <label for="regular_price">Regular price</label>
+                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">
+                                       </div>
+                                       <div class="mt-2">
+                                           <label for="sale_price">Sale price <span class="text-red-500">*</span></label>
+                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" required value="{{old('sale_price')}}" name="sale_price" id="sale_price">
+                                       </div>
+                                       <div class="mt-2">
+                                           <label for="sku">SKU</label>
+                                           <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku" id="sku">
+                                       </div>
+                                  </div>
+                                   <div class="grid grid-cols-3 gap-4">
+                                       <div class="mt-2">
+                                           <label for="shipping_weight">Shipping width(cm)</label>
+                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">
+                                       </div>
+                                       <div class="mt-2">
+                                           <label for="shipping_height">Shipping height(cm) </label>
+                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">
+                                       </div>
+                                       <div class="mt-2">
+                                           <label for="shipping_lenght">Shipping length(cm)</label>
+                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">
+                                       </div>
+                                  </div>
+                                   <div class="grid grid-cols-3 gap-4">
+                                       <div class="mt-2">
+                                           <label for="rack_number">Rack number</label>
+                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">
+                                       </div>
+                                       <div class="mt-2">
+                                           <label for="unit">Unit <span class="text-red-500">*</span></label>
+                                           <select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">
+                                               <option value="pcs" selected>PCS</option>
+                                               <option value="g">G</option>
+                                               <option value="ml">ML</option>
+                                           </select>
+                                       </div>
+                                       <div class="mt-2">
+                                           <label for="unit_amount">Unit amount*</label>
+                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">
+                                       </div>
+                                  </div>
                                </div>
                             
                          </div>
@@ -110,41 +132,36 @@
                         <div class="mt-2">
                             <label for="product_category">Product category <span class="text-red-500">*</span></label><br>
                             <select class="mt-4" required name="basic" id="ex-search" multiple>
-                                <option value="1">Shanghai</option>
-                                <option value="2">Karachi</option>
-                                <option value="3">Beijing</option>
-                                <option value="4">Tianjin</option>
-                                <option value="5">Istanbul</option>
-                                <option value="6">Lagos</option>
-                                <option value="7">Tokyo</option>
-                                <option value="8">Guangzhou</option>
-                                <option value="9">Mumbai</option>
-                                <option value="10">Moscow</option>
-                                <option value="11">Dhaka</option>
-                                <option value="12">Cairo</option>
+                                <option value="">Select Category</option>
+                                @if ($categories)
+                                    @foreach($categories as $item)
+                                       <option value="{{$item['id']}}">{{$item['category_title']}}</option>
+                                    @endforeach
+                                @endif        
                             </select>
                         </div>
                         <div class="mt-2">
                             <label for="product_brand">Product brand</label>
-                            <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" required value="{{old('product_brand')}}" name="product_brand" id="product_brand">
-                        </div>
-                        <div class="mt-2">
-                            <label for="product_attribute">Product attributes</label>
-                            <select class="mt-4" required name="basic" id="ex-search-attr" multiple>
-                                <option value="1">Shanghai</option>
-                                <option value="2">Karachi</option>
-                                <option value="3">Beijing</option>
-                                <option value="4">Tianjin</option>
-                                <option value="5">Istanbul</option>
-                                <option value="6">Lagos</option>
-                                <option value="7">Tokyo</option>
-                                <option value="8">Guangzhou</option>
-                                <option value="9">Mumbai</option>
-                                <option value="10">Moscow</option>
-                                <option value="11">Dhaka</option>
-                                <option value="12">Cairo</option>
+                            <select class="mt-4" required name="basic" id="ex-search-brand" multiple>
+                                <option value="">Select brand</option>
+                                @if ($brands)
+                                    @foreach ($brands as $item)
+                                      <option value="{{$item['id']}}">{{$item['brand_title']}}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
+                        {{-- <div class="mt-2">
+                            <label for="product_attribute">Product attributes</label>
+                            <select class="mt-4" required name="basic" id="ex-search-attr" multiple>
+                                <option value="">Select Attribute</option>
+                                @if ($attributes)
+                                    @foreach($attributes as $item)
+                                        <option value="{{$item['id']}}">{{$item['attr_name']}}</option>
+                                    @endforeach
+                                @endif        
+                            </select>
+                        </div> --}}
                     </div>
                             
                </div>
@@ -171,7 +188,7 @@
                </div>
                <div class="bg-white shadow-lg rounded p-4 mt-4">
                 <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
-                    <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">SEU info</h1>
+                    <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">SEO info</h1>
                     <div>
                         <div class="mt-2">
                             <label for="meta_title">Meta title</label>
@@ -322,5 +339,61 @@
         //select picker
         $('#ex-search').picker({search : true});
         $('#ex-search-attr').picker({search : true});
+        $('#ex-search-attr-items').picker({search : true});
+        $('#ex-search-brand').picker({search : true});
+
+        //product type simple to variable
+        $(document).on('change', '.select_product_type', () => {
+            let product_type = $('.select_product_type').val();
+            if(product_type === "variable"){
+              $('.simple_product_data').addClass('hidden')  
+              $('.select-attribute').removeClass('hidden')  
+            }else{
+              $('.simple_product_data').removeClass('hidden') 
+              $('.select-attribute').addClass('hidden') 
+            }
+        })
+
+        //select attr
+        $(document).on('click', '.btn-select-attr', () => {
+           let attr_value = $('#ex-search-attr').val()
+           let selected_option = $('.selected-option').val()
+           console.log(attr_value)
+           console.log(selected_option)
+           
+            $(`#ex-search-attr option[value="${attr_value}"]`).attr('disabled', 'disabled')
+            // $(`.selected-option option:contains(${selected_option})`).attr('disabled', 'disabled')
+           
+           if(attr_value == null){
+                alert("No attribute selected")
+            }else{
+                $.ajax({
+                    type: 'GET',
+                    url: '{{route("get.single.attr")}}',
+                    data: {attr_value},
+                    success:(response) => {  
+                        console.log(response)
+                        let attr_elect_box = ''
+                        attr_elect_box += '<h3 class="pb-2 border-bottom text-xl font-semibold">'+response.attr_name+'</h3>'
+                       
+                        response.attribute_item.forEach(d => {
+                           attr_elect_box += '<div>' 
+                           attr_elect_box += '<label class="inline-flex items-center">' 
+                           attr_elect_box += '<input type="checkbox" value="'+d.id+'" class="form-checkbox" checked>' 
+                           attr_elect_box += '<span class="ml-2">'+d.item_name+'</span>' 
+                           attr_elect_box += '</label>' 
+                           attr_elect_box += '</div>' 
+                        });
+                            attr_elect_box += '<button class=" mb-2 btn-add-to-variation py-1 px-2 rounded text-white btn_secondary  shadow-lg mt-3"><i class="fas fa-plus mr-2"></i>SELECT ITEM FOR VARIATION</button>'
+                      $('.add_variation').removeClass('hidden')
+                      $('.add_variation').html(attr_elect_box)
+                    }
+                   })     
+            }
+            
+        }) 
+        
+       
     </script>
+    
 @endsection

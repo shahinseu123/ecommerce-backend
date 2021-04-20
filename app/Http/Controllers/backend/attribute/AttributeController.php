@@ -62,4 +62,11 @@ class AttributeController extends Controller
         $item->delete();
         return redirect()->back()->with('message', 'Attribute deleted successfully');
     }
+
+    public function get_single_item(Request $request){
+        if($request->attr_value){
+               $attr = Attribute::where('attr_name', '=', $request->attr_value)->with('AttributeItem')->first();
+            return $attr;
+        }
+    }
 }
