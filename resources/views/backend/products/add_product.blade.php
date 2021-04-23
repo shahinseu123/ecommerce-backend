@@ -6,7 +6,10 @@
 
 @section('content')
     <section class="overflow-y-auto">
+        @include('backend.inc.media_modal')
         <h1 class="py-2 font-semibold text-3xl text-gray-600 uppercase">add product</h1>
+        <form action="{{route('product.create')}}" method="post">
+         @csrf   
         <div class="lg:flex xl:flex gap-4 mt-3">
             <div class="lg:w-2/3 xl:w-2/3">
                <div class="bg-white shadow-lg rounded p-4">
@@ -38,7 +41,7 @@
                         </div>
                         <div class="mt-4 shadow-lg p-4 bg-white hidden select-attribute">
                             <label for="product_attribute">Product attributes</label>
-                            <select class="mt-4" name="basic" id="ex-search-attr">
+                            <select class="mt-4 mb-4" name="product_attribute" id="ex-search-attr">
                                 <option selected value="">Select Attribute</option>
                                 @if ($attributes)
                                     @foreach($attributes as $item)
@@ -46,7 +49,7 @@
                                     @endforeach
                                 @endif        
                             </select>
-                            <button class="btn-select-attr w-full py-2 text-white btn_secondary rounded shadow-lg mt-3 m">SELECT</button>
+                            <span class="cursor-pointer btn-select-attr block text-center w-full py-2  text-white btn_secondary rounded shadow-lg mt-3 m">SELECT</span>
                         </div>
                         <div class="shadow-lg p-4 bg-white mt-4">
                             <h2 class="font-semibold border-bottom py-2">Stoct alert <span class="text-red-500">*</span></h2>
@@ -61,64 +64,68 @@
                         </div>
                     </div>
                     <div class="w-2/3 ">
-                        <input type="hidden" name="attr_0" id="attr_0">
-                        <input type="hidden" name="attr_1" id="attr_1">
-                        <div class="add_variation bg-white shadow-lg p-4 mt-4 hidden">
-
+                        <div class="bg-white shadow-lg p-4 mt-4 add_variation_items hidden">
+                            <h1 class="text-lg font-semibold mb-4 pb-3 border-bottom">Variation Items</h1>
+                            <div class="add_variation">
+    
+                            </div>
                         </div>
-                        <div class="add_variation_items bg-white shadow-lg p-4 mt-4 hidden">
-
-                        </div>
+                       
                          <div class="shadow-lg p-4 bg-white mt-4">
                              <h1 class="py-2 font-semibold border-bottom">Product data</h1>
-                             
+                               <div class="variable_product_data">
+                                   
+                               </div>
                                <div class="simple_product_data">
-                                   <div class="grid grid-cols-3 gap-4">
-                                       <div class="mt-2">
-                                           <label for="regular_price">Regular price</label>
-                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">
-                                       </div>
-                                       <div class="mt-2">
-                                           <label for="sale_price">Sale price <span class="text-red-500">*</span></label>
-                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" required value="{{old('sale_price')}}" name="sale_price" id="sale_price">
-                                       </div>
-                                       <div class="mt-2">
-                                           <label for="sku">SKU</label>
-                                           <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku" id="sku">
-                                       </div>
-                                  </div>
-                                   <div class="grid grid-cols-3 gap-4">
-                                       <div class="mt-2">
-                                           <label for="shipping_weight">Shipping width(cm)</label>
-                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">
-                                       </div>
-                                       <div class="mt-2">
-                                           <label for="shipping_height">Shipping height(cm) </label>
-                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">
-                                       </div>
-                                       <div class="mt-2">
-                                           <label for="shipping_lenght">Shipping length(cm)</label>
-                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">
-                                       </div>
-                                  </div>
-                                   <div class="grid grid-cols-3 gap-4">
-                                       <div class="mt-2">
-                                           <label for="rack_number">Rack number</label>
-                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">
-                                       </div>
-                                       <div class="mt-2">
-                                           <label for="unit">Unit <span class="text-red-500">*</span></label>
-                                           <select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">
-                                               <option value="pcs" selected>PCS</option>
-                                               <option value="g">G</option>
-                                               <option value="ml">ML</option>
-                                           </select>
-                                       </div>
-                                       <div class="mt-2">
-                                           <label for="unit_amount">Unit amount*</label>
-                                           <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">
-                                       </div>
-                                  </div>
+                                   <div>
+                                       <div class="grid grid-cols-3 gap-4">
+                                           <div class="mt-2">
+                                               <label for="regular_price">Regular price</label>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">
+                                           </div>
+                                           <div class="mt-2">
+                                               <label for="sale_price">Sale price <span class="text-red-500">*</span></label>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price" id="sale_price">
+                                           </div>
+                                           <div class="mt-2">
+                                               <label for="sku">SKU</label>
+                                               <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku">
+                                           </div>
+                                      </div>
+                                       <div class="grid grid-cols-3 gap-4">
+                                           <div class="mt-2">
+                                               <label for="shipping_weight">Shipping width(cm)</label>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">
+                                           </div>
+                                           <div class="mt-2">
+                                               <label for="shipping_height">Shipping height(cm) </label>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">
+                                           </div>
+                                           <div class="mt-2">
+                                               <label for="shipping_lenght">Shipping length(cm)</label>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">
+                                           </div>
+                                      </div>
+                                       <div class="grid grid-cols-3 gap-4">
+                                           <div class="mt-2">
+                                               <label for="rack_number">Rack number</label>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">
+                                           </div>
+                                           <div class="mt-2">
+                                               <label for="unit">Unit <span class="text-red-500">*</span></label>
+                                               <select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">
+                                                   <option value="pcs" selected>PCS</option>
+                                                   <option value="g">G</option>
+                                                   <option value="ml">ML</option>
+                                               </select>
+                                           </div>
+                                           <div class="mt-2">
+                                               <label for="unit_amount">Unit amount*</label>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">
+                                           </div>
+                                      </div>
+
+                                   </div>
                                </div>
                             
                          </div>
@@ -131,7 +138,7 @@
                     <div>
                         <div class="mt-2">
                             <label for="product_category">Product category <span class="text-red-500">*</span></label><br>
-                            <select class="mt-4" required name="basic" id="ex-search" multiple>
+                            <select class="mt-4" required name="product_category" id="ex-search" multiple>
                                 <option value="">Select Category</option>
                                 @if ($categories)
                                     @foreach($categories as $item)
@@ -142,7 +149,7 @@
                         </div>
                         <div class="mt-2">
                             <label for="product_brand">Product brand</label>
-                            <select class="mt-4" required name="basic" id="ex-search-brand" multiple>
+                            <select class="mt-4" required name="product_brand" id="ex-search-brand" multiple>
                                 <option value="">Select brand</option>
                                 @if ($brands)
                                     @foreach ($brands as $item)
@@ -151,17 +158,7 @@
                                 @endif
                             </select>
                         </div>
-                        {{-- <div class="mt-2">
-                            <label for="product_attribute">Product attributes</label>
-                            <select class="mt-4" required name="basic" id="ex-search-attr" multiple>
-                                <option value="">Select Attribute</option>
-                                @if ($attributes)
-                                    @foreach($attributes as $item)
-                                        <option value="{{$item['id']}}">{{$item['attr_name']}}</option>
-                                    @endforeach
-                                @endif        
-                            </select>
-                        </div> --}}
+                      
                     </div>
                             
                </div>
@@ -172,7 +169,7 @@
                         <img class="w-full object-cover h-48 cursor-pointer" id="category-img-tag"
                             src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
                             alt="img">
-                        <input type="hidden" value="" name="page_image" id="news_img" readonly>
+                        <input type="hidden" value="" name="product_image" id="news_img" readonly>
                     </div>
                 </div>
                </div>
@@ -210,7 +207,8 @@
                 </div>
                </div>
             </div>
-        </div>
+          </div>
+        </form>
         <div id="preview-template">
             <div class="dz-preview dz-image-preview" id="dz-preview-template">
                 <div class="dz-image">
@@ -228,6 +226,7 @@
               {{-- <input type="text" placeholder="Title"> --}}
             </div>
         </div>
+        
     </section>
 @endsection
 
@@ -326,7 +325,107 @@
 
 @section('script')
     
-    <script>
+<script>
+      // modal
+      $(document).on('click', '.croxx_btn', () => {
+    $('.child_modal').addClass('hidden')
+    $('.overlay').addClass('hidden')
+    $('html, body').css({
+        overflow: '',
+        height: '100%'
+    })
+})
+$(document).on('click', '.click_post_btn', () => {
+    $('.child_modal').removeClass('hidden')
+    $('.overlay').removeClass('hidden')
+    $('html, body').css({
+        overflow: 'hidden',
+        height: '100%'
+    })
+})
+
+$(document).on('click', '.btn-select-image', function(){
+    $('html, body').css({
+        overflow: '',
+        height: '100%'
+    })
+})
+
+$(document).on('click', '.click_recent_page', function() {
+    $('.show_all_page').addClass('hidden')
+    $('.show_recent_page').removeClass('hidden')
+    $('.click_recent_page').addClass('border-blue-500 text-blue-500')
+    $('.click_all_page').removeClass('border-blue-500 text-blue-500')
+})
+$(document).on('click', '.click_all_page', function() {
+    $('.show_all_page').removeClass('hidden')
+    $('.show_recent_page').addClass('hidden')
+    $('.click_all_page').addClass('border-blue-500 text-blue-500')
+    $('.click_recent_page').removeClass('border-blue-500 text-blue-500')
+})
+//end model
+function getDataByAjwx() {
+    $.ajax({
+        url: "{{ route('backend.media.ajex') }}",
+        success: (response) => {
+            let html = ''
+            response.forEach(element => {
+                html += '<div class="check_and_img  relative">'
+                html += '<input type="checkbox" id="media_image_box" data-id="' + element.id +
+                    '" value="' + element.media_image +
+                    '" class="subject-list absolute inset-0.5 form-checkbox h-5 w-5 text-yellow-600 media_image_box">'
+                html +=
+                    '<span class=" media_image_all"><img class=" image_uploaded w-full h-28 object-cover" src="/uploads/media/' +
+                    element.media_image + '" alt="Media iamge"><span>'
+                html += '</div>'
+            });
+            $('.image_main_div').html(html)
+        }
+    })
+}
+getDataByAjwx()
+// end
+//click image
+$(document).on('click', '.media_image_all', function() {
+    $('.media_image_box').prop('checked', false);
+    $('.image_uploaded').removeClass('border-4 border-blue-400')
+    $(this).closest('div').find('.image_uploaded').addClass('border-4 border-blue-400')
+    $(this).closest('div').find('.media_image_box').prop('checked', true)
+})
+//checkbox click
+$(document).on('change', '.media_image_box', function() {
+    $('.media_image_box').not(this).prop('checked', false);
+});
+// end
+$(document).on('click', '.set_featured_image_btn', (event) => {
+    $('.child_modal').addClass('hidden')
+    $('.overlay').addClass('hidden')
+    var searchIDs = $('#media_image_box:checked').map(function() {
+        return $(this).val();
+    });
+    var image_id = searchIDs.get().toString();
+    $('#news_img').val(image_id)
+    $('#category-img-tag').attr('src', 'http://127.0.0.1:8000/uploads/media/' + image_id);
+});
+
+Dropzone.options.myAwesomeDropzone = {
+    paramName: "file", // The name that will be used to transfer the file
+    maxFilesize: 5, // MB
+    init: function() {
+        this.on("success", function(file) {
+            $('.show_all_page').removeClass('hidden')
+            $('.show_recent_page').addClass('hidden')
+            $('.click_all_page').addClass('border-blue-500 text-blue-500')
+            $('.click_recent_page').removeClass('border-blue-500 text-blue-500')
+            getDataByAjwx()
+            setTimeout(() => {
+                $('#media_image_box').prop("checked", true)
+            }, 500)
+        });
+    }
+};
+//modal end
+
         ClassicEditor
             .create( document.querySelector( '#editor' ) )
                 .then( editor => {
@@ -335,7 +434,7 @@
                 .catch( error => {
                     console.error( error );
         } );
-
+        // let data = JSON.parse(localStorage.getItem('first_attr')) 
         //select picker
         $('#ex-search').picker({search : true});
         $('#ex-search-attr').picker({search : true});
@@ -348,9 +447,13 @@
             if(product_type === "variable"){
               $('.simple_product_data').addClass('hidden')  
               $('.select-attribute').removeClass('hidden')  
+              $('.add_variation_items').removeClass('hidden');
+              $('.variable_product_data').removeClass('hidden');
             }else{
               $('.simple_product_data').removeClass('hidden') 
               $('.select-attribute').addClass('hidden') 
+              $('.add_variation_items').addClass('hidden');
+              $('.variable_product_data').addClass('hidden');
             }
         })
 
@@ -358,8 +461,8 @@
         $(document).on('click', '.btn-select-attr', () => {
            let attr_value = $('#ex-search-attr').val()
            let selected_option = $('.selected-option').val()
-           console.log(attr_value)
-           console.log(selected_option)
+        //    console.log(attr_value)
+        //    console.log(selected_option)
            
             $(`#ex-search-attr option[value="${attr_value}"]`).attr('disabled', 'disabled')
             // $(`.selected-option option:contains(${selected_option})`).attr('disabled', 'disabled')
@@ -372,28 +475,184 @@
                     url: '{{route("get.single.attr")}}',
                     data: {attr_value},
                     success:(response) => {  
-                        console.log(response)
+                        // console.log(response)
                         let attr_elect_box = ''
-                        attr_elect_box += '<h3 class="pb-2 border-bottom text-xl font-semibold">'+response.attr_name+'</h3>'
+                            attr_elect_box += '<h3 class="pb-2 border-bottom text-lg font-semibold">'+response.attr_name+'</h3>'
                        
-                        response.attribute_item.forEach(d => {
-                           attr_elect_box += '<div>' 
-                           attr_elect_box += '<label class="inline-flex items-center">' 
-                           attr_elect_box += '<input type="checkbox" value="'+d.id+'" class="form-checkbox" checked>' 
-                           attr_elect_box += '<span class="ml-2">'+d.item_name+'</span>' 
-                           attr_elect_box += '</label>' 
-                           attr_elect_box += '</div>' 
-                        });
-                            attr_elect_box += '<button class=" mb-2 btn-add-to-variation py-1 px-2 rounded text-white btn_secondary  shadow-lg mt-3"><i class="fas fa-plus mr-2"></i>SELECT ITEM FOR VARIATION</button>'
+                            attr_elect_box += '<div>' 
+                            attr_elect_box += '<div>' 
+                            response.attribute_item.forEach(d => {
+                                attr_elect_box += '<label class="inline-flex items-center">' 
+                                attr_elect_box += '<input type="checkbox" value="'+d.id+'" class="'+response.attr_name+' form-checkbox" checked>' 
+                                attr_elect_box += '<span class="ml-2">'+d.item_name+'</span>' 
+                                attr_elect_box += '</label><br>' 
+                            });
+                            attr_elect_box += '</div>' 
+                            attr_elect_box += `<button class=" mb-2 btn-add-to-variation${response.attr_name} py-1 px-2 rounded text-white btn_secondary  shadow-lg mt-3"><i class="fas fa-plus mr-2"></i>SELECT ITEM FOR VARIATION</button>`
+                            attr_elect_box += '</div>' 
                       $('.add_variation').removeClass('hidden')
-                      $('.add_variation').html(attr_elect_box)
+                      $('.add_variation').append(attr_elect_box)
+                      //get item arr
+                      $(document).on('click', `.btn-add-to-variation${response.attr_name}`, () => {
+                         var arr = $(`.${response.attr_name}:checkbox:checked`).map(function(){
+                             return this.value;
+                         }).get();
+                         $(`.btn-add-to-variation${response.attr_name}`).removeClass('btn_secondary').addClass('btn_info cursor-not-allowed').attr("disabled","true ")
+                         
+                         //get items again
+                         $.ajax({
+                             type: "GET",
+                             url: "{{route('attribute.get-attr-items')}}",
+                             data: {arr},
+                             success: (response) => {   
+                                //  console.log(response)
+                                let ul = '<ul id="count_attr_item">'
+                                      if($('#count_attr_item li').length == 0){
+                                        localStorage.setItem('first_attr', JSON.stringify(response))
+                                        
+                                        response.forEach(d => {
+                                            ul+=  '<div class="p-div">'  
+                                            ul += '<li item-id="'+d.id+'" class="cursor-pointer click_to_expand_product_data py-2 px-2 border-bottom mt-4 bg-gray-200 font-semibold">'+d.item_name+'<span class="float-right"><i class="fas fa-plus"></i></span></li>'
+                                           
+                                              ul += '<div class="expand_div hidden">' 
+                                              ul += '<div class="grid grid-cols-3 gap-4">' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="regular_price">Regular price</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="sale_price">Sale price <span class="text-red-500">*</span></label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price" id="sale_price">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="sku">SKU</label>' 
+                                              ul += '<input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku">' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '<div class="grid grid-cols-3 gap-4">' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="shipping_weight">Shipping height(cm)</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="shipping_weight">Shipping width(cm)</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="shipping_lenght">Shipping length(cm)</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '<div class="grid grid-cols-3 gap-4">' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="rack_number">Rack number</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="unit">Unit <span class="text-red-500">*</span></label>' 
+                                              ul += '<select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">' 
+                                              ul += '<option value="pcs" selected>PCS</option>' 
+                                              ul += '<option value="g">G</option>' 
+                                              ul += '<option value="ml">ML</option>' 
+                                              ul += '</select>' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="unit_amount">Unit amount*</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                        })  
+                                    } else{
+                                        let data = JSON.parse(localStorage.getItem('first_attr')) 
+                                        let li_count = $('#count_attr_item li').length;
+                                        let res_count = response.length
+                                        let total_li = +li_count * +res_count;
+                                        for(let i=0; i<li_count; i++){
+                                            for(let j=0; j<res_count; j++){
+                                              ul+=  '<div class="p-div">'  
+                                              ul += '<li class="cursor-pointer click_to_expand_product_data py-2 px-2 border-bottom mt-4 font-semibold bg-gray-200"><span item-id="'+data[i].id+'" class="inline-block w-32">'+data[i].item_name+'</span><span item-id="'+response[j].id+'" class="ml-5">'+response[j].item_name+'</span><span class="float-right"><i class=" fas fa-plus cursor-pointer"></i></span></li>'
+                                            
+                                              ul += '<div class="expand_div hidden">' 
+                                              ul += '<div class="grid grid-cols-3 gap-4">' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="regular_price">Regular price</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="sale_price">Sale price <span class="text-red-500">*</span></label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price" id="sale_price">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="sku">SKU</label>' 
+                                              ul += '<input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku">' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              
+                                              ul += '<div class="grid grid-cols-3 gap-4">' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="shipping_weight">Shipping height(cm)</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="shipping_weight">Shipping width(cm)</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="shipping_lenght">Shipping length(cm)</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '<div class="grid grid-cols-3 gap-4">' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="rack_number">Rack number</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="unit">Unit <span class="text-red-500">*</span></label>' 
+                                              ul += '<select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">' 
+                                              ul += '<option value="pcs" selected>PCS</option>' 
+                                              ul += '<option value="g">G</option>' 
+                                              ul += '<option value="ml">ML</option>' 
+                                              ul += '</select>' 
+                                              ul += '</div>' 
+                                              ul += '<div class="mt-2">' 
+                                              ul += '<label for="unit_amount">Unit amount*</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                            }
+                                        }
+                                    }
+                                ul += '</ul>'
+                                $('.variable_product_data').html(ul)
+     
+                             }
+                         })
+                        
+                      })
                     }
-                   })     
+                })     
             }
             
         }) 
-        
-       
+        // console.log(localStorage)
+        localStorage.clear()
+
+        $(document).on('click', '.click_to_expand_product_data', function() {
+            $(this).closest('div').find('.expand_div').removeClass('hidden')
+            $(this).removeClass('click_to_expand_product_data').addClass('click_to_collapse_product_data')
+            $(this).find('.fa-plus').addClass('fa-minus').removeClass('fa-plus')
+        })
+        $(document).on('click', '.click_to_collapse_product_data', function() {
+            $(this).closest('div').find('.expand_div').addClass('hidden')
+            $(this).removeClass('click_to_collapse_product_data').addClass('click_to_expand_product_data')
+            $(this).find('.fa-minus').addClass('fa-plus').removeClass('fa-minus')
+        })
     </script>
-    
+
 @endsection
+

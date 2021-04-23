@@ -39,4 +39,8 @@ class ProductController extends Controller
                     });          
         return view('backend.products.add_product')->with(['brands' => $brands, 'categories' => $categories, 'attributes' => $attributes ]);
     }
+
+    public function create_product(Request $request){
+        return $request->all();
+    }
 }

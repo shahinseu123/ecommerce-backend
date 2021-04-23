@@ -47,6 +47,7 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     //products
     Route::get('/products', [ProductController::class, 'index'])->name('backend.products');
     Route::get('/products/add', [ProductController::class, 'add_product'])->name('backend.product.add');
+    Route::post('/products/create', [ProductController::class, 'create_product'])->name('product.create');
     // brand
     Route::get('/brand', [BrandController::class, 'index'])->name('backend.brand');
     Route::get('/brand/add', [BrandController::class, 'add_brand'])->name('backend.brand.add');
@@ -84,6 +85,7 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     Route::post('/attribute/item/update', [AttributeController::class, 'update_attribute_item'])->name('attrinute.item.update');
     Route::post('/attribute/add-item', [AttributeController::class, 'add_attribute_item'])->name('backend.attribute.add-item');
     Route::get('/attribute/get-single-item', [AttributeController::class, 'get_single_item'])->name('get.single.attr');
+    Route::get('/attribute/get-attr-item', [AttributeController::class, 'get_attr_item'])->name('attribute.get-attr-items');
     
     //slider
     Route::get('/slider', [SliderController::class, 'index'])->name('backend.slider');

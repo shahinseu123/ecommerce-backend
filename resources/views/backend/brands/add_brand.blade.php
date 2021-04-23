@@ -116,7 +116,7 @@
                     console.error( error );
         });
        
-        $(document).on('click', '.croxx_btn', () => {
+$(document).on('click', '.croxx_btn', () => {
     $('.child_modal').addClass('hidden')
     $('.overlay').addClass('hidden')
     $('html, body').css({

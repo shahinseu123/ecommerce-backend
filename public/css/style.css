@@ -9,6 +9,7 @@ body{
     --primary: #1F2937;
     --secondary: #6366F1;
     --danger: red;
+    --info: lightgray;
 }
 .sidebar_main{
    background-color: var(--primary);
@@ -105,9 +106,13 @@ body{
   .btn_danger{
      background-color: var(--danger);
   }
+  .btn_info{
+     background-color: var(--info);
+  }
   .bg-secondary{
     background-color: var(--secondary);
   }
+
   .border_primary{
      border-bottom: 1px solid var(--primary);
   }
@@ -242,6 +247,12 @@ input[type=number] {
 .hidden-transition{
   display: hidden;
   transition: 1s all linear;
+}
+
+.make_height_0{
+   height: 0;
+   overflow: hidden;
+   transition: 1s;
 }
 
 

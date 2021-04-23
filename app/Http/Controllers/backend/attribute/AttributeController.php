@@ -69,4 +69,18 @@ class AttributeController extends Controller
             return $attr;
         }
     }
+
+    public function get_attr_item(Request $request){
+        $attr_item = [];
+        $j = 0;
+        if($request->arr){
+            foreach($request->arr as $i){
+                $attr_item[$j] = AttributeItem::where('id', '=', $i)->first();
+                $j++;
+            }
+            return $attr_item;
+        }else{
+            return "data not found";
+        }
+    }
 }
