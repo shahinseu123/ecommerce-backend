@@ -81,39 +81,39 @@
                                        <div class="grid grid-cols-3 gap-4">
                                            <div class="mt-2">
                                                <label for="regular_price">Regular price</label>
-                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('_regular_price')}}" name="_regular_price" >
                                            </div>
                                            <div class="mt-2">
                                                <label for="sale_price">Sale price <span class="text-red-500">*</span></label>
-                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price" id="sale_price">
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('_sale_price')}}" name="_sale_price">
                                            </div>
                                            <div class="mt-2">
                                                <label for="sku">SKU</label>
-                                               <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku">
+                                               <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('_sku')}}" name="_sku">
                                            </div>
                                       </div>
                                        <div class="grid grid-cols-3 gap-4">
                                            <div class="mt-2">
                                                <label for="shipping_weight">Shipping width(cm)</label>
-                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('_shipping_weight')}}" name="_shipping_weight" >
                                            </div>
                                            <div class="mt-2">
                                                <label for="shipping_height">Shipping height(cm) </label>
-                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('_shipping_height')}}" name="_shipping_height" >
                                            </div>
                                            <div class="mt-2">
                                                <label for="shipping_lenght">Shipping length(cm)</label>
-                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('_shipping_lenght')}}" name="_shipping_lenght" >
                                            </div>
                                       </div>
                                        <div class="grid grid-cols-3 gap-4">
                                            <div class="mt-2">
                                                <label for="rack_number">Rack number</label>
-                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('_rack_number')}}" name="_rack_number" >
                                            </div>
                                            <div class="mt-2">
                                                <label for="unit">Unit <span class="text-red-500">*</span></label>
-                                               <select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">
+                                               <select name="_unit"  class="mt-2 input-border w-full rounded px-2 py-2">
                                                    <option value="pcs" selected>PCS</option>
                                                    <option value="g">G</option>
                                                    <option value="ml">ML</option>
@@ -121,13 +121,12 @@
                                            </div>
                                            <div class="mt-2">
                                                <label for="unit_amount">Unit amount*</label>
-                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="_unit_amount" >
                                            </div>
                                       </div>
-
+                                      
                                    </div>
-                               </div>
-                            
+                               </div>         
                          </div>
                     </div>
                 </div>
@@ -174,7 +173,7 @@
                 </div>
                </div>
                <div class="bg-white shadow-lg rounded p-4 mt-4">
-                <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
+                <div class="w-full sssss-nav pb-4  cursor-pointer">
                     <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Product gallery</h1>
                     <div action="/file-upload" class="dropzone image-holder-border">
                         <div class="fallback">
@@ -184,7 +183,7 @@
                 </div>
                </div>
                <div class="bg-white shadow-lg rounded p-4 mt-4">
-                <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
+                <div class="w-ful cursor-pointer">
                     <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">SEO info</h1>
                     <div>
                         <div class="mt-2">
@@ -220,7 +219,7 @@
               </div>
               <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
               <div class="dz-success-mark"><span></span></div>
-              <div class="dz-error-mark"><span></span></div>
+              <div class="dz-error-mark" ><span></span></div>
               <div class="dz-error-message"><span data-dz-errormessage></span></div>
               {{-- <a class="dz-remove" href="#" data-dz-remove="">Remove file</a> --}}
               {{-- <input type="text" placeholder="Title"> --}}
@@ -327,21 +326,35 @@
     
 <script>
       // modal
-      $(document).on('click', '.croxx_btn', () => {
-    $('.child_modal').addClass('hidden')
-    $('.overlay').addClass('hidden')
-    $('html, body').css({
-        overflow: '',
-        height: '100%'
-    })
+        $(document).on('click', '.croxx_btn', () => {
+        $('.child_modal').addClass('hidden')
+        $('.overlay').addClass('hidden')
+        $('html, body').css({
+            overflow: '',
+            height: '100%'
+        })
 })
 $(document).on('click', '.click_post_btn', () => {
+    $('.btn-select-image').removeClass('select-variable-image').addClass('set_featured_image_btn')
     $('.child_modal').removeClass('hidden')
     $('.overlay').removeClass('hidden')
     $('html, body').css({
         overflow: 'hidden',
         height: '100%'
     })
+})
+//variable image
+$(document).on('click', '.click_variable_btn', function() {
+    $(this).find('.variable_image_input').addClass('d_v_input')
+    $(this).find('.variable_image_show').addClass('d_v_show')
+    $('.btn-select-image').addClass('select-variable-image').removeClass('set_featured_image_btn')
+    $('.child_modal').removeClass('hidden')
+    $('.overlay').removeClass('hidden')
+    $('html, body').css({
+        overflow: 'hidden',
+        height: '100%'
+    })
+
 })
 
 $(document).on('click', '.btn-select-image', function(){
@@ -406,6 +419,19 @@ $(document).on('click', '.set_featured_image_btn', (event) => {
     var image_id = searchIDs.get().toString();
     $('#news_img').val(image_id)
     $('#category-img-tag').attr('src', 'http://127.0.0.1:8000/uploads/media/' + image_id);
+});
+//set variable image
+$(document).on('click', '.select-variable-image', (event) => {
+    $('.child_modal').addClass('hidden')
+    $('.overlay').addClass('hidden')
+    var searchIDs = $('#media_image_box:checked').map(function() {
+        return $(this).val();
+    });
+    var image_id = searchIDs.get().toString();
+    $('.d_v_input').val(image_id)
+    $('.d_v_show').attr('src', 'http://127.0.0.1:8000/uploads/media/' + image_id);
+    $('.d_v_input').removeClass('d_v_input')
+    $('.d_v_show').removeClass('d_v_show');
 });
 
 Dropzone.options.myAwesomeDropzone = {
@@ -513,44 +539,45 @@ Dropzone.options.myAwesomeDropzone = {
                                         response.forEach(d => {
                                             ul+=  '<div class="p-div">'  
                                             ul += '<li item-id="'+d.id+'" class="cursor-pointer click_to_expand_product_data py-2 px-2 border-bottom mt-4 bg-gray-200 font-semibold">'+d.item_name+'<span class="float-right"><i class="fas fa-plus"></i></span></li>'
-                                           
-                                              ul += '<div class="expand_div hidden">' 
+                                            ul+=  '<input type="hidden" name="_attr_item_id[]" value="'+d.id+'"/>'  
+                                            ul += '<div class="expand_div hidden">' 
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="regular_price">Regular price</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="sale_price">Sale price <span class="text-red-500">*</span></label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price" id="sale_price">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="sku">SKU</label>' 
-                                              ul += '<input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku">' 
+                                              ul += '<input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku[]">' 
                                               ul += '</div>' 
                                               ul += '</div>' 
+                                              
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_weight">Shipping height(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_weight">Shipping width(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_lenght">Shipping length(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght[]" >' 
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="rack_number">Rack number</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="unit">Unit <span class="text-red-500">*</span></label>' 
-                                              ul += '<select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">' 
+                                              ul += '<select name="unit[]" class="mt-2 input-border w-full rounded px-2 py-2">' 
                                               ul += '<option value="pcs" selected>PCS</option>' 
                                               ul += '<option value="g">G</option>' 
                                               ul += '<option value="ml">ML</option>' 
@@ -558,8 +585,17 @@ Dropzone.options.myAwesomeDropzone = {
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="unit_amount">Unit amount*</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount[]">' 
                                               ul += '</div>' 
+                                              ul += '<div class="w-32 sssss-nav pb-4 click_variable_btn cursor-pointer">' 
+                                              ul += '<h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Variation Image</h1>' 
+                                              ul += '<div class="w-full sssss">' 
+                                              ul += '<img class="w-full object-cover h-20 cursor-pointer variable_image_show"  src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="img">' 
+                                              ul += '<input type="hidden" value="" name="variable_img" class="variable_image_input"  readonly>' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               ul += '</div>' 
@@ -573,45 +609,46 @@ Dropzone.options.myAwesomeDropzone = {
                                             for(let j=0; j<res_count; j++){
                                               ul+=  '<div class="p-div">'  
                                               ul += '<li class="cursor-pointer click_to_expand_product_data py-2 px-2 border-bottom mt-4 font-semibold bg-gray-200"><span item-id="'+data[i].id+'" class="inline-block w-32">'+data[i].item_name+'</span><span item-id="'+response[j].id+'" class="ml-5">'+response[j].item_name+'</span><span class="float-right"><i class=" fas fa-plus cursor-pointer"></i></span></li>'
-                                            
+                                              ul+=  '<input type="hidden" name="attr_item_id_one[]" value="'+data[i].id+'"/>'  
+                                              ul+=  '<input type="hidden" name="attr_item_id_two[]" value="'+response[j].id+'"/>'  
                                               ul += '<div class="expand_div hidden">' 
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="regular_price">Regular price</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price" id="regular_price">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="sale_price">Sale price <span class="text-red-500">*</span></label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price" id="sale_price">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="sku">SKU</label>' 
-                                              ul += '<input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku">' 
+                                              ul += '<input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku[]">' 
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_weight">Shipping height(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height" id="shipping_height">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_weight">Shipping width(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight" id="shipping_weight">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_lenght">Shipping length(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght" id="shipping_lenght">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght[]" >' 
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="rack_number">Rack number</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number" id="rack_number">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="unit">Unit <span class="text-red-500">*</span></label>' 
-                                              ul += '<select name="unit" id="unit" class="mt-2 input-border w-full rounded px-2 py-2">' 
+                                              ul += '<select name="unit[]" class="mt-2 input-border w-full rounded px-2 py-2">' 
                                               ul += '<option value="pcs" selected>PCS</option>' 
                                               ul += '<option value="g">G</option>' 
                                               ul += '<option value="ml">ML</option>' 
@@ -619,8 +656,17 @@ Dropzone.options.myAwesomeDropzone = {
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="unit_amount">Unit amount*</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount" id="unit_amount">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount[]">' 
                                               ul += '</div>' 
+                                              ul += '<div class="w-32 sssss-nav pb-4 click_variable_btn cursor-pointer">' 
+                                              ul += '<h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Variation Image</h1>' 
+                                              ul += '<div class="w-full sssss">' 
+                                              ul += '<img class="w-full object-cover h-20 cursor-pointer variable_image_show"  src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="img">' 
+                                              ul += '<input type="hidden" value="" name="variable_img" class="variable_image_input"  readonly>' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+                                              ul += '</div>' 
+
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               ul += '</div>' 
@@ -639,7 +685,7 @@ Dropzone.options.myAwesomeDropzone = {
             }
             
         }) 
-        // console.log(localStorage)
+        console.log(localStorage)
         localStorage.clear()
 
         $(document).on('click', '.click_to_expand_product_data', function() {

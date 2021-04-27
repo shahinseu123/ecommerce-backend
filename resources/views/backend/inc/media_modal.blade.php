@@ -2,7 +2,7 @@
 
 </span>
 {{-- modal --}}
-<div class="relative child_modal shadow-xl bg-white p-5 hidden mt-10">
+<div style="position: fixed" class="relative child_modal shadow-xl bg-white p-5 hidden mt-10">
     <div class="flex justify-between">
         <div>
             <h2 class="font-semibold text-gray-700 text-4xl">Featured image</h2>

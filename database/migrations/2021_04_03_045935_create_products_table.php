@@ -32,7 +32,6 @@ class CreateProductsTable extends Migration
             $table->bigInteger('stock')->default(0);
             $table->bigInteger('stock_alert_quantity')->default(0);
             $table->bigInteger('stock_pre_alert_quantity')->default(0);
-            $table->softDeletes();
             $table->timestamps();
         });
     }
