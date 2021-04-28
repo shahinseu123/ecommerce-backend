@@ -175,10 +175,10 @@
                <div class="bg-white shadow-lg rounded p-4 mt-4">
                 <div class="w-full sssss-nav pb-4  cursor-pointer">
                     <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Product gallery</h1>
-                    <div action="/file-upload" class="dropzone image-holder-border">
-                        <div class="fallback">
-                          <input name="file" type="file" multiple />
-                        </div>
+                    <div class="w-full border-2 border-blue-600  click_product_gallery_btn rounded p-2" style="min-height: 200px;">
+                       <div class="grid grid-cols-3 put-gallery gap-2 mb-2">
+
+                       </div>
                     </div>
                 </div>
                </div>
@@ -208,7 +208,7 @@
             </div>
           </div>
         </form>
-        <div id="preview-template">
+        {{-- <div id="preview-template">
             <div class="dz-preview dz-image-preview" id="dz-preview-template">
                 <div class="dz-image">
                     <img data-dz-thumbnail>
@@ -223,14 +223,15 @@
               <div class="dz-error-message"><span data-dz-errormessage></span></div>
               {{-- <a class="dz-remove" href="#" data-dz-remove="">Remove file</a> --}}
               {{-- <input type="text" placeholder="Title"> --}}
-            </div>
-        </div>
+            {{-- </div>
+        </div> --}} --}}
         
     </section>
 @endsection
 
 @section('head')
     <style>
+        
         .ck-rounded-corners{
             top:10px;
         }
@@ -325,17 +326,30 @@
 @section('script')
     
 <script>
-      // modal
-        $(document).on('click', '.croxx_btn', () => {
-        $('.child_modal').addClass('hidden')
-        $('.overlay').addClass('hidden')
-        $('html, body').css({
-            overflow: '',
-            height: '100%'
-        })
+     
+// close modal
+$(document).on('click', '.croxx_btn', () => {
+$('.child_modal').addClass('hidden')
+$('.overlay').addClass('hidden')
+$('html, body').css({
+    overflow: '',
+    height: '100%'
+})
 })
 $(document).on('click', '.click_post_btn', () => {
-    $('.btn-select-image').removeClass('select-variable-image').addClass('set_featured_image_btn')
+    $('.click_product_gallery_btn').removeClass('gallery')
+    $('.btn-select-image').removeClass('select-variable-image set_product_gallery_btn').addClass('set_featured_image_btn')
+    $('.child_modal').removeClass('hidden')
+    $('.overlay').removeClass('hidden')
+    $('html, body').css({
+        overflow: 'hidden',
+        height: '100%'
+    })
+})
+//product gallery btn click
+$(document).on('click', '.click_product_gallery_btn', function() {
+    $('.click_product_gallery_btn').addClass('gallery')
+    $('.btn-select-image').removeClass('select-variable-image set_featured_image_btn').addClass('set_product_gallery_btn')
     $('.child_modal').removeClass('hidden')
     $('.overlay').removeClass('hidden')
     $('html, body').css({
@@ -345,9 +359,10 @@ $(document).on('click', '.click_post_btn', () => {
 })
 //variable image
 $(document).on('click', '.click_variable_btn', function() {
+    $('.click_product_gallery_btn').removeClass('gallery')
     $(this).find('.variable_image_input').addClass('d_v_input')
     $(this).find('.variable_image_show').addClass('d_v_show')
-    $('.btn-select-image').addClass('select-variable-image').removeClass('set_featured_image_btn')
+    $('.btn-select-image').addClass('select-variable-image').removeClass('set_featured_image_btn set_product_gallery_btn')
     $('.child_modal').removeClass('hidden')
     $('.overlay').removeClass('hidden')
     $('html, body').css({
@@ -400,16 +415,25 @@ getDataByAjwx()
 // end
 //click image
 $(document).on('click', '.media_image_all', function() {
+    
+    if($('.click_product_gallery_btn').hasClass('gallery')){
+        // $('.image_uploaded').removeClass('border-4 border-blue-400')
+        $(this).closest('div').find('.image_uploaded').addClass('border-4 border-blue-400')
+        $(this).closest('div').find('.media_image_box').prop('checked', true)
+    }else{
+
     $('.media_image_box').prop('checked', false);
     $('.image_uploaded').removeClass('border-4 border-blue-400')
     $(this).closest('div').find('.image_uploaded').addClass('border-4 border-blue-400')
     $(this).closest('div').find('.media_image_box').prop('checked', true)
+    }
 })
 //checkbox click
 $(document).on('change', '.media_image_box', function() {
     $('.media_image_box').not(this).prop('checked', false);
 });
 // end
+//set freture image
 $(document).on('click', '.set_featured_image_btn', (event) => {
     $('.child_modal').addClass('hidden')
     $('.overlay').addClass('hidden')
@@ -422,6 +446,44 @@ $(document).on('click', '.set_featured_image_btn', (event) => {
 });
 //set variable image
 $(document).on('click', '.select-variable-image', (event) => {
+    $('.child_modal').addClass('hidden')
+    $('.overlay').addClass('hidden')
+    var searchIDs = $('#media_image_box:checked').map(function() {
+        return $(this).val();
+    });
+    var image_id = searchIDs.get().toString();
+    $('.d_v_input').val(image_id)
+    $('.d_v_show').attr('src', 'http://127.0.0.1:8000/uploads/media/' + image_id);
+    $('.d_v_input').removeClass('d_v_input')
+    $('.d_v_show').removeClass('d_v_show');
+});
+//set product gallery btn click
+$(document).on('click', '.set_product_gallery_btn', (event) => {
+    $('.child_modal').addClass('hidden')
+    $('.overlay').addClass('hidden')
+    var searchIDs = $('#media_image_box:checked').map(function() {
+        return $(this).val();
+    });
+    var image_id = searchIDs.get().toString();
+    for(let i=0; i < searchIDs.length; i++){
+    let gall = '<div class="">'
+        gall += `<img class="w-full object-cover h-20 cursor-pointer" id="category-img-tag" src="http://127.0.0.1:8000/uploads/media/${searchIDs[i]}" alt="img">`
+
+        gall += '<input type="hidden" value="'+searchIDs[i]+'" name="product_image" id="news_img" readonly>' 
+        gall += '</div>' 
+        // console.log(searchIDs[i]) 
+        $('.put-gallery').append(gall)
+    }
+   
+
+
+    // $('.d_v_input').val(image_id)
+    // $('.d_v_show').attr('src', 'http://127.0.0.1:8000/uploads/media/' + image_id);
+    // $('.d_v_input').removeClass('d_v_input')
+    // $('.d_v_show').removeClass('d_v_show');
+});
+//set product gallery 
+$(document).on('click', '.set_product_gallery_btn', (event) => {
     $('.child_modal').addClass('hidden')
     $('.overlay').addClass('hidden')
     var searchIDs = $('#media_image_box:checked').map(function() {
@@ -685,7 +747,7 @@ Dropzone.options.myAwesomeDropzone = {
             }
             
         }) 
-        console.log(localStorage)
+        // console.log(localStorage)
         localStorage.clear()
 
         $(document).on('click', '.click_to_expand_product_data', function() {
