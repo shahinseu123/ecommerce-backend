@@ -11,6 +11,10 @@ class ProductData extends Model
     protected $fillable = [
         'regular_price','product_id', 'sale_price', 'sku',
         'shipping_weight','shipping_height', 'shipping_lenght', 'rack_number',
-        'unit','shipping_height', 'unit_amount','variation_img'
+        'unit','shipping_height', 'unit_amount','variation_img', 'stock'
+    ];
+
+    protected $casts = [
+        'product_excerpt' => 'array',
     ];
 }

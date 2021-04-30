@@ -24,8 +24,10 @@ class CreateProductDataTable extends Migration
             $table->float('shipping_height')->nullable();
             $table->float('shipping_lenght')->nullable();
             $table->float('rack_number')->nullable();
-            $table->float('unit')->nullable();
+            $table->string('unit')->nullable();
             $table->float('unit_amount')->nullable();
+            $table->string('product_excerpt')->nullable();
+            $table->bigInteger('stock')->default(0);
             $table->string('variation_img')->nullable();
             $table->timestamps();
         });

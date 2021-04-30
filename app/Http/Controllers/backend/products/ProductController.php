@@ -6,7 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\attribute\Attribute;
 use App\Models\brand\Brand;
 use App\Models\category\Category;
+use App\Models\product\Product;
+use App\Models\product\ProductData;
+use App\Models\product\ProductImageGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -40,7 +44,239 @@ class ProductController extends Controller
         return view('backend.products.add_product')->with(['brands' => $brands, 'categories' => $categories, 'attributes' => $attributes ]);
     }
 
-    public function create_product(Request $request){
-        return $request->all();
+    public function create_product(Request $request){       
+        
+        $request->validate([
+          'product_title' => 'required|max:255|string',
+          'stock_alert_qnty' => 'required|integer',
+          'stock_pre_alert_qnty' => 'required|integer',
+          'product_category' => 'required',
+          'product_brand' => 'required|integer',
+          'description' => 'required',
+        ]);
+        
+        //create product into product table
+        $product = new Product();
+        if($request->product_type === 'simple'){
+           $product->title = $request->product_title;
+           if($request->short_description){
+               $product->short_description = $request->short_description; 
+           } 
+           if($request->product_image){
+               $product->product_image = $request->product_image; 
+           } 
+           if($request->meta_title){
+               $product->meta_title = $request->meta_title; 
+           } 
+           if($request->meta_description){
+               $product->meta_description = $request->meta_description; 
+           } 
+           if($request->meta_tags){
+               $product->meta_tags = $request->meta_tags; 
+           } 
+           $product->description = $request->description;
+           $product->type = $request->product_type;
+           $product->stock_alert_quantity = $request->stock_alert_qnty;
+           $product->stock_pre_alert_quantity = $request->stock_pre_alert_qnty;
+           $product->brand_id = $request->product_brand;
+           $product->save();
+           $product_id = Product::orderBy('created_at', 'desc')->first();
+           //add images into product gallery table
+           if($request->product_gallery_image){
+               foreach($request->product_gallery_image as $img){
+                   $g = new ProductImageGallery();
+                   $g->product_id = $product_id->id;
+                   $g->product_g_img = $img;
+                   $g->save();
+               }
+           }
+           // add catagory id into category_product table
+           $cat = DB::table('category_products');
+           foreach($request->product_category as $category){
+              $cat->insert(['product_id' => $product_id->id, 'category_id' => $category]); 
+           }
+           //add product info to product data table
+           $product_data = new ProductData();
+           $product_data->product_id = $product_id->id;
+           if($request->_regular_price){
+               $product_data->regular_price = $request->_regular_price;
+           }
+           if($request->_sale_price){
+               $product_data->sale_price = $request->_sale_price;
+           }
+           if($request->_sku){
+               $product_data->sku = $request->_sku;
+           }
+           if($request->_shipping_weight){
+               $product_data->shipping_weight = $request->_shipping_weight;
+           }
+           if($request->_shipping_height){
+               $product_data->shipping_height = $request->_shipping_height;
+           }
+           if($request->_shipping_lenght){
+               $product_data->shipping_lenght = $request->_shipping_lenght;
+           }
+           if($request->_rack_number){
+               $product_data->rack_number = $request->_rack_number;
+           }
+           if($request->_unit){
+               $product_data->unit = $request->_unit;
+           }
+           if($request->_unit_amount){
+               $product_data->unit_amount = $request->_unit_amount;
+           }
+           if($request->_stock){
+            $product->stock = $request->_stock; 
+           } 
+           $product_data->save();
+        //    return redirect()->route('backend.products')->with('success', 'Product created successfully');
+        }else{
+           //variable product 
+            //   return $request->all();
+           $product->title = $request->product_title;
+           $product->description = $request->description;
+           $product->type = $request->product_type;
+           $product->stock_alert_quantity = $request->stock_alert_qnty;
+           $product->stock_pre_alert_quantity = $request->stock_pre_alert_qnty;
+           $product->brand_id = $request->product_brand;
+           if($request->short_description){
+           $product->short_description = $request->short_description; 
+           } 
+           if($request->product_image){
+                $product->product_image = $request->product_image; 
+           } 
+           if($request->meta_title){
+                $product->meta_title = $request->meta_title; 
+           } 
+           if($request->meta_description){
+                $product->meta_description = $request->meta_description; 
+           } 
+           if($request->meta_tags){
+                $product->meta_tags = $request->meta_tags; 
+           } 
+        
+           $product->save();
+
+           $product_id = Product::orderBy('created_at', 'desc')->first();
+           //add category to category_product table
+           $cat = DB::table('category_products');
+           foreach($request->product_category as $category){
+              $cat->insert(['product_id' => $product_id->id, 'category_id' => $category]); 
+           }
+          
+           //add images into product gallery table
+           if($request->product_gallery_image){
+            foreach($request->product_gallery_image as $img){
+                $g = new ProductImageGallery();
+                $g->product_id = $product_id->id;
+                $g->product_g_img = $img;
+                $g->save();
+            }
+          }
+           // add product data to the product
+            if($request->attr_item_id){
+                $i = 0;
+                foreach($request->attr_item_id as $attr){
+                       //add product info to product data table
+                        $product_data = new ProductData();
+                        $product_data->product_id = $product_id->id;
+                        if($request->regular_price){
+                            $product_data->regular_price = $request->_regular_price[$i];
+                        }
+                        if($request->sale_price){
+                            $product_data->sale_price = $request->sale_price[$i];
+                        }
+                        if($request->sku){
+                            $product_data->sku = $request->sku[$i];
+                        }
+                        if($request->shipping_weight){
+                            $product_data->shipping_weight = $request->shipping_weight[$i];
+                        }
+                        if($request->shipping_height){
+                            $product_data->shipping_height = $request->shipping_height[$i];
+                        }
+                        if($request->shipping_lenght){
+                            $product_data->shipping_lenght = $request->shipping_lenght[$i];
+                        }
+                        if($request->rack_number){
+                            $product_data->rack_number = $request->rack_number[$i];
+                        }
+                        if($request->unit){
+                            $product_data->unit = $request->unit[$i];
+                        }
+                        if($request->unit_amount){
+                            $product_data->unit_amount = $request->unit_amount[$i];
+                        }
+                        
+                        if($request->stock){
+                            $product_data->stock = $request->stock[$i];
+                        }
+                        
+                        if($request->attr_name){
+                            $attr_arr = [];
+                            $attr_arr[$request->attr_name[0]] = $request->attr_item_id[$i];
+                           
+                            $product_data->product_excerpt = json_encode($attr_arr);
+                        }
+                        $product_data->save();
+                        
+                        $i++;
+                }
+            }
+            if($request->attr_item_id_one){
+                
+                $i = 0;
+                foreach($request->attr_item_id_one as $attr){
+                       //add product info to product data table
+                        $product_data = new ProductData();
+                        $product_data->product_id = $product_id->id;
+                        if($request->regular_price){
+                            $product_data->regular_price = $request->regular_price[$i];
+                        }
+                        if($request->sale_price){
+                            $product_data->sale_price = $request->sale_price[$i];
+                        }
+                        if($request->sku){
+                            $product_data->sku = $request->sku[$i];
+                        }
+                        if($request->shipping_weight){
+                            $product_data->shipping_weight = $request->shipping_weight[$i];
+                        }
+                        if($request->shipping_height){
+                            $product_data->shipping_height = $request->shipping_height[$i];
+                        }
+                        if($request->shipping_lenght){
+                            $product_data->shipping_lenght = $request->shipping_lenght[$i];
+                        }
+                        if($request->rack_number){
+                            $product_data->rack_number = $request->rack_number[$i];
+                        }
+                        if($request->unit){
+                            $product_data->unit = $request->unit[$i];
+                        }
+                        if($request->unit_amount){
+                            $product_data->unit_amount = $request->unit_amount[$i];
+                        }
+                        
+                        if($request->stock){
+                            $product_data->stock = $request->stock[$i];
+                        }
+                
+                        if($request->attr_name){
+                            $attr_arr = [];
+                            $attr_arr[$request->attr_name[0]] = $request->attr_item_id_one[$i];
+                            $attr_arr[$request->attr_name[1]] = $request->attr_item_id_two[$i];
+                            $product_data->product_excerpt = json_encode($attr_arr);
+                        }
+                        
+                        $product_data->save();
+                        
+                        $i++;
+                    
+                }
+            }
+        }
+        return redirect()->route('backend.products')->with("success", "Product created successfully");
+
     }
 }

@@ -29,7 +29,7 @@ class CreateProductsTable extends Migration
             $table->string('product_image')->nullable();
             $table->string('image_path')->nullable();
             $table->unsignedBigInteger('media_id')->nullable();
-            $table->bigInteger('stock')->default(0);
+            // $table->bigInteger('stock')->default(0);
             $table->bigInteger('stock_alert_quantity')->default(0);
             $table->bigInteger('stock_pre_alert_quantity')->default(0);
             $table->timestamps();

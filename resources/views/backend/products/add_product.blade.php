@@ -16,17 +16,23 @@
                    <div class="mb-4">
                        <label for="product_title" class="font-semibold">Product title <span class="text-red-500">*</span></label>
                        <input class="input-border rounded px-2 py-2 w-full mt-2" type="text" name="product_title" id="product_title" required value="{{old('product_title')}}">
-                   </div>
+                        @error('product_title')
+                            <div class="text-red-600">{{ $message }}</div>
+                        @enderror
+                    </div>
 
                    <div class="mb-4">
-                        <label for="short_description" class="font-semibold">Short description <span class="text-red-500">*</span></label>
+                        <label for="short_description" class="font-semibold">Short description</label>
                         <textarea class="input-border rounded px-2 py-2 w-full mt-2" name="short_description" id="short_description" cols="30" rows="10"></textarea>
                    </div>
 
                    <div class="mb-4">
                         <label for="description" class="font-semibold">Description<span class="text-red-500">*</span></label>
                         <textarea class="input-border rounded px-2 py-2 w-full" style="margin-top: 10px;z-index: -1" name="description" id="editor" cols="30" rows="5"></textarea>
-                   </div>
+                        @error('description')
+                            <div class="text-red-600">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
                 <div class="flex gap-4">
                     <div class="w-1/3">
@@ -41,7 +47,7 @@
                         </div>
                         <div class="mt-4 shadow-lg p-4 bg-white hidden select-attribute">
                             <label for="product_attribute">Product attributes</label>
-                            <select class="mt-4 mb-4" name="product_attribute" id="ex-search-attr">
+                            <select class="mt-4 mb-4" name="product_attribute" id="ex-search-attr" >
                                 <option selected value="">Select Attribute</option>
                                 @if ($attributes)
                                     @foreach($attributes as $item)
@@ -56,10 +62,16 @@
                             <div class="mt-2">
                                 <label for="stock_alert_qnty">Stock alert quantity</label>
                                 <input class="input-border rounded px-2 py-2 w-full mt-2" type="number" name="stock_alert_qnty" id="stock_alert_qnty" required value="{{old('stock_alert_qnty')}}">
+                                @error('stock_alert_qnty')
+                                    <div class="text-red-600">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="mt-2">
                                 <label for="stock_pre_alert_qnty">Stock pre-alert quantity</label>
                                 <input class="input-border rounded px-2 py-2 w-full mt-2" type="number" name="stock_pre_alert_qnty" id="stock_pre_alert_qnty" required value="{{old('stock_pre_alert_qnty')}}">
+                                @error('stock_pre_alert_qnty')
+                                    <div class="text-red-600">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -86,11 +98,17 @@
                                            <div class="mt-2">
                                                <label for="sale_price">Sale price <span class="text-red-500">*</span></label>
                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('_sale_price')}}" name="_sale_price">
-                                           </div>
+                                                @error('_sale_price')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
                                            <div class="mt-2">
                                                <label for="sku">SKU</label>
-                                               <input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('_sku')}}" name="_sku">
-                                           </div>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('_sku')}}" name="_sku">
+                                                @error('_sku')
+                                                    <div class="text-red-600">{{ $message }}</div>
+                                                @enderror
+                                            </div>
                                       </div>
                                        <div class="grid grid-cols-3 gap-4">
                                            <div class="mt-2">
@@ -120,8 +138,12 @@
                                                </select>
                                            </div>
                                            <div class="mt-2">
-                                               <label for="unit_amount">Unit amount*</label>
+                                               <label for="unit_amount">Unit amount <span>*</span></label>
                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="_unit_amount" >
+                                           </div>
+                                           <div class="">
+                                               <label for="_stock">Stock <span>*</span></label>
+                                               <input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="_stock" >
                                            </div>
                                       </div>
                                       
@@ -137,25 +159,31 @@
                     <div>
                         <div class="mt-2">
                             <label for="product_category">Product category <span class="text-red-500">*</span></label><br>
-                            <select class="mt-4" required name="product_category" id="ex-search" multiple>
-                                <option value="">Select Category</option>
+                            <select class="mt-4"  name="product_category[]" id="ex-search" multiple>
+                                {{-- <option value="">Select Category</option> --}}
                                 @if ($categories)
                                     @foreach($categories as $item)
                                        <option value="{{$item['id']}}">{{$item['category_title']}}</option>
                                     @endforeach
                                 @endif        
                             </select>
+                            @error('product_category')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="mt-2">
                             <label for="product_brand">Product brand</label>
-                            <select class="mt-4" required name="product_brand" id="ex-search-brand" multiple>
-                                <option value="">Select brand</option>
+                            <select class="mt-4"  name="product_brand" id="ex-search-brand">
+                                {{-- <option value="">Select brand</option> --}}
                                 @if ($brands)
                                     @foreach ($brands as $item)
                                       <option value="{{$item['id']}}">{{$item['brand_title']}}</option>
                                     @endforeach
                                 @endif
                             </select>
+                            @error('product_brand')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
                         </div>
                       
                     </div>
@@ -177,7 +205,7 @@
                     <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Product gallery</h1>
                     <div class="w-full border-2 border-blue-600  click_product_gallery_btn rounded p-2" style="min-height: 200px;">
                        <div class="grid grid-cols-3 put-gallery gap-2 mb-2">
-
+                            
                        </div>
                     </div>
                 </div>
@@ -207,25 +235,7 @@
                </div>
             </div>
           </div>
-        </form>
-        {{-- <div id="preview-template">
-            <div class="dz-preview dz-image-preview" id="dz-preview-template">
-                <div class="dz-image">
-                    <img data-dz-thumbnail>
-                </div>
-              <div class="dz-details">
-                <div class="dz-filename"><span data-dz-name></span></div>
-                <div class="dz-size" data-dz-size></div>
-              </div>
-              <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
-              <div class="dz-success-mark"><span></span></div>
-              <div class="dz-error-mark" ><span></span></div>
-              <div class="dz-error-message"><span data-dz-errormessage></span></div>
-              {{-- <a class="dz-remove" href="#" data-dz-remove="">Remove file</a> --}}
-              {{-- <input type="text" placeholder="Title"> --}}
-            {{-- </div>
-        </div> --}} --}}
-        
+        </form> 
     </section>
 @endsection
 
@@ -467,9 +477,9 @@ $(document).on('click', '.set_product_gallery_btn', (event) => {
     var image_id = searchIDs.get().toString();
     for(let i=0; i < searchIDs.length; i++){
     let gall = '<div class="">'
-        gall += `<img class="w-full object-cover h-20 cursor-pointer" id="category-img-tag" src="http://127.0.0.1:8000/uploads/media/${searchIDs[i]}" alt="img">`
+        gall += `<img class="w-full object-cover h-20 cursor-pointer" src="http://127.0.0.1:8000/uploads/media/${searchIDs[i]}" alt="img">`
 
-        gall += '<input type="hidden" value="'+searchIDs[i]+'" name="product_image" id="news_img" readonly>' 
+        gall += '<input type="hidden" value="'+searchIDs[i]+'" name="product_gallery_image[]" readonly>' 
         gall += '</div>' 
         // console.log(searchIDs[i]) 
         $('.put-gallery').append(gall)
@@ -566,6 +576,7 @@ Dropzone.options.myAwesomeDropzone = {
                         // console.log(response)
                         let attr_elect_box = ''
                             attr_elect_box += '<h3 class="pb-2 border-bottom text-lg font-semibold">'+response.attr_name+'</h3>'
+                            attr_elect_box += '<input type="hidden" name="attr_name[]" value="'+response.attr_name+'">'
                        
                             attr_elect_box += '<div>' 
                             attr_elect_box += '<div>' 
@@ -601,41 +612,41 @@ Dropzone.options.myAwesomeDropzone = {
                                         response.forEach(d => {
                                             ul+=  '<div class="p-div">'  
                                             ul += '<li item-id="'+d.id+'" class="cursor-pointer click_to_expand_product_data py-2 px-2 border-bottom mt-4 bg-gray-200 font-semibold">'+d.item_name+'<span class="float-right"><i class="fas fa-plus"></i></span></li>'
-                                            ul+=  '<input type="hidden" name="_attr_item_id[]" value="'+d.id+'"/>'  
+                                            ul+=  '<input type="hidden" name="attr_item_id[]" value="'+d.item_name+'"/>'  
                                             ul += '<div class="expand_div hidden">' 
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="regular_price">Regular price</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="regular_price[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="sale_price">Sale price <span class="text-red-500">*</span></label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="" name="sale_price[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="sku">SKU</label>' 
-                                              ul += '<input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku[]">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="sku[]">' 
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_weight">Shipping height(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_height[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_weight">Shipping width(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_weight[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_lenght">Shipping length(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_lenght[]" >' 
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="rack_number">Rack number</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="rack_number[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="unit">Unit <span class="text-red-500">*</span></label>' 
@@ -648,6 +659,10 @@ Dropzone.options.myAwesomeDropzone = {
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="unit_amount">Unit amount*</label>' 
                                               ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount[]">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="">' 
+                                              ul += '<label for="stock">Stock *</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="stock[]">' 
                                               ul += '</div>' 
                                               ul += '<div class="w-32 sssss-nav pb-4 click_variable_btn cursor-pointer">' 
                                               ul += '<h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Variation Image</h1>' 
@@ -671,42 +686,42 @@ Dropzone.options.myAwesomeDropzone = {
                                             for(let j=0; j<res_count; j++){
                                               ul+=  '<div class="p-div">'  
                                               ul += '<li class="cursor-pointer click_to_expand_product_data py-2 px-2 border-bottom mt-4 font-semibold bg-gray-200"><span item-id="'+data[i].id+'" class="inline-block w-32">'+data[i].item_name+'</span><span item-id="'+response[j].id+'" class="ml-5">'+response[j].item_name+'</span><span class="float-right"><i class=" fas fa-plus cursor-pointer"></i></span></li>'
-                                              ul+=  '<input type="hidden" name="attr_item_id_one[]" value="'+data[i].id+'"/>'  
-                                              ul+=  '<input type="hidden" name="attr_item_id_two[]" value="'+response[j].id+'"/>'  
+                                              ul+=  '<input type="hidden" name="attr_item_id_one[]" value="'+data[i].item_name+'"/>'  
+                                              ul+=  '<input type="hidden" name="attr_item_id_two[]" value="'+response[j].item_name+'"/>'  
                                               ul += '<div class="expand_div hidden">' 
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="regular_price">Regular price</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('regular_price')}}" name="regular_price[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="regular_price[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="sale_price">Sale price <span class="text-red-500">*</span></label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="{{old('sale_price')}}" name="sale_price[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="" name="sale_price[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="sku">SKU</label>' 
-                                              ul += '<input type="text" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('sku')}}" name="sku[]">' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="sku[]">' 
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_weight">Shipping height(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_height')}}" name="shipping_height[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_height[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_weight">Shipping width(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_weight')}}" name="shipping_weight[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_weight[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="shipping_lenght">Shipping length(cm)</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('shipping_lenght')}}" name="shipping_lenght[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_lenght[]" >' 
                                               ul += '</div>' 
                                               ul += '</div>' 
                                               ul += '<div class="grid grid-cols-3 gap-4">' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="rack_number">Rack number</label>' 
-                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="{{old('rack_number')}}" name="rack_number[]" >' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="rack_number[]" >' 
                                               ul += '</div>' 
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="unit">Unit <span class="text-red-500">*</span></label>' 
@@ -719,6 +734,10 @@ Dropzone.options.myAwesomeDropzone = {
                                               ul += '<div class="mt-2">' 
                                               ul += '<label for="unit_amount">Unit amount*</label>' 
                                               ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount[]">' 
+                                              ul += '</div>' 
+                                              ul += '<div class="">' 
+                                              ul += '<label for="stock">Stock *</label>' 
+                                              ul += '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="stock[]">' 
                                               ul += '</div>' 
                                               ul += '<div class="w-32 sssss-nav pb-4 click_variable_btn cursor-pointer">' 
                                               ul += '<h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Variation Image</h1>' 
