@@ -173,7 +173,7 @@
                         </div>
                         <div class="mt-2">
                             <label for="product_brand">Product brand</label>
-                            <select class="mt-4"  name="product_brand" id="ex-search-brand">
+                            <select class="mt-4"  name="product_brand[]" id="ex-search-brand" multiple>
                                 {{-- <option value="">Select brand</option> --}}
                                 @if ($brands)
                                     @foreach ($brands as $item)
@@ -563,7 +563,7 @@ Dropzone.options.myAwesomeDropzone = {
         //    console.log(selected_option)
            
             $(`#ex-search-attr option[value="${attr_value}"]`).attr('disabled', 'disabled')
-            // $(`.selected-option option:contains(${selected_option})`).attr('disabled', 'disabled')
+
            
            if(attr_value == null){
                 alert("No attribute selected")

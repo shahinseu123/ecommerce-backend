@@ -121,6 +121,7 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
     //orders
       //create new
       Route::get('/order/create-new', [NewOrderController::class, 'index'])->name('backend.neworder');
+      Route::get('/order/get-single-product', [NewOrderController::class, 'get_product'])->name('get-single-product');
       //all orders
       Route::get('/order/all-orders', [AllordersController::class, 'index'])->name('backend.all-orders');
       //processing

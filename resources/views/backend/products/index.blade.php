@@ -25,19 +25,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                        <td>$320,800</td>
-                        <td class="">
-                            <a href="#"><i class="fas fa-edit"></i></a>
-                            <a href="#"><i class="fas fa-trash text-red-500"></i></a>
-                        </td>
-                    </tr>
+                    @if ($product)
+                        @foreach($product as $item)
+                        <tr>
+                            <td>{{$item->title}}</td>
+                            <td>{{$item->type}}</td>
+                            <td>{{$item->product_image}}</td>
+                            <td>{{$item->product_image}}</td>
+                            <td class="">
+                                <a href="#"><i class="fas fa-edit"></i></a>
+                                <a href="#"><i class="fas fa-trash text-red-500"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    @endif
                     
                     <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
                 </tbody>             

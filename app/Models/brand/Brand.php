@@ -4,6 +4,7 @@ namespace App\Models\brand;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\product\Product;
 
 class Brand extends Model
 {
@@ -20,5 +21,9 @@ class Brand extends Model
         }else{
             return null;
         }
+    }
+
+    public function Product(){
+        return $this->hasMany(Product::class, 'brand_products', 'brand_id', 'product_id');
     }
 }

@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\DB;
 class ProductController extends Controller
 {
     public function index(){
-        return view('backend.products.index');
+        $product = Product::orderBy('id', 'desc')->with('Productdata', 'Brand')->get();
+        // return $product;
+        return view('backend.products.index')->with('product', $product);
     }
 
     public function add_product(){
@@ -45,13 +47,13 @@ class ProductController extends Controller
     }
 
     public function create_product(Request $request){       
-        
+        // return $request->all();
         $request->validate([
           'product_title' => 'required|max:255|string',
           'stock_alert_qnty' => 'required|integer',
           'stock_pre_alert_qnty' => 'required|integer',
           'product_category' => 'required',
-          'product_brand' => 'required|integer',
+          'product_brand' => 'required',
           'description' => 'required',
         ]);
         
@@ -78,7 +80,7 @@ class ProductController extends Controller
            $product->type = $request->product_type;
            $product->stock_alert_quantity = $request->stock_alert_qnty;
            $product->stock_pre_alert_quantity = $request->stock_pre_alert_qnty;
-           $product->brand_id = $request->product_brand;
+        //    $product->brand_id = $request->product_brand;
            $product->save();
            $product_id = Product::orderBy('created_at', 'desc')->first();
            //add images into product gallery table
@@ -94,6 +96,11 @@ class ProductController extends Controller
            $cat = DB::table('category_products');
            foreach($request->product_category as $category){
               $cat->insert(['product_id' => $product_id->id, 'category_id' => $category]); 
+           }
+           //add brand to brand_product
+           $brand = DB::table('brand_products');
+           foreach($request->product_brand as $b){
+              $brand->insert(['product_id' => $product_id->id, 'brand_id' => $b]); 
            }
            //add product info to product data table
            $product_data = new ProductData();
@@ -138,13 +145,14 @@ class ProductController extends Controller
            $product->type = $request->product_type;
            $product->stock_alert_quantity = $request->stock_alert_qnty;
            $product->stock_pre_alert_quantity = $request->stock_pre_alert_qnty;
-           $product->brand_id = $request->product_brand;
+        //    $product->brand_id = $request->product_brand;
            if($request->short_description){
            $product->short_description = $request->short_description; 
            } 
            if($request->product_image){
-                $product->product_image = $request->product_image; 
+                $product->product_image = $request->variation_img; 
            } 
+          
            if($request->meta_title){
                 $product->meta_title = $request->meta_title; 
            } 
@@ -163,7 +171,11 @@ class ProductController extends Controller
            foreach($request->product_category as $category){
               $cat->insert(['product_id' => $product_id->id, 'category_id' => $category]); 
            }
-          
+             //add brand to brand_product
+             $brand = DB::table('brand_products');
+             foreach($request->product_brand as $b){
+                $brand->insert(['product_id' => $product_id->id, 'brand_id' => $b]); 
+             }
            //add images into product gallery table
            if($request->product_gallery_image){
             foreach($request->product_gallery_image as $img){
@@ -186,6 +198,9 @@ class ProductController extends Controller
                         if($request->sale_price){
                             $product_data->sale_price = $request->sale_price[$i];
                         }
+                        if($request->variation_img){
+                            $product->variation_img = $request->variation_img[$i]; 
+                       } 
                         if($request->sku){
                             $product_data->sku = $request->sku[$i];
                         }
@@ -239,6 +254,9 @@ class ProductController extends Controller
                         if($request->sku){
                             $product_data->sku = $request->sku[$i];
                         }
+                        if($request->variation_img){
+                            $product->variation_img = $request->variation_img[$i]; 
+                        } 
                         if($request->shipping_weight){
                             $product_data->shipping_weight = $request->shipping_weight[$i];
                         }
