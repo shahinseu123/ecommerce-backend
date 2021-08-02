@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->boolean('status')->default(1);
             $table->string('title');
+            $table->integer('count_sold')->nullable();
             $table->string('type', 55)->default('Simple'); // Simple, Variable
             $table->tinyInteger('featured')->default(0);
             $table->text('short_description')->nullable();

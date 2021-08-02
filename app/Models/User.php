@@ -6,10 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+use App\Models\order\Order;
+use App\Models\rating\Rate;
+use App\Models\wish\WishList;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -44,11 +48,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function getImgPathAttribute(){
-        if($this->user_image){
-            return asset('uploads/media/'.$this->user_image);
-        }else{
+    public function getImgPathAttribute()
+    {
+        if ($this->user_image) {
+            return asset('uploads/media/' . $this->user_image);
+        } else {
             return null;
         }
+    }
+
+    public function Order()
+    {
+        return $this->hasMany(Order::class, 'user_id', 'id');
+    }
+    public function Wish()
+    {
+        return $this->hasMany(WishList::class, 'user_id');
+    }
+
+    public function Rating()
+    {
+        return $this->hasMany(Rate::class, 'user_id');
     }
 }
