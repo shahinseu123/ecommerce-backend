@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
 
             // Statuses
-            $table->string('status', 55)->default('Processing'); // Processing, Delivered, Complected, Returned
+            $table->string('status', 55)->default('Processing'); // Processing, Delivered, Returned
             $table->string('payment_status', 55)->default('Pending'); // Pending, Due, Partial, Paid
 
             // Customer information

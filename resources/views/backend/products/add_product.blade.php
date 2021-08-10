@@ -422,16 +422,13 @@
                 overflow: 'hidden',
                 height: '100%'
             })
-
         })
-
         $(document).on('click', '.btn-select-image', function() {
             $('html, body').css({
                 overflow: '',
                 height: '100%'
             })
         })
-
         $(document).on('click', '.click_recent_page', function() {
             $('.show_all_page').addClass('hidden')
             $('.show_recent_page').removeClass('hidden')
@@ -468,13 +465,11 @@
         // end
         //click image
         $(document).on('click', '.media_image_all', function() {
-
             if ($('.click_product_gallery_btn').hasClass('gallery')) {
                 // $('.image_uploaded').removeClass('border-4 border-blue-400')
                 $(this).closest('div').find('.image_uploaded').addClass('border-4 border-blue-400')
                 $(this).closest('div').find('.media_image_box').prop('checked', true)
             } else {
-
                 $('.media_image_box').prop('checked', false);
                 $('.image_uploaded').removeClass('border-4 border-blue-400')
                 $(this).closest('div').find('.image_uploaded').addClass('border-4 border-blue-400')
@@ -522,15 +517,11 @@
                 let gall = '<div class="">'
                 gall +=
                     `<img class="w-full object-cover h-20 cursor-pointer" src="http://127.0.0.1:8000/uploads/media/${searchIDs[i]}" alt="img">`
-
                 gall += '<input type="hidden" value="' + searchIDs[i] + '" name="product_gallery_image[]" readonly>'
                 gall += '</div>'
                 // console.log(searchIDs[i]) 
                 $('.put-gallery').append(gall)
             }
-
-
-
             // $('.d_v_input').val(image_id)
             // $('.d_v_show').attr('src', 'http://127.0.0.1:8000/uploads/media/' + image_id);
             // $('.d_v_input').removeClass('d_v_input')
@@ -549,7 +540,6 @@
             $('.d_v_input').removeClass('d_v_input')
             $('.d_v_show').removeClass('d_v_show');
         });
-
         Dropzone.options.myAwesomeDropzone = {
             paramName: "file", // The name that will be used to transfer the file
             maxFilesize: 5, // MB
@@ -567,7 +557,6 @@
             }
         };
         //modal end
-
         ClassicEditor
             .create(document.querySelector('#editor'))
             .then(editor => {
@@ -590,7 +579,6 @@
         $('#ex-search-brand').picker({
             search: true
         });
-
         //product type simple to variable
         $(document).on('change', '.select_product_type', () => {
             let product_type = $('.select_product_type').val();
@@ -606,17 +594,13 @@
                 $('.variable_product_data').addClass('hidden');
             }
         })
-
         //select attr
         $(document).on('click', '.btn-select-attr', () => {
             let attr_value = $('#ex-search-attr').val()
             let selected_option = $('.selected-option').val()
             //    console.log(attr_value)
             //    console.log(selected_option)
-
             $(`#ex-search-attr option[value="${attr_value}"]`).attr('disabled', 'disabled')
-
-
             if (attr_value == null) {
                 alert("No attribute selected")
             } else {
@@ -633,7 +617,6 @@
                             response.attr_name + '</h3>'
                         attr_elect_box += '<input type="hidden" name="attr_name[]" value="' + response
                             .attr_name + '">'
-
                         attr_elect_box += '<div>'
                         attr_elect_box += '<div>'
                         response.attribute_item.forEach(d => {
@@ -658,7 +641,6 @@
                             $(`.btn-add-to-variation${response.attr_name}`).removeClass(
                                     'btn_secondary').addClass('btn_info cursor-not-allowed')
                                 .attr("disabled", "true ")
-
                             //get items again
                             $.ajax({
                                 type: "GET",
@@ -672,7 +654,6 @@
                                     if ($('#count_attr_item li').length == 0) {
                                         localStorage.setItem('first_attr', JSON
                                             .stringify(response))
-
                                         response.forEach(d => {
                                             ul += '<div class="p-div">'
                                             ul += '<li item-id="' + d.id +
@@ -705,7 +686,6 @@
                                                 '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="sku[]">'
                                             ul += '</div>'
                                             ul += '</div>'
-
                                             ul +=
                                                 '<div class="grid grid-cols-3 gap-4">'
                                             ul += '<div class="mt-2">'
@@ -773,7 +753,6 @@
                                             ul += '</div>'
                                             ul += '</div>'
                                             ul += '</div>'
-
                                             ul += '</div>'
                                             ul += '</div>'
                                             ul += '</div>'
@@ -826,7 +805,6 @@
                                                     '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="sku[]">'
                                                 ul += '</div>'
                                                 ul += '</div>'
-
                                                 ul +=
                                                     '<div class="grid grid-cols-3 gap-4">'
                                                 ul += '<div class="mt-2">'
@@ -892,7 +870,6 @@
                                                 ul += '</div>'
                                                 ul += '</div>'
                                                 ul += '</div>'
-
                                                 ul += '</div>'
                                                 ul += '</div>'
                                                 ul += '</div>'
@@ -901,19 +878,15 @@
                                     }
                                     ul += '</ul>'
                                     $('.variable_product_data').html(ul)
-
                                 }
                             })
-
                         })
                     }
                 })
             }
-
         })
         // console.log(localStorage)
         localStorage.clear()
-
         $(document).on('click', '.click_to_expand_product_data', function() {
             $(this).closest('div').find('.expand_div').removeClass('hidden')
             $(this).removeClass('click_to_expand_product_data').addClass('click_to_collapse_product_data')

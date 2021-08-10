@@ -47,30 +47,18 @@ class OrderController extends Controller
         }
         // $order->save();
         if ($order->save()) {
-            if ($request->products) {
-                $orderLatest = Order::orderBy('created_at', 'desc')->first();
-                foreach ($request->products as $item) {
-                    $orderProduct = new OrderProduct();
-                    $orderProduct->order_id = $orderLatest->id;
-                    $orderProduct->product_id =  $item['id'];
-                    if ($request->quantity) {
-                        foreach ($request->quantity as $q) {
-                            if ($q['id'] == $item['id']) {
-                                $orderProduct->quantity = $q['qnty'];
-                            }
-                        }
-                    }
-                    if ($request->variation) {
-                        foreach ($request->variation as $v) {
-                            if ($v[0] == $item['id']) {
-                                $orderProduct->product_data_id = $v[1];
-                            }
-                        }
-                    } else {
-                        $orderProduct->product_data_id = $item['productdata'][0]['id'];
-                    }
-
-                    $orderProduct->save();
+            $latest_order = Order::latest('id')->first();
+            if (count($request->quantity) > 0) {
+                foreach ($request->quantity as $qnty) {
+                    $order_product = new OrderProduct();
+                    $order_product->order_id = $latest_order['id'];
+                    $order_product->product_id = $qnty['id'];
+                    $order_product->product_data_id = $qnty['product_data_id'];
+                    $order_product->title = $qnty['name'];
+                    $order_product->quantity = $qnty['qnty'];
+                    $order_product->sale_price = $qnty['salePrice'];
+                    $order_product->total_price = $qnty['total_price'];
+                    $order_product->save();
                 }
             }
         }

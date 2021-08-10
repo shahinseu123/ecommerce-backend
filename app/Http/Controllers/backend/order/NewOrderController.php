@@ -5,20 +5,75 @@ namespace App\Http\Controllers\backend\order;
 use App\Http\Controllers\Controller;
 use App\Models\attribute\Attribute;
 use App\Models\customers\Customer;
+use App\Models\order\Order;
 use App\Models\product\Product;
 use Illuminate\Http\Request;
 
 class NewOrderController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $customer = Customer::where('status', '=', 'active')->orderBy('name', 'asc')->get();
         $product = Product::where('status', '=', true)->orderBy('title', 'asc')->get();
-        return view("backend.orders.create_new.index")->with(['customer'=> $customer, 'product' => $product]);
+        return view("backend.orders.create_new.index")->with(['customer' => $customer, 'product' => $product]);
     }
 
-    public function get_product(Request $request){
+    public function get_product(Request $request)
+    {
         $product = Product::where('id', '=', $request->prod)->with('Productdata')->first();
         $attr = Attribute::all();
         return ["product" => $product, "attribute" => $attr];
+    }
+
+    public function order_delivered_status($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = 'Delivered';
+        $order->save();
+        return redirect()->back()->with('success', 'Status changed');
+    }
+    public function order_returned_status($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = 'Returned';
+        $order->save();
+        return redirect()->back()->with('success', 'Status changed');
+    }
+    public function order_processing_status($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = 'Processing';
+        $order->save();
+        return redirect()->back()->with('success', 'Status changed');
+    }
+
+    public function payment_due($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->payment_status = 'Due';
+        $order->save();
+        return redirect()->back()->with('success', 'Payment status changed');
+    }
+    public function payment_paid($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->payment_status = 'Paid';
+        $order->save();
+        return redirect()->back()->with('success', 'Payment status changed');
+    }
+
+    public function payment_pending($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->payment_status = 'Pending';
+        $order->save();
+        return redirect()->back()->with('success', 'Payment status changed');
+    }
+
+    public function show_order($id)
+    {
+        $order = Order::where('id', $id)->with('OrderProducts')->first();
+        // return $order;
+        return view('backend.orders.all_orders.show', ['order' => $order]);
     }
 }

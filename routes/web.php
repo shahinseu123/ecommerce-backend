@@ -48,8 +48,11 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   Route::get('/products', [ProductController::class, 'index'])->name('backend.products');
   Route::get('/products/add', [ProductController::class, 'add_product'])->name('backend.product.add');
   Route::post('/products/create', [ProductController::class, 'create_product'])->name('product.create');
+  Route::post('/products/update', [ProductController::class, 'update_product'])->name('product.update');
   Route::get('/products/delete/{id}', [ProductController::class, 'delete_product'])->name('product.delete');
   Route::get('/products/edit/{id}', [ProductController::class, 'edit_product'])->name('product.edit');
+  //gallery
+  Route::get('/gallery/product-gallery/delete', [ProductController::class, 'delete_img'])->name('gallery.delete_gallery_item');
   // brand
   Route::get('/brand', [BrandController::class, 'index'])->name('backend.brand');
   Route::get('/brand/add', [BrandController::class, 'add_brand'])->name('backend.brand.add');
@@ -123,6 +126,13 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   //orders
   //create new
   Route::get('/order/create-new', [NewOrderController::class, 'index'])->name('backend.neworder');
+  Route::get('/order/status/make-delivered/{id}', [NewOrderController::class, 'order_delivered_status'])->name('backend.order.delivered');
+  Route::get('/order/status/make-returned/{id}', [NewOrderController::class, 'order_returned_status'])->name('backend.order.returned');
+  Route::get('/order/status/make-processing/{id}', [NewOrderController::class, 'order_processing_status'])->name('backend.order.processing');
+  Route::get('/order/payment/make-due/{id}', [NewOrderController::class, 'payment_due'])->name('backend.order.payment.due');
+  Route::get('/order/payment/make-paid/{id}', [NewOrderController::class, 'payment_paid'])->name('backend.order.payment.paid');
+  Route::get('/order/payment/make-pending/{id}', [NewOrderController::class, 'payment_pending'])->name('backend.order.payment.pending');
+  Route::get('/order/show/{id}', [NewOrderController::class, 'show_order'])->name('backend.order.show');
   Route::get('/order/get-single-product', [NewOrderController::class, 'get_product'])->name('get-single-product');
   //all orders
   Route::get('/order/all-orders', [AllordersController::class, 'index'])->name('backend.all-orders');
@@ -147,6 +157,8 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   //adjustment
   Route::get('/adjustment', [AdjustmentController::class, 'index'])->name('backend.adjustment');
   Route::get('/adjustment/add', [AdjustmentController::class, 'add_adjustment'])->name('backend.adjustment.add');
+  Route::post('/adjustment/create', [AdjustmentController::class, 'create_adjustment'])->name('adjustment.create');
+  Route::post('/adjustment/delete/{id}', [AdjustmentController::class, 'delete_adjustment'])->name('adjustment.delete');
   //prealert
   Route::get('/prealert', [PrealertController::class, 'index'])->name('backend.prealert');
   //alert

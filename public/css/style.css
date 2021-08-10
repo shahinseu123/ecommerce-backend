@@ -1,140 +1,138 @@
-body{
+body {
     padding: 0;
     margin: 0;
-    background-color: #ECF0F5;
+    background-color: #ecf0f5;
     box-sizing: border-box;
 }
 
 :root {
-    --primary: #1F2937;
-    --secondary: #6366F1;
+    --primary: #1f2937;
+    --secondary: #6366f1;
     --danger: red;
     --info: lightgray;
 }
-.sidebar_main{
-   background-color: var(--primary);
-   border-top: 3px solid var(--secondary);
-   top: 62px;
-   min-height: 100vh;
+.sidebar_main {
+    background-color: var(--primary);
+    border-top: 3px solid var(--secondary);
+    top: 62px;
+    min-height: 100vh;
     position: fixed;
     height: 100vh;
-    width: 347px
+    width: 347px;
 }
 
-.container-root{
+.container-root {
     width: 98%;
     /* max-width: 1000px; */
     margin: 0 auto;
- }
- .container-x{
-  width: 90%;
-  max-width: 1000px;
-  margin: 0 auto;
- }
- .sidebar_main_width{
-     min-width: 347px;
- }
+}
+.container-x {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.sidebar_main_width {
+    min-width: 347px;
+}
 
+.submenu_ul {
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    border-left: 3px dashed white;
+    padding-left: 20px;
+}
 
+.transition {
+    transition: 1s;
+}
 
- .submenu_ul{
-     margin-top: 10px;
-     margin-left: 5px;
-     margin-bottom: 5px;
-     border-left: 3px dashed white;
-     padding-left: 20px;
- }
-
- .transition{
-     transition: 1s;
- }
-
- #nabvar_top{
+#nabvar_top {
     position: fixed;
     width: 100%;
     z-index: 9;
- }
- /* width */
+}
+/* width */
 ::-webkit-scrollbar {
     width: 5px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #1F2937;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #6366F1;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #6366f1;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
     background: #555;
-  }
+}
 
-  .position_fixed{
-     position: fixed;
-     width: 273px;
-     height: 100%;
-     overflow-y: auto;
-  }
+.position_fixed {
+    position: fixed;
+    width: 273px;
+    height: 100%;
+    overflow-y: auto;
+}
 
-  /* .menu_active{
+/* .menu_active{
     
   } */
-  .z-index{
+.z-index {
     z-index: 999;
-  }
+}
 
-  .login-card{
+.login-card {
     max-width: 550px;
     margin: 0 auto;
     background-color: white;
-  }
+}
 
-  .input-border{
+.input-border {
     border: 1px solid lightgray;
-  }
-  .btn_primary{
-     background-color: var(--primary);
-  }
-  .btn_secondary{
-     background-color: var(--secondary);
-  }
-  .btn_danger{
-     background-color: var(--danger);
-  }
-  .btn_info{
-     background-color: var(--info);
-  }
-  .bg-secondary{
+}
+.btn_primary {
+    background-color: var(--primary);
+}
+.btn_secondary {
     background-color: var(--secondary);
-  }
+}
+.btn_danger {
+    background-color: var(--danger);
+}
+.btn_info {
+    background-color: var(--info);
+}
+.bg-secondary {
+    background-color: var(--secondary);
+}
 
-  .border_primary{
-     border-bottom: 1px solid var(--primary);
-  }
-  .border_secondary{
-     border-bottom: 1px solid var(--secondary);
-  }
-  .border-bottom{
-    border-bottom: 1px solid #D3D3D3;
-  }
-  .border-bottom-secondary{
+.border_primary {
+    border-bottom: 1px solid var(--primary);
+}
+.border_secondary {
     border-bottom: 1px solid var(--secondary);
-  }
+}
+.border-bottom {
+    border-bottom: 1px solid #d3d3d3;
+}
+.border-bottom-secondary {
+    border-bottom: 1px solid var(--secondary);
+}
 
-  input::-webkit-outer-spin-button,
+input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 /* model  */
@@ -142,121 +140,135 @@ input[type=number] {
     position: relative;
 }
 .child_modal {
-  position: absolute;
-  top: 38px;
-  /* left: 161px; */
-  right: 14%;
-  width: 100%;
-  max-width: 1200px;
-  height: 80vh;
-  z-index: 999;
+    position: absolute;
+    top: 38px;
+    /* left: 161px; */
+    right: 14%;
+    width: 100%;
+    max-width: 1200px;
+    height: 80vh;
+    z-index: 999;
 }
 .overlay {
-  position: absolute;
-  width: 100%;
-  height: 130vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 9;
-  cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 130vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9;
+    cursor: pointer;
 }
 .show_all_page {
-  height: 80%;
-  overflow: auto;
+    height: 80%;
+    overflow: auto;
+}
+
+.gallery_img_rel {
+    position: relative;
+}
+.remove_btn_abs {
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    width: 10px;
+    height: 10px;
+}
+.gallery-rel {
+    position: relative;
+}
+.click_product_gallery_btn_2 {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    z-index: 1;
 }
 .noPrint {
-  -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
 }
 .noPrint {
-  animation: delete-anim 1s linear
+    animation: delete-anim 1s linear;
 }
 /* input[type="file"]{
           display: none;
       } */
 @keyframes delete-anim {
-  0% {
-      transform: translateX(0px)
-  }
-  5% {
-      transform: translateX(2px)
-  }
-  10% {
-      transform: translateX(0px)
-  }
-  15% {
-      transform: translateX(-2px)
-  }
-  20% {
-      transform: translateX(0px)
-  }
-  25% {
-      transform: translateX(2px)
-  }
-  30% {
-      transform: translateX(0px)
-  }
-  35% {
-      transform: translateX(-2px)
-  }
-  40% {
-      transform: translateX(0px)
-  }
-  45% {
-      transform: translateX(2px)
-  }
-  50% {
-      transform: translateX(0px)
-  }
-  55% {
-      transform: translateX(-2px)
-  }
-  60% {
-      transform: translateX(0px)
-  }
-  65% {
-      transform: translateX(2px)
-  }
-  70% {
-      transform: translateX(0px)
-  }
-  75% {
-      transform: translateX(-2px)
-  }
-  80% {
-      transform: translateX(0px)
-  }
-  85% {
-      transform: translateX(2px)
-  }
-  90% {
-      transform: translateX(0px)
-  }
-  95% {
-      transform: translateX(-2px)
-  }
-  100% {
-      transform: translateX(0px)
-  }
+    0% {
+        transform: translateX(0px);
+    }
+    5% {
+        transform: translateX(2px);
+    }
+    10% {
+        transform: translateX(0px);
+    }
+    15% {
+        transform: translateX(-2px);
+    }
+    20% {
+        transform: translateX(0px);
+    }
+    25% {
+        transform: translateX(2px);
+    }
+    30% {
+        transform: translateX(0px);
+    }
+    35% {
+        transform: translateX(-2px);
+    }
+    40% {
+        transform: translateX(0px);
+    }
+    45% {
+        transform: translateX(2px);
+    }
+    50% {
+        transform: translateX(0px);
+    }
+    55% {
+        transform: translateX(-2px);
+    }
+    60% {
+        transform: translateX(0px);
+    }
+    65% {
+        transform: translateX(2px);
+    }
+    70% {
+        transform: translateX(0px);
+    }
+    75% {
+        transform: translateX(-2px);
+    }
+    80% {
+        transform: translateX(0px);
+    }
+    85% {
+        transform: translateX(2px);
+    }
+    90% {
+        transform: translateX(0px);
+    }
+    95% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
 }
 
-.hidden-transition{
-  display: hidden;
-  transition: 1s all linear;
+.hidden-transition {
+    display: hidden;
+    transition: 1s all linear;
 }
 
-.make_height_0{
-   height: 0;
-   overflow: hidden;
-   transition: 1s;
+.make_height_0 {
+    height: 0;
+    overflow: hidden;
+    transition: 1s;
 }
-
-
-  
-  
-
- 

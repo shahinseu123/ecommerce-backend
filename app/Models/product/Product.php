@@ -33,7 +33,7 @@ class Product extends Model
     // Simple Attributes
     public function Attribute()
     {
-        return $this->belongsToMany(Attribute::class, 'attribute_products',  'attribute_id', 'product_id');
+        return $this->belongsToMany(Attribute::class, 'attribute_products', 'product_id', 'attribute_id')->where('type', 'Variable');
     }
 
     // Simple Attributes
