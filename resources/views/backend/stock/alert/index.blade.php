@@ -18,37 +18,32 @@
                         <th class="text-left" data-priority="2">Product Name</th>
                         <th class="text-left" data-priority="2">Image</th>
                         <th class="text-left" data-priority="4">Type</th>
-                        <th class="text-left" data-priority="4">Regular Price</th>
-                        <th class="text-left" data-priority="4">Sale Price</th>
-                        <th class="text-left" data-priority="4">Total available stock</th>
+                        <th class="text-left" data-priority="4">Pre Alert Quantity</th>
                         <th class="text-left" data-priority="4">Status</th>
                         <th class="text-left" data-priority="5">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- @if ($brand)
-                       @foreach ($brand as $item) --}}
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        {{-- <td>
-                                    <a href="{{route('brand.status.change', $item->id)}}" class="{{$item->status === "active" ? "btn_secondary": "btn_danger"}} px-5 py-1 font-semibold uppercase text-white shadow-lg rounded">{{$item->status}}</a>
-                                </td>
+                    @if ($product_array)
+                        @foreach ($product_array as $item)
+                            <tr>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->title }}</td>
+                                <td><img class="h-10 w-10" src="{{ asset('uploads/media/' . $item->product_image) }}"
+                                        alt=""></td>
+                                <td class="uppercase">{{ $item->type }}</td>
+                                <td>{{ $item->stock_pre_alert_quantity }}</td>
+                                <td>{{ $item->status == 1 ? 'Active' : 'Inactive' }}</td>
+
+
                                 <td class="">
-                                    <a href="{{route('brand.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
-                                    <a href="{{route('brand.delete', $item->id)}}"><i class="fas fa-trash text-red-500"></i></a>
-                                </td> --}}
-                    </tr>
-                    {{-- @endforeach 
-                    @endif --}}
+
+                                    <a href="{{ route('brand.delete', $item->id) }}"><i
+                                            class="fas fa-trash text-red-500"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
 
                     <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
                 </tbody>

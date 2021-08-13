@@ -6,22 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\product\Product;
 use App\Models\product\ProductData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class StockoutController extends Controller
 {
     public function index()
     {
-        $product_array = [];
-        $product_data = ProductData::all();
-        $products = Product::all();
-        foreach ($product_data as $pd) {
-            foreach ($products as $prod) {
-                if ($prod->id == $pd->product_id &&  $prod->stock_pre_alert_quantity < $pd->stock) {
-                    array_push($product_array, $prod);
-                }
-            }
-        }
-        return $product_array;
-        return view("backend.stock.stock_out.index");
+        $product_array = DB::table('products')
+            ->join('product_data', 'products.id', '=', 'product_data.product_id')
+            ->where('product_data.stock', '=', 0)
+            ->select('products.*')
+            ->get();
+        return view("backend.stock.stock_out.index", ['product_array' => $product_array]);
     }
 }

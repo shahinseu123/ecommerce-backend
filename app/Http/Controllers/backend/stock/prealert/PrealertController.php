@@ -6,23 +6,17 @@ use App\Http\Controllers\Controller;
 use App\Models\product\Product;
 use App\Models\product\ProductData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PrealertController extends Controller
 {
     public function index()
     {
-        $product_array = [];
-        $product_data = ProductData::all();
-        $products = Product::with("Productdata")->get();
-        foreach ($products as $prod) {
-            if ($prod->type == 'simple') {
-                if ($prod->stock_pre_alert_quantity > $prod->productdata[0]->stock) {
-                    array_push($product_array, $prod);
-                }
-            }
-        }
-
-
+        $product_array = DB::table('products')
+            ->join('product_data', 'products.id', '=', 'product_data.product_id')
+            ->where('products.stock_pre_alert_quantity', '>', 'product_data.stock')
+            ->select('products.*')
+            ->get();
         return view("backend.stock.pre_alert.index", ['product_array' => $product_array]);
     }
 }

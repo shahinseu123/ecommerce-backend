@@ -33,7 +33,7 @@
                                         alt=""></td>
                                 <td class="uppercase">{{ $item->type }}</td>
                                 <td>{{ $item->stock_pre_alert_quantity }}</td>
-                                <td>{{ $item->status }}</td>
+                                <td>{{ $item->status == 1 ? 'Active' : 'Inactive' }}</td>
 
 
                                 <td class="">

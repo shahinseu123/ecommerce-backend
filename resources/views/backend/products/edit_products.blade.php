@@ -16,7 +16,7 @@
                     <div class="lg:w-2/3 xl:w-2/3">
                         <div class="bg-white shadow-lg rounded p-4">
                             <div class="mb-4">
-                                <input type="hidden" value="{{ $product->id }}" name="id" id="id">
+                                <input type="hidden" value="{{ $product->id }}" name="id" id="product_id">
                                 <label for="product_title" class="font-semibold">Product title <span
                                         class="text-red-500">*</span></label>
                                 <input class="input-border rounded px-2 py-2 w-full mt-2" type="text"
@@ -61,22 +61,21 @@
                                         </select>
                                     </div>
                                 </div>
-                                {{-- {{ $product->Attribute }} --}}
-                                <div class="mt-4 shadow-lg p-4 bg-white select-attribute">
-                                    <label for="attr_name">Product attributes</label>
-                                    <select class="mt-4 mb-4" name="attr_name[]" id="ex-search-attr" multiple>
-                                        @if ($attributes)
-                                            @foreach ($attributes as $item)
-                                                <option
-                                                    {{ in_array($item['attr_name'], $product->Attribute->pluck('attr_name')->toArray()) ? 'selected' : '' }}
-                                                    value="{{ $item['attr_name'] }}">{{ $item['attr_name'] }}
-                                                </option>
-                                            @endforeach
-                                        @endif
-                                    </select>
-                                    {{-- <span
-                                        class="cursor-pointer btn-select-attr block text-center w-full py-2  text-white btn_secondary rounded shadow-lg mt-3 m">SELECT</span> --}}
-                                </div>
+                                @if ($product->type !== 'simple')
+                                    <div class="mt-4 shadow-lg p-4 bg-white select-attribute">
+                                        <label for="attr_name">Product attributes</label>
+                                        <select class="mt-4 mb-4" name="attr_name[]" id="ex-search-attr" multiple>
+                                            @if ($attributes)
+                                                @foreach ($attributes as $item)
+                                                    <option
+                                                        {{ in_array($item['attr_name'], $product->Attribute->pluck('attr_name')->toArray()) ? 'selected' : '' }}
+                                                        value="{{ $item['attr_name'] }}">{{ $item['attr_name'] }}
+                                                    </option>
+                                                @endforeach
+                                            @endif
+                                        </select>
+                                    </div>
+                                @endif
                                 <div class="shadow-lg p-4 bg-white mt-4">
                                     <h2 class="font-semibold border-bottom py-2">Stoct alert <span
                                             class="text-red-500">*</span></h2>
@@ -403,6 +402,9 @@
                                             @endforeach
                                         @endif
                                     </div>
+                                    <div class="grid grid-cols-3  put-gallery_ajex hidden gap-2 mb-2">
+
+                                    </div>
                                     <span
                                         class="click_product_gallery_btn_2 click_product_gallery_btn uppercase bg-green-500 text-white font-semibold rounded shadow-md px-2 py-1">add
                                         image to gallery</span>
@@ -703,12 +705,6 @@
                 $('.put-gallery').append(gall)
             }
 
-
-
-            // $('.d_v_input').val(image_id)
-            // $('.d_v_show').attr('src', 'http://127.0.0.1:8000/uploads/media/' + image_id);
-            // $('.d_v_input').removeClass('d_v_input')
-            // $('.d_v_show').removeClass('d_v_show');
         });
         //set product gallery 
         $(document).on('click', '.set_product_gallery_btn', (event) => {
@@ -765,327 +761,6 @@
             search: true
         });
 
-        //product type simple to variable
-        // $(document).on('change', '.select_product_type', function() {
-        //     let product_type = $('.select_product_type').val();
-        //     if (product_type === "variable") {
-        //         $('.simple_product_data').addClass('hidden')
-        //         $('.select-attribute').removeClass('hidden')
-        //         $('.add_variation_items').removeClass('hidden');
-        //         $('.variable_product_data').removeClass('hidden');
-        //     } else {
-        //         $('.simple_product_data').removeClass('hidden')
-        //         $('.select-attribute').addClass('hidden')
-        //         $('.add_variation_items').addClass('hidden');
-        //         $('.variable_product_data').addClass('hidden');
-        //     }
-        // })
-
-        //select attr
-        // $(document).on('click', '.btn-select-attr', () => {
-        //     let attr_value = $('#ex-search-attr').val()
-        //     let selected_option = $('.selected-option').val()
-        //     //    console.log(attr_value)
-        //     //    console.log(selected_option)
-
-        //     $(`#ex-search-attr option[value="${attr_value}"]`).attr('disabled', 'disabled')
-
-
-        //     if (attr_value == null) {
-        //         alert("No attribute selected")
-        //     } else {
-        //         $.ajax({
-        //             type: 'GET',
-        //             url: '{{ route('get.single.attr') }}',
-        //             data: {
-        //                 attr_value
-        //             },
-        //             success: (response) => {
-        //                 // console.log(response)
-        //                 let attr_elect_box = ''
-        //                 attr_elect_box += '<h3 class="pb-2 border-bottom text-lg font-semibold">' +
-        //                     response.attr_name + '</h3>'
-        //                 attr_elect_box += '<input type="hidden" name="attr_name[]" value="' + response
-        //                     .attr_name + '">'
-
-        //                 attr_elect_box += '<div>'
-        //                 attr_elect_box += '<div>'
-        //                 response.attribute_item.forEach(d => {
-        //                     attr_elect_box += '<label class="inline-flex items-center">'
-        //                     attr_elect_box += '<input type="checkbox" value="' + d.id +
-        //                         '" class="' + response.attr_name + ' form-checkbox" checked>'
-        //                     attr_elect_box += '<span class="ml-2">' + d.item_name + '</span>'
-        //                     attr_elect_box += '</label><br>'
-        //                 });
-        //                 attr_elect_box += '</div>'
-        //                 attr_elect_box +=
-        //                     `<button class=" mb-2 btn-add-to-variation${response.attr_name} py-1 px-2 rounded text-white btn_secondary  shadow-lg mt-3"><i class="fas fa-plus mr-2"></i>SELECT ITEM FOR VARIATION</button>`
-        //                 attr_elect_box += '</div>'
-        //                 $('.add_variation').removeClass('hidden')
-        //                 $('.add_variation').append(attr_elect_box)
-        //                 //get item arr
-        //                 $(document).on('click', `.btn-add-to-variation${response.attr_name}`, () => {
-        //                     var arr = $(`.${response.attr_name}:checkbox:checked`).map(
-        //                         function() {
-        //                             return this.value;
-        //                         }).get();
-        //                     $(`.btn-add-to-variation${response.attr_name}`).removeClass(
-        //                             'btn_secondary').addClass('btn_info cursor-not-allowed')
-        //                         .attr("disabled", "true ")
-
-        //                     //get items again
-        //                     $.ajax({
-        //                         type: "GET",
-        //                         url: "{{ route('attribute.get-attr-items') }}",
-        //                         data: {
-        //                             arr
-        //                         },
-        //                         success: (response) => {
-        //                             //  console.log(response)
-        //                             let ul = '<ul id="count_attr_item">'
-        //                             if ($('#count_attr_item li').length == 0) {
-        //                                 localStorage.setItem('first_attr', JSON
-        //                                     .stringify(response))
-
-        //                                 response.forEach(d => {
-        //                                     ul += '<div class="p-div">'
-        //                                     ul += '<li item-id="' + d.id +
-        //                                         '" class="cursor-pointer click_to_expand_product_data py-2 px-2 border-bottom mt-4 bg-gray-200 font-semibold">' +
-        //                                         d.item_name +
-        //                                         '<span class="float-right"><i class="fas fa-plus"></i></span></li>'
-        //                                     ul +=
-        //                                         '<input type="hidden" name="attr_item_id[]" value="' +
-        //                                         d.item_name + '"/>'
-        //                                     ul +=
-        //                                         '<div class="expand_div hidden">'
-        //                                     ul +=
-        //                                         '<div class="grid grid-cols-3 gap-4">'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="regular_price">Regular price</label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="regular_price[]" >'
-        //                                     ul += '</div>'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="sale_price">Sale price <span class="text-red-500">*</span></label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="" name="sale_price[]" >'
-        //                                     ul += '</div>'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="sku">SKU</label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="sku[]">'
-        //                                     ul += '</div>'
-        //                                     ul += '</div>'
-
-        //                                     ul +=
-        //                                         '<div class="grid grid-cols-3 gap-4">'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="shipping_weight">Shipping height(cm)</label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_height[]" >'
-        //                                     ul += '</div>'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="shipping_weight">Shipping width(cm)</label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_weight[]" >'
-        //                                     ul += '</div>'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="shipping_lenght">Shipping length(cm)</label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_lenght[]" >'
-        //                                     ul += '</div>'
-        //                                     ul += '</div>'
-        //                                     ul +=
-        //                                         '<div class="grid grid-cols-3 gap-4">'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="rack_number">Rack number</label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="rack_number[]" >'
-        //                                     ul += '</div>'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="unit">Unit <span class="text-red-500">*</span></label>'
-        //                                     ul +=
-        //                                         '<select name="unit[]" class="mt-2 input-border w-full rounded px-2 py-2">'
-        //                                     ul +=
-        //                                         '<option value="pcs" selected>PCS</option>'
-        //                                     ul +=
-        //                                         '<option value="g">G</option>'
-        //                                     ul +=
-        //                                         '<option value="ml">ML</option>'
-        //                                     ul += '</select>'
-        //                                     ul += '</div>'
-        //                                     ul += '<div class="mt-2">'
-        //                                     ul +=
-        //                                         '<label for="unit_amount">Unit amount*</label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount[]">'
-        //                                     ul += '</div>'
-        //                                     ul += '<div class="">'
-        //                                     ul +=
-        //                                         '<label for="stock">Stock *</label>'
-        //                                     ul +=
-        //                                         '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="stock[]">'
-        //                                     ul += '</div>'
-        //                                     ul +=
-        //                                         '<div class="w-32 sssss-nav pb-4 click_variable_btn cursor-pointer">'
-        //                                     ul +=
-        //                                         '<h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Variation Image</h1>'
-        //                                     ul +=
-        //                                         '<div class="w-full sssss">'
-        //                                     ul +=
-        //                                         '<img class="w-full object-cover h-20 cursor-pointer variable_image_show"  src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="img">'
-        //                                     ul +=
-        //                                         '<input type="hidden" value="" name="variable_img" class="variable_image_input"  readonly>'
-        //                                     ul += '</div>'
-        //                                     ul += '</div>'
-        //                                     ul += '</div>'
-
-        //                                     ul += '</div>'
-        //                                     ul += '</div>'
-        //                                     ul += '</div>'
-        //                                 })
-        //                             } else {
-        //                                 let data = JSON.parse(localStorage.getItem(
-        //                                     'first_attr'))
-        //                                 let li_count = $('#count_attr_item li')
-        //                                     .length;
-        //                                 let res_count = response.length
-        //                                 let total_li = +li_count * +res_count;
-        //                                 for (let i = 0; i < li_count; i++) {
-        //                                     for (let j = 0; j < res_count; j++) {
-        //                                         ul += '<div class="p-div">'
-        //                                         ul +=
-        //                                             '<li class="cursor-pointer click_to_expand_product_data py-2 px-2 border-bottom mt-4 font-semibold bg-gray-200"><span item-id="' +
-        //                                             data[i].id +
-        //                                             '" class="inline-block w-32">' +
-        //                                             data[i].item_name +
-        //                                             '</span><span item-id="' +
-        //                                             response[j].id +
-        //                                             '" class="ml-5">' + response[j]
-        //                                             .item_name +
-        //                                             '</span><span class="float-right"><i class=" fas fa-plus cursor-pointer"></i></span></li>'
-        //                                         ul +=
-        //                                             '<input type="hidden" name="attr_item_id_one[]" value="' +
-        //                                             data[i].item_name + '"/>'
-        //                                         ul +=
-        //                                             '<input type="hidden" name="attr_item_id_two[]" value="' +
-        //                                             response[j].item_name + '"/>'
-        //                                         ul +=
-        //                                             '<div class="expand_div hidden">'
-        //                                         ul +=
-        //                                             '<div class="grid grid-cols-3 gap-4">'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul +=
-        //                                             '<label for="regular_price">Regular price</label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="regular_price[]" >'
-        //                                         ul += '</div>'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul +=
-        //                                             '<label for="sale_price">Sale price <span class="text-red-500">*</span></label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2"  value="" name="sale_price[]" >'
-        //                                         ul += '</div>'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul += '<label for="sku">SKU</label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="sku[]">'
-        //                                         ul += '</div>'
-        //                                         ul += '</div>'
-
-        //                                         ul +=
-        //                                             '<div class="grid grid-cols-3 gap-4">'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul +=
-        //                                             '<label for="shipping_weight">Shipping height(cm)</label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_height[]" >'
-        //                                         ul += '</div>'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul +=
-        //                                             '<label for="shipping_weight">Shipping width(cm)</label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_weight[]" >'
-        //                                         ul += '</div>'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul +=
-        //                                             '<label for="shipping_lenght">Shipping length(cm)</label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="shipping_lenght[]" >'
-        //                                         ul += '</div>'
-        //                                         ul += '</div>'
-        //                                         ul +=
-        //                                             '<div class="grid grid-cols-3 gap-4">'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul +=
-        //                                             '<label for="rack_number">Rack number</label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="" name="rack_number[]" >'
-        //                                         ul += '</div>'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul +=
-        //                                             '<label for="unit">Unit <span class="text-red-500">*</span></label>'
-        //                                         ul +=
-        //                                             '<select name="unit[]" class="mt-2 input-border w-full rounded px-2 py-2">'
-        //                                         ul +=
-        //                                             '<option value="pcs" selected>PCS</option>'
-        //                                         ul += '<option value="g">G</option>'
-        //                                         ul +=
-        //                                             '<option value="ml">ML</option>'
-        //                                         ul += '</select>'
-        //                                         ul += '</div>'
-        //                                         ul += '<div class="mt-2">'
-        //                                         ul +=
-        //                                             '<label for="unit_amount">Unit amount*</label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="unit_amount[]">'
-        //                                         ul += '</div>'
-        //                                         ul += '<div class="">'
-        //                                         ul +=
-        //                                             '<label for="stock">Stock *</label>'
-        //                                         ul +=
-        //                                             '<input type="number" class="mt-2 input-border w-full rounded px-2 py-2" value="1" name="stock[]">'
-        //                                         ul += '</div>'
-        //                                         ul +=
-        //                                             '<div class="w-32 sssss-nav pb-4 click_variable_btn cursor-pointer">'
-        //                                         ul +=
-        //                                             '<h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Variation Image</h1>'
-        //                                         ul += '<div class="w-full sssss">'
-        //                                         ul +=
-        //                                             '<img class="w-full object-cover h-20 cursor-pointer variable_image_show"  src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="img">'
-        //                                         ul +=
-        //                                             '<input type="hidden" value="" name="variable_img" class="variable_image_input"  readonly>'
-        //                                         ul += '</div>'
-        //                                         ul += '</div>'
-        //                                         ul += '</div>'
-
-        //                                         ul += '</div>'
-        //                                         ul += '</div>'
-        //                                         ul += '</div>'
-        //                                     }
-        //                                 }
-        //                             }
-        //                             ul += '</ul>'
-        //                             $('.variable_product_data').html(ul)
-
-        //                         }
-        //                     })
-
-        //                 })
-        //             }
-        //         })
-        //     }
-
-        // })
-        // console.log(localStorage)
         localStorage.clear()
 
         $(document).on('click', '.click_to_expand_product_data', function() {
@@ -1100,15 +775,33 @@
         })
         $(document).on('click', '.gallery_img_remove', function() {
             let id = $(this).closest('.gallery_img_rel').find('.gallery_img_id_btn').attr('data-id')
-
+            let product_id = $('#product_id').val()
+            $('.put-gallery').addClass('hidden')
+            $('.put-gallery_ajex').removeClass('hidden')
             $.ajax({
                 type: "GET",
                 url: "{{ route('gallery.delete_gallery_item') }}",
                 data: {
-                    id: id
+                    id: id,
+                    product_id: product_id
                 },
                 success: function(response) {
-                    // location.reload()
+                    let html = ''
+                    response.forEach(item => {
+                        html += '<div class="gallery_img_rel">'
+                        html +=
+                            '<img class="w-full object-cover h-20 cursor-pointer" src="http://localhost:8000/uploads/media/' +
+                            item.product_g_img + '" alt="img">'
+                        html +=
+                            '<input class="gallery_img_id_btn" data-id="' + item.id +
+                            '" name="product_gallery_image[]" type="hidden" value="' + item
+                            .product_g_img + '" readonly >'
+                        html +=
+                            '<span class="remove_btn_abs"><i class="gallery_img_remove fas fa-times"></i></span>'
+                        html += '</div>'
+                    })
+                    $('.put-gallery_ajex').empty('.gallery_img_rel')
+                    $('.put-gallery_ajex').append(html)
                 }
             })
 

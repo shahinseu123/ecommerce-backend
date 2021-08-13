@@ -59,7 +59,10 @@
                                     @endif
                                 </td>
                                 <td class="">
-                                    <a href="{{ route('backend.order.show', $item->id) }}"><i class="fas fa-eye"></i></a>
+                                    <a href="{{ route('backend.order.show', $item->id) }}"><i
+                                            class="fas text-blue-600 text-xl fa-eye"></i></a>
+                                    <a href="{{ route('backend.order.download_pdf', $item->id) }}"><i
+                                            class="fas fa-file-download text-xl ml-2 text-red-400"></i></a>
                                 </td>
                             </tr>
                         @endforeach

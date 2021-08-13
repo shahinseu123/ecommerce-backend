@@ -105,7 +105,7 @@
     {{-- sidebar --}}
     <section>
         <div class="flex">
-            <div class="w-1/5 relative sm_hidden sidebar_main_width">
+            <div class="w-1/6 relative sm_hidden sidebar_main_width">
                 <div class="absolute inset-0 w-full h-hull sidebar_main overflow-y-auto">
                     <ul class="mt-5 px-5">
                         <li class=" py-1 nav_item_li cursor-pointer">
@@ -200,13 +200,13 @@
                             {{-- submenu --}}
                             <ul
                                 class="submenu_ul {{ Route::is('backend.neworder') || Route::is('backend.returned') || Route::is('backend.completed') || Route::is('backend.delivared') || Route::is('backend.processing') || Route::is('backend.all-orders') ? '' : 'hidden' }}">
-                                <li class="py-1">
+                                {{-- <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.neworder') ? 'color:#6366F1' : 'color: white' }}"
                                             class="far fa-circle mr-2"></i></span><a class=""
                                         style="{{ Route::is('backend.neworder') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.neworder') }}">Create New</a>
-                                </li>
+                                </li> --}}
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.all-orders') ? 'color:#6366F1' : 'color: white' }}"
@@ -343,7 +343,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="w-4/5 main-content">
+            <div class="w-5/6 main-content">
                 {{-- main content --}}
                 <div class="container-root " style="margin-top: 70px;">
                     <div class="py-2  overflow-y-auto">

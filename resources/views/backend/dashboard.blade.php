@@ -8,17 +8,16 @@
                 <div class="">
                     <div class="flex justify-between px-4 py-4">
                         <div>
-                            <p class="text-3xl font-semibold">200</p>
-                            <p class="mt-2">Pending member's</p>
+                            <p class="text-3xl font-semibold">{{ \App\Models\order\Order::all()->count() }}</p>
+                            <p class="mt-2">All orders's</p>
                         </div>
                         <div>
                             <i class="fas fa-user-plus user-pending text-yellow-300 text-4xl"></i>
                         </div>
                     </div>
-                    <p
-                        class="p-more-info px-4 py-2 border-yellow-300 bg-yellow-600 border-t-2 text-center">
-                        <a class="link-more-info" href="">More info<i
-                                class="fas fa-arrow-circle-right ml-2"></i></a></p>
+                    <p class="p-more-info px-4 py-2 border-yellow-300 bg-yellow-600 border-t-2 text-center">
+                        <a class="link-more-info" href="">More info<i class="fas fa-arrow-circle-right ml-2"></i></a>
+                    </p>
                 </div>
             </div>
 
@@ -26,17 +25,17 @@
                 <div class="">
                     <div class="flex justify-between px-4 py-4">
                         <div>
-                            <p class="text-3xl font-semibold">344</p>
-                            <p class="mt-2">Active member's</p>
+                            <p class="text-3xl font-semibold">
+                                {{ \App\Models\order\Order::where('status', 'delivered')->count() }}</p>
+                            <p class="mt-2">Completed order's</p>
                         </div>
                         <div>
                             <i class="fas fa-user-tag user-active text-green-300 text-4xl"></i>
                         </div>
                     </div>
-                    <p
-                        class="p-more-info px-4 py-2 border-green-300 bg-green-600 border-t-2 text-center">
-                        <a class="link-more-info" href="">More info<i
-                                class="fas fa-arrow-circle-right ml-2"></i></a></p>
+                    <p class="p-more-info px-4 py-2 border-green-300 bg-green-600 border-t-2 text-center">
+                        <a class="link-more-info" href="">More info<i class="fas fa-arrow-circle-right ml-2"></i></a>
+                    </p>
                 </div>
             </div>
 
@@ -44,32 +43,33 @@
                 <div class="">
                     <div class="flex justify-between px-4 py-4">
                         <div>
-                            <p class="text-3xl font-semibold">899</p>
-                            <p class="mt-2">Rejected member's</p>
+                            <p class="text-3xl font-semibold">
+                                {{ \App\Models\order\Order::where('status', 'returned')->count() }}</p>
+                            <p class="mt-2">Returned member's</p>
                         </div>
                         <div>
                             <i class="fas fa-user-times user-reject text-red-300 text-4xl"></i>
                         </div>
                     </div>
                     <p class="p-more-info px-4 py-2 border-red-300 bg-red-600 border-t-2 text-center"><a
-                            class="link-more-info" href="">More info<i
-                                class="fas fa-arrow-circle-right ml-2"></i></a></p>
+                            class="link-more-info" href="">More info<i class="fas fa-arrow-circle-right ml-2"></i></a></p>
                 </div>
             </div>
             <div class=" shadow-md bg-blue-500">
                 <div class="">
                     <div class="flex justify-between px-4 py-4">
                         <div>
-                            <p class="text-3xl font-semibold">234</p>
-                            <p class="mt-2">All member's</p>
+                            <p class="text-3xl font-semibold">{{ \App\Models\User::where('role', 'user')->get()->count() }}
+                            </p>
+                            <p class="mt-2">All Customer's</p>
                         </div>
                         <div>
                             <i style="z-index: 0" class=" fas fa-users all-users text-blue-300 text-4xl"></i>
                         </div>
                     </div>
                     <p class="p-more-info px-4 py-2 border-blue-300 bg-blue-600 border-t-2 text-center">
-                        <a class="link-more-info" href="">More info<i
-                                class="fas fa-arrow-circle-right ml-2"></i></a></p>
+                        <a class="link-more-info" href="">More info<i class="fas fa-arrow-circle-right ml-2"></i></a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -77,9 +77,9 @@
 @endsection
 
 @section('head')
-    
+
 @endsection
 
 @section('script')
-    
+
 @endsection

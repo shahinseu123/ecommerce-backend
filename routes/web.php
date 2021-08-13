@@ -136,6 +136,7 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   Route::get('/order/get-single-product', [NewOrderController::class, 'get_product'])->name('get-single-product');
   //all orders
   Route::get('/order/all-orders', [AllordersController::class, 'index'])->name('backend.all-orders');
+  Route::get('/order/download/pdf/{id}', [AllordersController::class, 'download_pdf'])->name('backend.order.download_pdf');
   //processing
   Route::get('/order/processing', [ProcessaingController::class, 'index'])->name('backend.processing');
   //delivered

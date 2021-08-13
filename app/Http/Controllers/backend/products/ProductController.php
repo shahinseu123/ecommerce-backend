@@ -345,13 +345,13 @@ class ProductController extends Controller
 
     public function delete_img(Request $request)
     {
-        // return $request->id;
         ProductImageGallery::findOrFail($request->id)->delete();
+        $gallery = ProductImageGallery::where('product_id', $request->product_id)->get();
+        return $gallery;
     }
 
     public function update_product(Request $request)
     {
-        // return $request->all();
         $product = Product::findOrFail($request->id);
         if ($request->product_type === 'simple') {
             $product->title = $request->product_title;

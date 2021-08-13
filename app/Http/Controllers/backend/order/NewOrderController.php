@@ -7,13 +7,14 @@ use App\Models\attribute\Attribute;
 use App\Models\customers\Customer;
 use App\Models\order\Order;
 use App\Models\product\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NewOrderController extends Controller
 {
     public function index()
     {
-        $customer = Customer::where('status', '=', 'active')->orderBy('name', 'asc')->get();
+        $customer = User::where('role', '=', 'user')->orderBy('name', 'asc')->get();
         $product = Product::where('status', '=', true)->orderBy('title', 'asc')->get();
         return view("backend.orders.create_new.index")->with(['customer' => $customer, 'product' => $product]);
     }
