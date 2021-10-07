@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\admin\AdminController;
 use App\Http\Controllers\backend\attribute\AttributeController;
 use App\Http\Controllers\backend\brand\BrandController;
 use App\Http\Controllers\backend\category\CategoryController;
+use App\Http\Controllers\backend\cupon\CuponController;
 use App\Http\Controllers\backend\customer\CustomerController;
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\general_settings\GeneralsettingController;
@@ -166,6 +167,15 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   Route::get('/alert', [AlertController::class, 'index'])->name('backend.alert');
   //atockout
   Route::get('/stockout', [StockoutController::class, 'index'])->name('backend.stockout');
+  //cupon
+  Route::get('/backend/cupon', [CuponController::class, 'index'])->name('backend.cupon');
+  Route::get('/backend/cupon/add', [CuponController::class, 'add_cupon'])->name('backend.cupon.add');
+  Route::post('/backend/cupon/create', [CuponController::class, 'create_cupon'])->name('backend.cupon.create');
+  Route::get('/backend/cupon/edit/{id}', [CuponController::class, 'edit_cupon'])->name('cupon.edit');
+  Route::post('/backend/cupon/update', [CuponController::class, 'update_cupon'])->name('backend.cupon.update');
+  Route::get('/backend/cupon/active/{id}', [CuponController::class, 'active_cupon'])->name('backend.cupon.active');
+  Route::get('/backend/cupon/inactive/{id}', [CuponController::class, 'inactive_cupon'])->name('backend.cupon.inactive');
+  Route::get('/backend/cupon/delete/{id}', [CuponController::class, 'delete_cupon'])->name('cupon.delete');
 });
 //auth check route group
 // user panel routes     

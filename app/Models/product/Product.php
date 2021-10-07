@@ -5,6 +5,7 @@ namespace App\Models\product;
 use App\Models\brand\Brand;
 use App\Models\category\Category;
 use App\Models\attribute\Attribute;
+use App\Models\cupon\Cupon;
 use App\Models\rating\Rate;
 use App\Models\wish\WishList;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,6 +29,15 @@ class Product extends Model
     public function Brand()
     {
         return $this->belongsToMany(Brand::class, 'brand_products', 'product_id', 'brand_id');
+    }
+
+    public function Cupon()
+    {
+        return $this->belongsToMany(Cupon::class, 'cupon_id', 'product_id',  'cupon_product');
+    }
+    public function CuponEx()
+    {
+        return $this->belongsToMany(Cupon::class, 'cupon_id', 'product_id',  'cupon_product_exclude');
     }
 
     // Simple Attributes

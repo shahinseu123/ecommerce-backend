@@ -14,6 +14,7 @@ class OrderController extends Controller
         $order = new Order();
         $order->name = $request->name;
         $order->email = $request->email;
+        $order->order_number = time();
         $order->phone = $request->phone;
         $order->user_id = $request->user_id;
         $order->street = $request->street;

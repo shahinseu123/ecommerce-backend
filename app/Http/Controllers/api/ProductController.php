@@ -10,12 +10,11 @@ class ProductController extends Controller
 {
     public function get_all_product()
     {
-        $product = Product::where('status', '=', 1)->orderBy('id', 'desc')->with('Productgallery', 'Productdata', 'Category', 'Brand', 'VariableAttribute', 'Wish')->get();
-        return $product;
+        return Product::where('status', '=', 1)->orderBy('id', 'desc')->with('Productgallery', 'Productdata', 'Category', 'Brand', 'VariableAttribute', 'Wish')->get();
     }
 
     public function getSortedProducts()
     {
-        return Product::orderBy('count_sold', 'desc')->with('Productgallery', 'Productdata', 'Category', 'Brand', 'VariableAttribute')->take(20)->get();
+        return Product::orderBy('count_sold', 'desc')->with('Productgallery', 'Productdata', 'Category', 'Brand', 'VariableAttribute', 'Wish')->take(30)->get();
     }
 }

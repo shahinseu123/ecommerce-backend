@@ -68,7 +68,8 @@
                                     class="cursor-pointer btn-select-attr block text-center w-full py-2  text-white btn_secondary rounded shadow-lg mt-3 m">SELECT</span>
                             </div>
                             <div class="shadow-lg p-4 bg-white mt-4">
-                                <h2 class="font-semibold border-bottom py-2">Stoct alert <span class="text-red-500">*</span>
+                                <h2 class="font-semibold border-bottom py-2">Stoct alert <span
+                                        class="text-red-500">*</span>
                                 </h2>
                                 <div class="mt-2">
                                     <label for="stock_alert_qnty">Stock alert quantity</label>
@@ -166,7 +167,8 @@
                                                     value="1" name="_unit_amount">
                                             </div>
                                             <div class="">
-                                                <label for="_stock">Stock <span>*</span></label>
+                                                <label for="
+                                                _stock">Stock <span>*</span></label>
                                                 <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
                                                     value="1" name="_stock">
                                             </div>
@@ -186,7 +188,7 @@
                                 <label for="product_category">Product category <span
                                         class="text-red-500">*</span></label><br>
                                 <select class="mt-4" name="product_category[]" id="ex-search" multiple>
-                                    {{-- <option value="">Select Category</option> --}}
+
                                     @if ($categories)
                                         @foreach ($categories as $item)
                                             <option value="{{ $item['id'] }}">{{ $item['category_title'] }}</option>

@@ -7,6 +7,7 @@ use App\Models\attribute\Attribute;
 use App\Models\customers\Customer;
 use App\Models\order\Order;
 use App\Models\product\Product;
+use App\Models\product\ProductData;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,22 @@ class NewOrderController extends Controller
 
     public function order_delivered_status($id)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::where('id', $id)->with('OrderProducts')->first();
+        $product_data_id = [];
+        $quantuty = [];
+        $i = 0;
+        foreach ($order->OrderProducts as $op) {
+            $product_data_id[$i] = $op->product_data_id;
+            $quantuty[$i] = $op->quantity;
+            $i++;
+        }
+        $j = 0;
+        foreach ($product_data_id as $id) {
+            $product_data = ProductData::findOrFail($id);
+            $product_data->stock = $product_data->stock - $quantuty[$j];
+            $product_data->save();
+            $j++;
+        }
         $order->status = 'Delivered';
         $order->save();
         return redirect()->back()->with('success', 'Status changed');
@@ -36,6 +52,21 @@ class NewOrderController extends Controller
     public function order_returned_status($id)
     {
         $order = Order::findOrFail($id);
+        $product_data_id = [];
+        $quantuty = [];
+        $i = 0;
+        foreach ($order->OrderProducts as $op) {
+            $product_data_id[$i] = $op->product_data_id;
+            $quantuty[$i] = $op->quantity;
+            $i++;
+        }
+        $j = 0;
+        foreach ($product_data_id as $id) {
+            $product_data = ProductData::findOrFail($id);
+            $product_data->stock = $product_data->stock + $quantuty[$j];
+            $product_data->save();
+            $j++;
+        }
         $order->status = 'Returned';
         $order->save();
         return redirect()->back()->with('success', 'Status changed');

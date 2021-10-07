@@ -10,6 +10,6 @@ class CategoryController extends Controller
 {
     public function get_all_category()
     {
-        return Category::orderBy('category_title', 'desc')->with('Child')->get();
+        return Category::where('parent_category', null)->orderBy('category_title', 'desc')->with('Child', 'Child.Child', 'Child.Child.Child')->get();
     }
 }

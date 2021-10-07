@@ -293,7 +293,13 @@ class ProductController extends Controller
                     }
 
                     if ($request->attr_name) {
-                        $attr_arr = [];
+                        // $attr_arr = [];
+                        // $colors = ['Red', 'Green', 'Blue', 'Yellow', 'White', 'Teal', 'Cyne', 'Black', 'Pink', 'Purple'];
+                        // $size = ['XS', 'L', 'M', 'L', 'XL'];
+                        // if ($request->attr_name == 'Color') {
+                        // }
+                        // if ($request->attr_name == 'Size') {
+                        // }
                         $attr_arr[$request->attr_name[0]] = $request->attr_item_id_one[$i];
                         $attr_arr[$request->attr_name[1]] = $request->attr_item_id_two[$i];
                         $product_data->product_excerpt = json_encode($attr_arr);

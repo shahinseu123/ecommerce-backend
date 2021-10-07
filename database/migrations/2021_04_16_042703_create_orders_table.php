@@ -23,7 +23,7 @@ class CreateOrdersTable extends Migration
             // Customer information
             $table->unsignedBigInteger('user_id');
             $table->string('name')->nullable();
-
+            $table->bigInteger('order_number')->nullable();
             $table->string('street')->nullable();
             $table->string('apartment')->nullable();
             $table->string('city')->nullable();
