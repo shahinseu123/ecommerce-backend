@@ -59,8 +59,8 @@
                                             class="w-full px-2 py-1 rounded border-2 border-gray-300 w__max">
                                             <option {{ $cupon->discount_type == 'persentage_discount' ? 'selected' : '' }}
                                                 value="persentage_discount">Persentage discount</option>
-                                            <option {{ $cupon->discount_type == 'persentage_discount' ? 'selected' : '' }}
-                                                value="persentage_discount">Fixed cart discount</option>
+                                            <option {{ $cupon->discount_type == 'fixed_cart_discount' ? 'selected' : '' }}
+                                                value="fixed_cart_discount">Fixed cart discount</option>
                                             <option
                                                 {{ $cupon->discount_type == 'fixed_product_discount' ? 'selected' : '' }}
                                                 value="fixed_product_discount">Fixed product discount</option>
@@ -198,7 +198,7 @@
                     </div>
                     <div class="mx-auto p-5 border-t-2 border-gray-300">
                         <button type="submit"
-                            class="uppercase text-gray-200 px-2 font-semibold py-1 rounded shadow-md bg-green-400">create
+                            class="uppercase text-gray-200 px-2 font-semibold py-1 rounded shadow-md bg-green-400">UPDATE
                             coupon</button>
                     </div>
                 </div>

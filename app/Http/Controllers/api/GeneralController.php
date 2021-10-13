@@ -4,8 +4,8 @@ namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
 use App\Models\brand\Brand;
+use App\Models\cupon\Cupon;
 use App\Models\slider\Slider;
-use Illuminate\Http\Request;
 
 class GeneralController extends Controller
 {

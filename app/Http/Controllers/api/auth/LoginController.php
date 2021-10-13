@@ -66,7 +66,7 @@ class LoginController extends Controller
 
     public function user()
     {
-        $user = User::where('id', '=', Auth::user()->id)->with('Order', 'Order.OrderProducts.Product', 'Order.OrderProducts.Product.Productdata')->first();
+        $user = User::where('id', '=', Auth::user()->id)->with('Order', 'Order.OrderProducts.Product', 'Order.OrderProducts.Product.Productdata', 'Cupon')->first();
         return $user;
     }
 
