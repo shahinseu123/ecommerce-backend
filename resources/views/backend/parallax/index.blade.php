@@ -1,44 +1,47 @@
 @extends('backend.layout.master')
 
 @section('title')
-    <title>Products</title>
+    <title>Parallax</title>
 @endsection
 
 @section('content')
     <section class="bg-white">
         <div class="p-4 shadow-lg rounded-lg">
             <div class="flex justify-between text-white border-b-2 border_secondary pb-4 mb-4">
-                <h1 class="text-3xl font-semibold text-gray-600">Products</h1>
-                <a href="{{ route('backend.product.add') }}"
-                    class="uppercase px-5 py-2 btn_secondary rounded shadow-lg font-semibold"><i class="fas fa-plus "></i>
-                    Add product</a>
+                <h1 class="text-3xl font-semibold text-gray-600">Parallax</h1>
+                <a href="{{ route('backend.parallax.add') }}"
+                    class="uppercase px-3 py-1 btn_secondary rounded shadow-lg font-semibold"><i class="fas fa-plus "></i>
+                    Add Parallax</a>
             </div>
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                 <thead>
                     <tr>
-                        <th class="text-left" data-priority="1">Name</th>
-                        <th class="text-left" data-priority="2">Image</th>
-                        <th class="text-left" data-priority="3">Type</th>
-                        {{-- <th class="text-left" data-priority="4">Regular Price</th>
-                        <th class="text-left" data-priority="5">Sale Price</th>
-                        <th class="text-left" data-priority="6">Total available Stock</th> --}}
-                        <th class="text-left" data-priority="6">Status</th>
-                        <th class="text-left" data-priority="6">Action</th>
+                        <th class="text-left" data-priority="1">#</th>
+                        <th class="text-left" data-priority="2">Name</th>
+                        <th class="text-left" data-priority="2">Email</th>
+                        <th class="text-left" data-priority="4">Phone</th>
+                        <th class="text-left" data-priority="4">Registered</th>
+                        <th class="text-left" data-priority="5">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($product)
-                        @foreach ($product as $item)
+                    @if ($parallax)
+                        @foreach ($parallax as $item)
                             <tr>
-                                <td>{{ $item->title }}</td>
-                                <td><img class="h-10 w-10" src="{{ asset('uploads/media/' . $item->product_image) }}"
-                                        alt=""></td>
-                                <td>{{ $item->type }}</td>
+                                <td>{{ $item->id }}</td>
+                                <td>{{ $item->parallax_title }}</td>
+                                <td>{!! $item->description !!}</td>
+                                <td>
+                                    <img class="w-12 h-12"
+                                        src="{{ asset('uploads/media/' . $item->parallax_image) }}" alt="">
+                                </td>
 
-                                <td>{{ $item->status === 1 ? 'Active' : 'Inactive' }}</td>
+                                <td>
+                                    {{ $item->parallax_position }}
+                                </td>
                                 <td class="">
-                                    <a href="{{ route('product.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
-                                    <a href="{{ route('product.delete', $item->id) }}"><i
+                                    <a href="{{ route('parallax.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
+                                    <a href="{{ route('parallax.delete', $item->id) }}"><i
                                             class="fas fa-trash text-red-500"></i></a>
                                 </td>
                             </tr>

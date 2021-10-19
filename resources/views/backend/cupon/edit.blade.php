@@ -27,11 +27,10 @@
                             <textarea name="cupon_des" id="cupon_des"
                                 class="w-full px-2 py-1 border-2 border-gray-300 rounded " cols="30"
                                 rows="4">{{ $cupon->cupon_des }}</textarea>
-
                         </div>
                     </div>
                 </div>
-                <div class="mt-2 shadow-md bg-white rounded ">
+                <div class="mt-2 shadow-md bg-white rounded">
                     <h2 class="text-2xl uppercase text-gray-600 font-semibold px-5 py-3 border-b-2 border-gray-200">coupon
                         data
                     </h2>

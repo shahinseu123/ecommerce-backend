@@ -113,17 +113,14 @@
                         <li class=" py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.dashboard') ? 'color:#6366F1' : 'color: white' }} "
-                                    class="fas fa-tachometer-alt mr-2"></i></span><a
-                                class=""
-                                style="
+                                    class="fas fa-tachometer-alt mr-2"></i></span><a class="" style="
                                 {{ Route::is('backend.dashboard') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.dashboard') }}">Dashboard</a>
                         </li>
                         <li class=" py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.products') || Route::is('backend.product.add') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="fab fa-product-hunt mr-2"></i></span><a
-                                class=""
+                                    class="fab fa-product-hunt mr-2"></i></span><a class=""
                                 style="
                                 {{ Route::is('backend.products') || Route::is('backend.product.add') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.products') }}">Products</a>
@@ -132,14 +129,12 @@
                             class="item_has_submenu text-white py-1 nav_item_li nenu_open cursor-pointer transition-all duration-1000">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.adjustment') || Route::is('backend.stockout') || Route::is('backend.alert') || Route::is('backend.prealert') || Route::is('backend.adjustment.add') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="far fa-circle mr-2"></i></span><a
-                                class=""
+                                    class="far fa-circle mr-2"></i></span><a class=""
                                 style="
                                 {{ Route::is('backend.adjustment') || Route::is('backend.stockout') || Route::is('backend.alert') || Route::is('backend.adjustment.add') ? 'color:#6366F1' : 'color: white' }}"
                                 class="fas fa-layer-group mr-2"></i></span><span class="#"
                                     style="{{ Route::is('backend.adjustment') || Route::is('backend.adjustment.add') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="far fa-circle mr-2"></i></span><a
-                                    class=""
+                                    class="far fa-circle mr-2"></i></span><a class=""
                                     style="
                                     {{ Route::is('backend.adjustment') || Route::is('backend.prealert') || Route::is('backend.stockout') || Route::is('backend.alert') || Route::is('backend.adjustment.add') ? 'color:#6366F1' : 'color: white' }}">
                                     <p style="display: inherit">Stock <i style="margin-top: 7px;"
@@ -150,8 +145,7 @@
                                         <li class="py-1">
                                             <span class="w-10 inline-block"><i
                                                     style="{{ Route::is('backend.adjustment') || Route::is('backend.adjustment.add') ? 'color:#6366F1' : 'color: white' }}"
-                                                    class="far fa-circle mr-2"></i></span><a
-                                                class=""
+                                                    class="far fa-circle mr-2"></i></span><a class=""
                                                 style="
                                                 {{ Route::is('backend.adjustment') || Route::is('backend.adjustment.add') ? 'color:#6366F1' : 'color: white' }}"
                                                 href="{{ route('backend.adjustment') }}">Adjustment</a>
@@ -159,8 +153,7 @@
                                         <li class="py-1">
                                             <span class="w-10 inline-block"><i
                                                     style="{{ Route::is('backend.prealert') ? 'color:#6366F1' : 'color: white' }}"
-                                                    class="far fa-circle mr-2"></i></span><a
-                                                class=""
+                                                    class="far fa-circle mr-2"></i></span><a class=""
                                                 style="
                                                 {{ Route::is('backend.prealert') ? 'color:#6366F1' : 'color: white' }}"
                                                 href="{{ route('backend.prealert') }}">Pre alert</a>
@@ -168,8 +161,7 @@
                                         <li class="py-1">
                                             <span class="w-10 inline-block"><i
                                                     style="{{ Route::is('backend.alert') ? 'color:#6366F1' : 'color: white' }}"
-                                                    class="far fa-circle mr-2"></i></span><a
-                                                class=""
+                                                    class="far fa-circle mr-2"></i></span><a class=""
                                                 style="
                                                 {{ Route::is('backend.alert') ? 'color:#6366F1' : 'color: white' }}"
                                                 href="{{ route('backend.alert') }}">Alert</a>
@@ -177,8 +169,7 @@
                                         <li class="py-1">
                                             <span class="w-10 inline-block"><i
                                                     style="{{ Route::is('backend.stockout') ? 'color:#6366F1' : 'color: white' }}"
-                                                    class="far fa-circle mr-2"></i></span><a
-                                                class=""
+                                                    class="far fa-circle mr-2"></i></span><a class=""
                                                 style="
                                                 {{ Route::is('backend.stockout') ? 'color:#6366F1' : 'color: white' }}"
                                                 href="{{ route('backend.stockout') }}">Stock out </a>
@@ -189,8 +180,7 @@
                         <li class="text-white py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.category') || Route::is('backend.category.add') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="fas fa-th mr-2"></i></span><a
-                                class=""
+                                    class="fas fa-th mr-2"></i></span><a class=""
                                 style="
                                 {{ Route::is('backend.category') || Route::is('backend.category.add') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.category') }}">Category</a>
@@ -198,8 +188,7 @@
                         <li class="text-white py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.attribute') || Route::is('backend.attribute.add') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="fas fa-drafting-compass mr-2"></i></span><a
-                                class=""
+                                    class="fas fa-drafting-compass mr-2"></i></span><a class=""
                                 style="
                                 {{ Route::is('backend.attribute') || Route::is('backend.attribute.add') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.attribute') }}">Attribute</a>
@@ -207,8 +196,7 @@
                         <li class="text-white py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.brand') || Route::is('backend.brand.add') || Route::is('brand.edit') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="fas fa-tags mr-2"></i></span><a
-                                class=""
+                                    class="fas fa-tags mr-2"></i></span><a class=""
                                 style="
                                 {{ Route::is('backend.brand') || Route::is('backend.brand.add') || Route::is('brand.edit') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.brand') }}">Brand</a>
@@ -216,8 +204,7 @@
                         <li class="text-white py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.cupon') || Route::is('backend.cupon.add') || Route::is('cupon.edit') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="fas fa-percentage mr-2"></i></span><a
-                                class=""
+                                    class="fas fa-percentage mr-2"></i></span><a class=""
                                 style="
                                 {{ Route::is('backend.cupon') || Route::is('backend.cupon.add') || Route::is('cupon.edit') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.cupon') }}">Cupon</a>
@@ -243,27 +230,21 @@
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.all-orders') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
-                                        style="
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
                                         {{ Route::is('backend.all-orders') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.all-orders') }}">All Orders</a>
                                 </li>
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.processing') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
-                                        style="
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
                                         {{ Route::is('backend.processing') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.processing') }}">Processing</a>
                                 </li>
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.delivared') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
-                                        style="
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
                                         {{ Route::is('backend.delivared') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.delivared') }}">Delivared</a>
                                 </li>
@@ -277,9 +258,7 @@
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.returned') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
-                                        style="
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
                                         {{ Route::is('backend.returned') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.returned') }}">Returned</a>
                                 </li>
@@ -289,8 +268,7 @@
                         <li class="text-white py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.customer') || Route::is('backend.customer.add') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="fas fa-users mr-2"></i></span><a
-                                class=""
+                                    class="fas fa-users mr-2"></i></span><a class=""
                                 style="
                                 {{ Route::is('backend.customer') || Route::is('backend.customer.add') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.customer') }}">Customers</a>
@@ -298,48 +276,50 @@
 
                         <li class="text-white py-1 nav_item_li item_has_submenu nenu_open cursor-pointer">
                             <span class="w-10 inline-block"><i
-                                    style="{{ Route::is('backend.slider') || Route::is('backend.genetal-settings') || Route::is('slider.edit') || Route::is('backend.menu') || Route::is('backend.page') || Route::is('backend.page.add') ? 'color:#6366F1' : 'color: white' }}"
+                                    style="{{ Route::is('backend.slider') || Route::is('backend.genetal-settings') || Route::is('slider.edit') || Route::is('backend.menu') || Route::is('backend.page') || Route::is('backend.page.add') || Route::is('backend.parallax') || Route::is('backend.parallax.add') ? 'color:#6366F1' : 'color: white' }}"
                                     class="fas fa-user mr-2"></i></span><span class="#"
-                                style="{{ Route::is('backend.genetal-settings') || Route::is('slider.edit') || Route::is('backend.slider') || Route::is('backend.page') || Route::is('backend.menu') || Route::is('backend.page.add') ? 'color:#6366F1' : 'color: white' }}">
+                                style="{{ Route::is('backend.genetal-settings') || Route::is('slider.edit') || Route::is('backend.slider') || Route::is('backend.page') || Route::is('backend.menu') || Route::is('backend.page.add') || Route::is('backend.parallax') || Route::is('backend.parallax.add') ? 'color:#6366F1' : 'color: white' }}">
                                 <p style="display: inherit">Frontend <i style="margin-top: 7px;"
                                         class="fas nav_icon float-right fa-plus"></i></p>
                             </span>
                             {{-- submenu --}}
                             <ul
-                                class="submenu_ul {{ Route::is('slider.edit') || Route::is('backend.genetal-settings') || Route::is('backend.slider') || Route::is('backend.menu') || Route::is('backend.page') || Route::is('backend.page.add') ? '' : 'hidden' }}">
+                                class="submenu_ul {{ Route::is('slider.edit') || Route::is('backend.genetal-settings') || Route::is('backend.slider') || Route::is('backend.menu') || Route::is('backend.page') || Route::is('backend.page.add') || Route::is('backend.parallax') || Route::is('backend.parallax.add') ? '' : 'hidden' }}">
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.genetal-settings') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
+                                            class="far fa-circle mr-2"></i></span><a class=""
                                         style="
-                                        {{ Route::is('backend.genetal-settings') ? 'color:#6366F1' : 'color: white' }}"
-                                        href="{{ route('backend.genetal-settings') }}">General Settings</a>
+                                        {{ Route::is('backend.genetal-settings') ? 'color:#6366F1' : 'color: white' }}" href="{{ route('backend.genetal-settings') }}">General
+                                        Settings</a>
                                 </li>
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.page') || Route::is('backend.page.add') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
+                                            class="far fa-circle mr-2"></i></span><a class=""
                                         style="
                                         {{ Route::is('backend.page') || Route::is('backend.page.add') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.page') }}">Pages</a>
                                 </li>
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
-                                            style="{{ Route::is('backend.menu') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
+                                            style="{{ Route::is('backend.parallax') || Route::is('backend.parallax.add') ? 'color:#6366F1' : 'color: white' }}"
+                                            class="far fa-circle mr-2"></i></span><a class=""
                                         style="
+                                        {{ Route::is('backend.parallax') || Route::is('backend.parallax.add') ? 'color:#6366F1' : 'color: white' }}"
+                                        href="{{ route('backend.parallax') }}">Parallax</a>
+                                </li>
+                                <li class="py-1">
+                                    <span class="w-10 inline-block"><i
+                                            style="{{ Route::is('backend.menu') ? 'color:#6366F1' : 'color: white' }}"
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
                                         {{ Route::is('backend.menu') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.menu') }}">Menu</a>
                                 </li>
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('slider.edit') || Route::is('backend.slider') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
-                                        style="
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
                                         {{ Route::is('backend.slider') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.slider') }}">Slider</a>
                                 </li>
@@ -365,18 +345,14 @@
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.media.lirary') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
-                                        style="
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
                                         {{ Route::is('backend.media.lirary') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.media.lirary') }}">Library</a>
                                 </li>
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.media.add_new') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a
-                                        class=""
-                                        style="
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
                                         {{ Route::is('backend.media.add_new') ? 'color:#6366F1' : 'color: white' }}"
                                         href="{{ route('backend.media.add_new') }}">Add new</a>
                                 </li>
@@ -387,8 +363,7 @@
                         <li class="text-white py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.admin') || Route::is('backend.admin.add') || Route::is('admin.edit') ? 'color:#6366F1' : 'color: white' }}"
-                                    class="fas fa-user-tag mr-2"></i></span><a
-                                class=""
+                                    class="fas fa-user-tag mr-2"></i></span><a class=""
                                 style="
                                 {{ Route::is('backend.admin') || Route::is('backend.admin.add') || Route::is('admin.edit') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.admin') }}">Admins</a>

@@ -19,6 +19,7 @@ use App\Http\Controllers\backend\order\NewOrderController;
 use App\Http\Controllers\backend\order\ProcessaingController;
 use App\Http\Controllers\backend\order\ReturnedController;
 use App\Http\Controllers\backend\pages\PageController;
+use App\Http\Controllers\backend\parallax\ParallaxController;
 use App\Http\Controllers\backend\products\ProductController;
 use App\Http\Controllers\backend\slider\SliderController;
 use App\Http\Controllers\backend\stock\adjustment\AdjustmentController;
@@ -167,6 +168,13 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   Route::get('/alert', [AlertController::class, 'index'])->name('backend.alert');
   //atockout
   Route::get('/stockout', [StockoutController::class, 'index'])->name('backend.stockout');
+  //parallax
+  Route::get('/backend/parallax', [ParallaxController::class, 'index'])->name('backend.parallax');
+  Route::get('/backend/parallax/delete/{id}', [ParallaxController::class, 'delete_parallax'])->name('parallax.delete');
+  Route::get('/backend/parallax/edit/{id}', [ParallaxController::class, 'edit_parallax'])->name('parallax.edit');
+  Route::get('/backend/parallax/add', [ParallaxController::class, 'add_parallax'])->name('backend.parallax.add');
+  Route::post('/backend/parallax/create', [ParallaxController::class, 'create_parallax'])->name('backend.parallax.create');
+  Route::post('/backend/parallax/update', [ParallaxController::class, 'update_parallax'])->name('backend.parallax.update');
   //cupon
   Route::get('/backend/cupon', [CuponController::class, 'index'])->name('backend.cupon');
   Route::get('/backend/cupon/add', [CuponController::class, 'add_cupon'])->name('backend.cupon.add');
