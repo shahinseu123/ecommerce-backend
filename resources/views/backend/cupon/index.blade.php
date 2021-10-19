@@ -10,7 +10,7 @@
             <div class="flex justify-between text-white border-b-2 border_secondary pb-4 mb-4">
                 <h1 class="text-3xl font-semibold text-gray-600">Coupons</h1>
                 <a href="{{ route('backend.cupon.add') }}"
-                    class="uppercase px-5 py-2 btn_secondary rounded shadow-lg font-semibold"><i class="fas fa-plus "></i>
+                    class="uppercase px-3 py-1 btn_secondary rounded shadow-lg font-semibold"><i class="fas fa-plus "></i>
                     Add coupon</a>
             </div>
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
@@ -47,7 +47,7 @@
 
                                 <td class="">
                                     <a href="
-                                    {{ route('cupon.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
+                                        {{ route('cupon.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
                                     <a href="{{ route('cupon.delete', $item->id) }}"><i
                                             class="fas fa-trash text-red-500"></i></a>
                                 </td>

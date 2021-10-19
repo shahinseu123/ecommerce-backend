@@ -18,9 +18,9 @@
                     <tr>
                         <th class="text-left" data-priority="1">#</th>
                         <th class="text-left" data-priority="2">Name</th>
-                        <th class="text-left" data-priority="2">Email</th>
-                        <th class="text-left" data-priority="4">Phone</th>
-                        <th class="text-left" data-priority="4">Registered</th>
+                        <th class="text-left" data-priority="2">Description</th>
+                        <th class="text-left" data-priority="4">Image</th>
+                        <th class="text-left" data-priority="4">Position</th>
                         <th class="text-left" data-priority="5">Action</th>
                     </tr>
                 </thead>

@@ -10,7 +10,7 @@
             <div class="flex justify-between text-white border-b-2 border_secondary pb-4 mb-4">
                 <h1 class="text-3xl font-semibold text-gray-600">Products</h1>
                 <a href="{{ route('backend.product.add') }}"
-                    class="uppercase px-5 py-2 btn_secondary rounded shadow-lg font-semibold"><i class="fas fa-plus "></i>
+                    class="uppercase px-3 py-1 btn_secondary rounded shadow-lg font-semibold"><i class="fas fa-plus "></i>
                     Add product</a>
             </div>
             <table id="example" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
