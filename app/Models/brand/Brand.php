@@ -11,19 +11,21 @@ class Brand extends Model
     use HasFactory;
 
     protected $fillable = [
-        'brand_title', 'short_description', 'brand_description',
+        'brand_title', 'short_description', 'brand_description', 'brand_title_bd', 'brand_description_bd',
         'brand_image', 'meta_title', 'meta_description', 'meta_tags'
     ];
 
-    public function getImagePathAttribute(){
-        if($this->brand_image){
-            return asset('uploads/media/'.$this->brand_image);
-        }else{
+    public function getImagePathAttribute()
+    {
+        if ($this->brand_image) {
+            return asset('uploads/media/' . $this->brand_image);
+        } else {
             return null;
         }
     }
 
-    public function Product(){
+    public function Product()
+    {
         return $this->hasMany(Product::class, 'brand_products', 'brand_id', 'product_id');
     }
 }

@@ -16,25 +16,43 @@
                         <div class="mb-4">
                             <label for="product_title" class="font-semibold">Product title <span
                                     class="text-red-500">*</span></label>
-                            <input class="input-border rounded px-2 py-2 w-full mt-2" type="text" name="product_title"
+                            <input class="input-border rounded px-2 py-1 w-full mt-2" type="text" name="product_title"
                                 id="product_title" required value="{{ old('product_title') }}">
                             @error('product_title')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="title_bd" class="font-semibold">Product title in bangla<span
+                                    class="text-red-500">*</span></label>
+                            <input class="input-border rounded px-2 py-1 w-full mt-2" type="text" name="title_bd"
+                                id="title_bd" required value="{{ old('title_bd') }}">
+                            @error('title_bd')
                                 <div class="text-red-600">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="mb-4">
                             <label for="short_description" class="font-semibold">Short description</label>
-                            <textarea class="input-border rounded px-2 py-2 w-full mt-2" name="short_description"
-                                id="short_description" cols="30" rows="10"></textarea>
+                            <textarea class="input-border rounded px-2 py-1 w-full mt-2" name="short_description"
+                                id="short_description" cols="30" rows="3"></textarea>
                         </div>
 
                         <div class="mb-4">
                             <label for="description" class="font-semibold">Description<span
                                     class="text-red-500">*</span></label>
-                            <textarea class="input-border rounded px-2 py-2 w-full" style="margin-top: 10px;z-index: -1"
-                                name="description" id="editor" cols="30" rows="5"></textarea>
+                            <textarea class="input-border rounded px-2 py-1 w-full" style="margin-top: 10px;z-index: -1"
+                                name="description" id="editor" cols="30" rows="3"></textarea>
                             @error('description')
+                                <div class="text-red-600">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="description_bd" class="font-semibold">Description in bangla<span
+                                    class="text-red-500">*</span></label>
+                            <textarea class="input-border rounded px-2 py-1 w-full" style="margin-top: 10px;z-index: -1"
+                                name="description_bd" id="editor_2" cols="30" rows="3"></textarea>
+                            @error('description_bd')
                                 <div class="text-red-600">{{ $message }}</div>
                             @enderror
                         </div>
@@ -46,7 +64,7 @@
                                         class="text-red-500">*</span></h2>
                                 <div>
                                     <select name="product_type"
-                                        class="input-border select_product_type px-2 py-2 rounded w-full mt-4"
+                                        class="input-border select_product_type px-2 py-1 rounded w-full mt-4"
                                         id="product_type" class="input-border">
                                         <option value="simple" selected>Simple</option>
                                         <option value="variable">Variable</option>
@@ -68,12 +86,12 @@
                                     class="cursor-pointer btn-select-attr block text-center w-full py-2  text-white btn_secondary rounded shadow-lg mt-3 m">SELECT</span>
                             </div>
                             <div class="shadow-lg p-4 bg-white mt-4">
-                                <h2 class="font-semibold border-bottom py-2">Stoct alert <span
+                                <h2 class="font-semibold border-bottom py-1">Stoct alert <span
                                         class="text-red-500">*</span>
                                 </h2>
                                 <div class="mt-2">
                                     <label for="stock_alert_qnty">Stock alert quantity</label>
-                                    <input class="input-border rounded px-2 py-2 w-full mt-2" type="number"
+                                    <input class="input-border rounded px-2 py-1 w-full mt-2" type="number"
                                         name="stock_alert_qnty" id="stock_alert_qnty" required
                                         value="{{ old('stock_alert_qnty') }}">
                                     @error('stock_alert_qnty')
@@ -82,7 +100,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <label for="stock_pre_alert_qnty">Stock pre-alert quantity</label>
-                                    <input class="input-border rounded px-2 py-2 w-full mt-2" type="number"
+                                    <input class="input-border rounded px-2 py-1 w-full mt-2" type="number"
                                         name="stock_pre_alert_qnty" id="stock_pre_alert_qnty" required
                                         value="{{ old('stock_pre_alert_qnty') }}">
                                     @error('stock_pre_alert_qnty')
@@ -108,22 +126,22 @@
                                     <div>
                                         <div class="grid grid-cols-3 gap-4">
                                             <div class="mt-2">
-                                                <label for="regular_price">Regular price</label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <label for="regular_price" class="text-sm">Regular price</label>
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="{{ old('_regular_price') }}" name="_regular_price">
                                             </div>
                                             <div class="mt-2">
-                                                <label for="sale_price">Sale price <span
+                                                <label for="sale_price" class="text-sm">Sale price <span
                                                         class="text-red-500">*</span></label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="{{ old('_sale_price') }}" name="_sale_price">
                                                 @error('_sale_price')
                                                     <div class="text-red-600">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                             <div class="mt-2">
-                                                <label for="sku">SKU</label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <label for="sku" class="text-sm">SKU</label>
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="{{ old('_sku') }}" name="_sku">
                                                 @error('_sku')
                                                     <div class="text-red-600">{{ $message }}</div>
@@ -132,44 +150,49 @@
                                         </div>
                                         <div class="grid grid-cols-3 gap-4">
                                             <div class="mt-2">
-                                                <label for="shipping_weight">Shipping width(cm)</label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <label for="shipping_weight" class="text-sm">Shipping
+                                                    width(cm)</label>
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="{{ old('_shipping_weight') }}" name="_shipping_weight">
                                             </div>
                                             <div class="mt-2">
-                                                <label for="shipping_height">Shipping height(cm) </label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <label for="shipping_height" class="text-sm">Shipping height(cm)
+                                                </label>
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="{{ old('_shipping_height') }}" name="_shipping_height">
                                             </div>
                                             <div class="mt-2">
-                                                <label for="shipping_lenght">Shipping length(cm)</label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <label for="shipping_lenght" class="text-sm">Shipping
+                                                    length(cm)</label>
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="{{ old('_shipping_lenght') }}" name="_shipping_lenght">
                                             </div>
                                         </div>
                                         <div class="grid grid-cols-3 gap-4">
                                             <div class="mt-2">
-                                                <label for="rack_number">Rack number</label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <label for="rack_number" class="text-sm">Rack number</label>
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="{{ old('_rack_number') }}" name="_rack_number">
                                             </div>
                                             <div class="mt-2">
-                                                <label for="unit">Unit <span class="text-red-500">*</span></label>
-                                                <select name="_unit" class="mt-2 input-border w-full rounded px-2 py-2">
+                                                <label for="unit" class="text-sm">Unit <span
+                                                        class="text-red-500">*</span></label>
+                                                <select name="_unit" class="mt-2 input-border w-full rounded px-2 py-1">
                                                     <option value="pcs" selected>PCS</option>
                                                     <option value="g">G</option>
                                                     <option value="ml">ML</option>
                                                 </select>
                                             </div>
                                             <div class="mt-2">
-                                                <label for="unit_amount">Unit amount <span>*</span></label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <label for="unit_amount" class="text-sm">Unit amount
+                                                    <span>*</span></label>
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="1" name="_unit_amount">
                                             </div>
                                             <div class="">
-                                                <label for="
-                                                _stock">Stock <span>*</span></label>
-                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-2"
+                                                <label class="text-sm" for="_stock">Stock
+                                                    <span>*</span></label>
+                                                <input type="number" class="mt-2 input-border w-full rounded px-2 py-1"
                                                     value="1" name="_stock">
                                             </div>
                                         </div>
@@ -219,7 +242,7 @@
                     </div>
                     <div class="bg-white shadow-lg rounded p-4 mt-4">
                         <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
-                            <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Featured image</h1>
+                            <h1 class="text-center py-1 border-b-2 border-gray-300 font-semibold mb-1">Featured image</h1>
                             <div class="w-full sssss">
                                 <img class="w-full object-cover h-48 cursor-pointer" id="category-img-tag"
                                     src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
@@ -230,7 +253,7 @@
                     </div>
                     <div class="bg-white shadow-lg rounded p-4 mt-4">
                         <div class="w-full sssss-nav pb-4  cursor-pointer">
-                            <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Product gallery</h1>
+                            <h1 class="text-center py-1 border-b-2 border-gray-300 font-semibold mb-1">Product gallery</h1>
                             <div class="w-full border-2 border-blue-600  click_product_gallery_btn rounded p-2"
                                 style="min-height: 200px;">
                                 <div class="grid grid-cols-3 put-gallery gap-2 mb-2">
@@ -245,24 +268,24 @@
                             <div>
                                 <div class="mt-2">
                                     <label for="meta_title">Meta title</label>
-                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"
+                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-1"
                                         value="{{ old('meta_title') }}" name="meta_title" id="meta_title">
                                 </div>
                                 <div class="mt-2">
                                     <label for="meta_description">Meta description</label>
-                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"
+                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-1"
                                         value="{{ old('meta_description') }}" name="meta_description"
                                         id="meta_description">
                                 </div>
                                 <div class="mt-2">
                                     <label for="meta_tags">Meta tags</label>
-                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"
+                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-1"
                                         value="{{ old('meta_tags') }}" name="meta_tags" id="meta_tags">
                                 </div>
                             </div>
                         </div>
                         <div class="border-t-2 border-gray-300">
-                            <button class="w-full py-2 text-white btn_secondary rounded shadow-lg mt-3 m"
+                            <button class="w-full py-1 text-white btn_secondary rounded shadow-lg mt-3 m"
                                 type="submit">CREATE</button>
                             <p>NB: <span class="text-red-600"> * </span>marked are required field.</p>
                         </div>
@@ -561,6 +584,14 @@
         //modal end
         ClassicEditor
             .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#editor_2'))
             .then(editor => {
                 console.log(editor);
             })

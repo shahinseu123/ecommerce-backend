@@ -53,17 +53,20 @@ class ProductController extends Controller
         // return $request->all();
         $request->validate([
             'product_title' => 'required|max:255|string',
+            'title_bd' => 'required',
             'stock_alert_qnty' => 'required|integer',
             'stock_pre_alert_qnty' => 'required|integer',
             'product_category' => 'required',
             'product_brand' => 'required',
             'description' => 'required',
+            'description_bd' => 'required',
         ]);
 
         //create product into product table
         $product = new Product();
         if ($request->product_type === 'simple') {
             $product->title = $request->product_title;
+            $product->title_bd = $request->title_bd;
             if ($request->short_description) {
                 $product->short_description = $request->short_description;
             }
@@ -80,6 +83,7 @@ class ProductController extends Controller
                 $product->meta_tags = $request->meta_tags;
             }
             $product->description = $request->description;
+            $product->description_bd = $request->description_bd;
             $product->type = $request->product_type;
             $product->stock_alert_quantity = $request->stock_alert_qnty;
             $product->stock_pre_alert_quantity = $request->stock_pre_alert_qnty;
@@ -137,7 +141,7 @@ class ProductController extends Controller
                 $product_data->unit_amount = $request->_unit_amount;
             }
             if ($request->_stock) {
-                $product->stock = $request->_stock;
+                $product_data->stock = $request->_stock;
             }
             $product_data->save();
             //    return redirect()->route('backend.products')->with('success', 'Product created successfully');
@@ -361,6 +365,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($request->id);
         if ($request->product_type === 'simple') {
             $product->title = $request->product_title;
+            $product->title_bd = $request->product_title_bd;
             if ($request->short_description) {
                 $product->short_description = $request->short_description;
             }
@@ -377,6 +382,7 @@ class ProductController extends Controller
                 $product->meta_tags = $request->meta_tags;
             }
             $product->description = $request->description;
+            $product->description_bd = $request->description_bd;
             $product->type = $request->product_type;
             $product->stock_alert_quantity = $request->stock_alert_qnty;
             $product->stock_pre_alert_quantity = $request->stock_pre_alert_qnty;
@@ -448,7 +454,8 @@ class ProductController extends Controller
             //variable product 
             // return $request->all();
             $product->title = $request->product_title;
-            $product->description = $request->description;
+            $product->title_bd = $request->product_title_bd;
+            $product->description_bd = $request->description_bd;
             $product->type = $request->product_type;
             $product->stock_alert_quantity = $request->stock_alert_qnty;
             $product->stock_pre_alert_quantity = $request->stock_pre_alert_qnty;

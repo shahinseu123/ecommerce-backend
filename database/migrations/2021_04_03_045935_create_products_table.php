@@ -17,11 +17,13 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->boolean('status')->default(1);
             $table->string('title');
+            $table->string('title_bd');
             $table->integer('count_sold')->nullable();
             $table->string('type', 55)->default('Simple'); // Simple, Variable
             $table->tinyInteger('featured')->default(0);
             $table->text('short_description')->nullable();
             $table->longText('description');
+            $table->longText('description_bd');
             $table->unsignedBigInteger('brand_id')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();

@@ -16,9 +16,18 @@
                         <div class="mb-4">
                             <label for="brand_title" class="font-semibold">Title <span
                                     class="text-red-500">*</span></label>
-                            <input class="input-border rounded px-2 py-2 w-full mt-2" type="text" name="brand_title"
+                            <input class="input-border rounded px-2 py-1 w-full mt-2" type="text" name="brand_title"
                                 id="brand_title" required value="{{ old('brand_title') }}">
                             @error('brand_title')
+                                <div class="text-red-500">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="brand_title_bd" class="font-semibold">Title in bangla<span
+                                    class="text-red-500">*</span></label>
+                            <input class="input-border rounded px-2 py-1 w-full mt-2" type="text" name="brand_title_bd"
+                                id="brand_title_bd" required value="{{ old('brand_title_bd') }}">
+                            @error('brand_title_bd')
                                 <div class="text-red-500">{{ $message }}</div>
                             @enderror
                         </div>
@@ -26,7 +35,7 @@
                         <div class="mb-4">
                             <label for="short_description" class="font-semibold">Short description <span
                                     class="text-red-500">*</span></label>
-                            <textarea class="input-border rounded px-2 py-2 w-full mt-2" name="short_description"
+                            <textarea class="input-border rounded px-2 py-1 w-full mt-2" name="short_description"
                                 id="short_description" cols="30" rows="4"></textarea>
                             @error('short_description')
                                 <div class="text-red-500">{{ $message }}</div>
@@ -36,9 +45,18 @@
                         <div class="mb-4">
                             <label for="brand_description" class="font-semibold">Description<span
                                     class="text-red-500">*</span></label>
-                            <textarea class="input-border rounded px-2 py-2 w-full" style="margin-top: 10px;z-index: -1"
+                            <textarea class="input-border rounded px-2 py-1 w-full" style="margin-top: 10px;z-index: -1"
                                 name="brand_description" id="editor" cols="30" rows="5"></textarea>
                             @error('brand_description')
+                                <div class="text-red-500">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="brand_description_bd" class="font-semibold">Description in bangla<span
+                                    class="text-red-500">*</span></label>
+                            <textarea class="input-border rounded px-2 py-1 w-full" style="margin-top: 10px;z-index: -1"
+                                name="brand_description_bd" id="editor_2" cols="30" rows="5"></textarea>
+                            @error('brand_description_bd')
                                 <div class="text-red-500">{{ $message }}</div>
                             @enderror
                         </div>
@@ -47,7 +65,7 @@
                 <div class="lg:w-1/3 xl:w-1/3">
                     <div class="bg-white shadow-lg rounded p-4 mb-4">
                         <div class="w-full sssss-nav pb-4 click_post_btn cursor-pointer">
-                            <h1 class="text-center py-2 border-b-2 border-gray-300 font-semibold mb-1">Brand logo</h1>
+                            <h1 class="text-center py-1 border-b-2 border-gray-300 font-semibold mb-1">Brand logo</h1>
                             <div class="w-full sssss">
                                 <img class="w-full object-cover h-48 cursor-pointer" id="category-img-tag"
                                     src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png"
@@ -62,7 +80,7 @@
 
                                 <div class="mt-2">
                                     <label for="meta_title">Meta title</label>
-                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"
+                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-1"
                                         value="{{ old('meta_title') }}" name="meta_title" id="meta_title">
                                     @error('meta_title')
                                         <div class="text-red-500">{{ $message }}</div>
@@ -70,7 +88,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <label for="meta_description">Meta description</label>
-                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"
+                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-1"
                                         value="{{ old('meta_description') }}" name="meta_description"
                                         id="meta_description">
                                     @error('meta_description')
@@ -79,7 +97,7 @@
                                 </div>
                                 <div class="mt-2">
                                     <label for="meta_tags">Meta tags</label>
-                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-2"
+                                    <input type="text" class="mt-2 input-border w-full rounded px-2 py-1"
                                         value="{{ old('meta_tags') }}" name="meta_tags" id="meta_tags">
                                     @error('meta_tags')
                                         <div class="text-red-500">{{ $message }}</div>
@@ -111,6 +129,14 @@
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#editor_2'))
             .then(editor => {
                 console.log(editor);
             })

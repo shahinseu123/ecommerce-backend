@@ -25,6 +25,17 @@
                                     <div class="text-red-600">{{ $message }}</div>
                                 @enderror
                             </div>
+                            <div class="mb-4">
+
+                                <label for="product_title_bd" class="font-semibold">Product title in bangla<span
+                                        class="text-red-500">*</span></label>
+                                <input class="input-border rounded px-2 py-2 w-full mt-2" type="text"
+                                    value="{{ $product->title_bd }}" name="product_title_bd" id="product_title_bd"
+                                    required>
+                                @error('product_title_bd')
+                                    <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
 
                             <div class="mb-4">
                                 <label for="short_description" class="font-semibold">Short description</label>
@@ -40,6 +51,16 @@
                                     name="description" id="editor" cols="30"
                                     rows="5">{{ $product->description }}</textarea>
                                 @error('description')
+                                    <div class="text-red-600">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mb-4">
+                                <label for="description_bd" class="font-semibold">Description in bangla<span
+                                        class="text-red-500">*</span></label>
+                                <textarea class="input-border rounded px-2 py-2 w-full" style="margin-top: 10px;z-index: -1"
+                                    name="description_bd" id="editor_2" cols="30"
+                                    rows="5">{{ $product->description_bd }}</textarea>
+                                @error('description_bd')
                                     <div class="text-red-600">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -289,7 +310,8 @@
                                                             name="_rack_number">
                                                     </div>
                                                     <div class="mt-2">
-                                                        <label for="unit">Unit <span class="text-red-500">*</span></label>
+                                                        <label for="unit">Unit <span
+                                                                class="text-red-500">*</span></label>
                                                         <select name="_unit"
                                                             class="mt-2 input-border w-full rounded px-2 py-2">
                                                             <option
@@ -740,6 +762,14 @@
 
         ClassicEditor
             .create(document.querySelector('#editor'))
+            .then(editor => {
+                console.log(editor);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        ClassicEditor
+            .create(document.querySelector('#editor_2'))
             .then(editor => {
                 console.log(editor);
             })

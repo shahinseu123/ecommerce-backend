@@ -29,7 +29,9 @@
                             <tr>
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->brand_title }}</td>
-                                <td>{{ $item->brand_image }}</td>
+                                <td><img class="w-10 h-10" src="{{ asset('uploads/media/' . $item->brand_image) }}"
+                                        alt="">
+                                </td>
                                 <td>
                                     <a href="{{ route('brand.status.change', $item->id) }}"
                                         class="{{ $item->status === 'active' ? 'btn_secondary' : 'btn_danger' }} px-5 py-1 font-semibold uppercase text-white shadow-lg rounded">{{ $item->status }}</a>
