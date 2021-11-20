@@ -150,7 +150,9 @@ class ProductController extends Controller
 
             $product->title = $request->product_title;
             $product->description = $request->description;
+            $product->description_bd = $request->description_bd;
             $product->type = $request->product_type;
+            $product->title_bd = $request->title_bd;
             $product->stock_alert_quantity = $request->stock_alert_qnty;
             $product->stock_pre_alert_quantity = $request->stock_pre_alert_qnty;
             //    $product->brand_id = $request->product_brand;

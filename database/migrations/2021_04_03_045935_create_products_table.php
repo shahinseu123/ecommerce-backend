@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('title_bd');
             $table->integer('count_sold')->nullable();
+            $table->integer('count_view')->nullable();
             $table->string('type', 55)->default('Simple'); // Simple, Variable
             $table->tinyInteger('featured')->default(0);
             $table->text('short_description')->nullable();

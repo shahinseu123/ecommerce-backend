@@ -191,8 +191,8 @@ Route::middleware(['isAuth'])->prefix('user')->group(function () {
   Route::get('/profile', [ProfileController::class, 'profile'])->name('user.profile');
 });
 //do not check auth
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/backend/auth/admin/login', [LoginController::class, 'login_page'])->name('admin.login');
+Route::get('/fgdfg', [HomeController::class, 'index'])->name('home');
+Route::get('/0', [LoginController::class, 'login_page'])->name('admin.login');
 Route::post('/backend/auth/admin/login/action', [LoginController::class, 'login_action'])->name('admin.login.action');
 Route::get('/backend/auth/admin/register', [RegisterController::class, 'register_page'])->name('admin.register');
 Route::post('/backend/auth/admin/register/action', [RegisterController::class, 'register_action'])->name('admin.register.action');

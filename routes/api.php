@@ -48,3 +48,4 @@ Route::get('/all-category', [CategoryController::class, 'get_all_category']);
 Route::get('/slider', [GeneralController::class, 'get_slider']);
 Route::get('/brands', [GeneralController::class, 'get_brands']);
 Route::get('/coupon', [CouponController::class, 'get_coupons']);
+Route::get('/paralax', [GeneralController::class, 'get_paralax']);
