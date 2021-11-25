@@ -5,12 +5,14 @@ namespace App\Http\Controllers\api\order;
 use App\Http\Controllers\Controller;
 use App\Models\order\Order;
 use App\Models\order\OrderProduct;
+use App\Models\product\Product;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     public function create_order(Request $request)
     {
+
         $order = new Order();
         $order->name = $request->name;
         $order->email = $request->email;
@@ -60,6 +62,9 @@ class OrderController extends Controller
                     $order_product->sale_price = $qnty['salePrice'];
                     $order_product->total_price = $qnty['total_price'];
                     $order_product->save();
+                    $p = Product::where('id', '=', $qnty['id'])->first();
+                    $p->count_sold = $p->count_sold + 1;
+                    $p->save();
                 }
             }
         }

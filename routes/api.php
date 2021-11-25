@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/auth/user', [LoginController::class, 'user']);
     Route::post('/auth/logout', [LoginController::class, 'logout']);
     Route::post('/auth/order', [OrderController::class, 'create_order']);
+
     Route::post('/auth/wish/make-wish/{id}', [WishListController::class, 'wish']);
     Route::get('/auth/wish/make-wish', [WishListController::class, 'get_wish']);
     Route::post('/auth/user/update-info', [UserUpdateController::class, 'update_userInfo']);
@@ -36,12 +37,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/review/get-review/{id}', [RatingController::class, 'get_review']);
     Route::post('/coupon/used', [CouponController::class, 'coupon_used']);
 });
-
+Route::post('/auth/reset/sendcode', [LoginController::class, 'send_code']);
+Route::post('/auth/reset/confirmcode', [LoginController::class, 'confirm_code']);
+Route::post('/auth/reset/set-new-pass', [LoginController::class, 'newPassword']);
 Route::post('/auth/login', [LoginController::class, 'login']);
 Route::post('/auth/register', [LoginController::class, 'register']);
 // product 
 Route::get('/all-product', [ProductController::class, 'get_all_product']);
 Route::get('/sorted-product', [ProductController::class, 'getSortedProducts']);
+Route::get('/product/count_product/{product}', [ProductController::class, 'countProduct']);
+Route::get('/product/top-viewed', [ProductController::class, 'top_viewed_product']);
 //category
 Route::get('/all-category', [CategoryController::class, 'get_all_category']);
 //General items

@@ -17,4 +17,15 @@ class ProductController extends Controller
     {
         return Product::orderBy('count_sold', 'desc')->with('Productgallery', 'Productdata', 'Category', 'Brand', 'VariableAttribute', 'Wish')->take(30)->get();
     }
+
+    public function countProduct($name)
+    {
+        $product = Product::where('title', '=', $name)->first();
+        $product->count_view = $product->count_view + 1;
+        $product->save();
+    }
+    public function top_viewed_product()
+    {
+        return Product::orderBy('count_view', 'desc')->with('Productgallery', 'Productdata', 'Category', 'Brand', 'VariableAttribute', 'Wish')->take('30')->get();
+    }
 }
