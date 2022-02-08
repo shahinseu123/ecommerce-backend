@@ -21,11 +21,12 @@ class OrderController extends Controller
         $order->user_id = $request->user_id;
         $order->street = $request->street;
         $order->city = $request->city;
+        $order->apt = $request->apt;
         $order->state = $request->state;
         $order->zip = $request->zip;
         $order->shipping_charge = $request->shipping_charge;
         $order->product_total = $request->product_total;
-        if ($request->tax) {
+        if ($request->tax || $request->tax_amount) {
             $order->tax = $request->tax;
             $order->tax_amount = $request->tax_amount;
         }
@@ -33,7 +34,7 @@ class OrderController extends Controller
             $order->other_cost = $request->other_cost;
             $order->tax_amount = $request->tax_amount;
         }
-        if ($request->discount) {
+        if ($request->discount || $request->discount_amount) {
             $order->discount = $request->discount;
             $order->discount_amount = $request->discount_amount;
         }
@@ -60,6 +61,7 @@ class OrderController extends Controller
                     $order_product->title = $qnty['name'];
                     $order_product->quantity = $qnty['qnty'];
                     $order_product->sale_price = $qnty['salePrice'];
+                    $order_product->unit_price = $qnty['unitPrice'];
                     $order_product->total_price = $qnty['total_price'];
                     $order_product->save();
                     $p = Product::where('id', '=', $qnty['id'])->first();

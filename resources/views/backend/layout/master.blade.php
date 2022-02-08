@@ -265,6 +265,52 @@
                             </ul>
                             {{-- submenu end --}}
                         </li>
+                        {{-- accounts --}}
+                        <li class="text-white py-1 nav_item_li item_has_submenu nenu_open cursor-pointer">
+                            <span class="w-10 inline-block"><i
+                                    style="{{ Route::is('backend.media.add_new') || Route::is('backend.media.lirary') ? 'color:#6366F1' : 'color: white' }}"
+                                    class="fas fa-photo-video mr-2"></i></span><span class="#" style="">
+                                <p
+                                    style="{{ Route::is('backend.media.add_new') || Route::is('backend.media.lirary') ? 'color:#6366F1' : 'color: white' }}; display: inherit">
+                                    Accounts <i style="margin-top: 7px;" class="fas nav_icon float-right fa-plus"></i>
+                                </p>
+                            </span>
+                            {{-- submenu --}}
+                            <ul
+                                class="submenu_ul {{ Route::is('admin.revenue') || Route::is('backend.profit') || Route::is('backend.expanses') || Route::is('backend.genaral-account') ? '' : 'hidden' }} ">
+                                <li class="py-1">
+                                    <span class="w-10 inline-block"><i
+                                            style="{{ Route::is('admin.revenue') ? 'color:#6366F1' : 'color: white' }}"
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
+                                        {{ Route::is('admin.revenue') ? 'color:#6366F1' : 'color: white' }}"
+                                        href="{{ route('admin.revenue') }}">Revenue</a>
+                                </li>
+                                <li class="py-1">
+                                    <span class="w-10 inline-block"><i
+                                            style="{{ Route::is('backend.profit') ? 'color:#6366F1' : 'color: white' }}"
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
+                                        {{ Route::is('backend.profit') ? 'color:#6366F1' : 'color: white' }}"
+                                        href="{{ route('backend.profit') }}">Profit</a>
+                                </li>
+                                <li class="py-1">
+                                    <span class="w-10 inline-block"><i
+                                            style="{{ Route::is('backend.expanses') ? 'color:#6366F1' : 'color: white' }}"
+                                            class="far fa-circle mr-2"></i></span><a class="" style="
+                                        {{ Route::is('backend.expanses') ? 'color:#6366F1' : 'color: white' }}"
+                                        href="{{ route('backend.expanses') }}">Expanses</a>
+                                </li>
+                                <li class="py-1">
+                                    <span class="w-10 inline-block"><i
+                                            style="{{ Route::is('backend.genaral-account') ? 'color:#6366F1' : 'color: white' }}"
+                                            class="far fa-circle mr-2"></i></span><a class=""
+                                        style="
+                                        {{ Route::is('backend.genaral-account') ? 'color:#6366F1' : 'color: white' }}" href="{{ route('backend.genaral-account') }}">General
+                                        accounts</a>
+                                </li>
+                            </ul>
+                            {{-- submenu end --}}
+                        </li>
+                        {{-- accounts end --}}
                         <li class="text-white py-1 nav_item_li cursor-pointer">
                             <span class="w-10 inline-block"><i
                                     style="{{ Route::is('backend.customer') || Route::is('backend.customer.add') ? 'color:#6366F1' : 'color: white' }}"
@@ -352,9 +398,9 @@
                                 <li class="py-1">
                                     <span class="w-10 inline-block"><i
                                             style="{{ Route::is('backend.media.add_new') ? 'color:#6366F1' : 'color: white' }}"
-                                            class="far fa-circle mr-2"></i></span><a class="" style="
-                                        {{ Route::is('backend.media.add_new') ? 'color:#6366F1' : 'color: white' }}"
-                                        href="{{ route('backend.media.add_new') }}">Add new</a>
+                                            class="far fa-circle mr-2"></i></span><a class=""
+                                        style="
+                                        {{ Route::is('backend.media.add_new') ? 'color:#6366F1' : 'color: white' }}" href="{{ route('backend.media.add_new') }}">Add new</a>
                                 </li>
                             </ul>
                             {{-- submenu end --}}
@@ -368,11 +414,16 @@
                                 {{ Route::is('backend.admin') || Route::is('backend.admin.add') || Route::is('admin.edit') ? 'color:#6366F1' : 'color: white' }}"
                                 href="{{ route('backend.admin') }}">Admins</a>
                         </li>
+                        <li
+                            class="{{ Route::is('admin.blog') || Route::is('backend.blog.add') || Route::is('blog.edit') ? 'text-blue-700' : 'text-white' }} py-1 nav_item_li cursor-pointer">
+                            <span class="w-10 inline-block"><i style="" class="far fa-square mr-2"></i></span><a
+                                class="{{ Route::is('admin.blog') || Route::is('blog.edit') || Route::is('backend.blog.add') ? 'text-blue-700' : 'text-white' }}"
+                                style="" href="{{ route('admin.blog') }}">Blog</a>
+                        </li>
                         <li class="text-white py-1 nav_item_li cursor-pointer">
-                            <span class="w-10 inline-block"><i style="" class="fas fa-cog mr-2"></i></span><a
+                            <span class="w-10 inline-block"><i style="" class="fas fa-th-large mr-2"></i></span><a
                                 class="text-white" style="" href="">Settings</a>
                         </li>
-
                     </ul>
                 </div>
             </div>

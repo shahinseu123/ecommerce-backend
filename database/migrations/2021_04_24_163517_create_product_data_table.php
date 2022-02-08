@@ -19,7 +19,7 @@ class CreateProductDataTable extends Migration
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->float('regular_price')->nullable();
             $table->float('sale_price')->nullable();
-            $table->float('sku')->nullable();
+            $table->bigInteger('sku')->nullable();
             $table->float('shipping_weight')->nullable();
             $table->float('shipping_height')->nullable();
             $table->float('shipping_lenght')->nullable();

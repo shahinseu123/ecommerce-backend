@@ -5,7 +5,6 @@ namespace App\Http\Controllers\api\auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserUpdateController extends Controller
@@ -30,6 +29,9 @@ class UserUpdateController extends Controller
         }
         if ($request->country) {
             $user->country = $request->country;
+        }
+        if ($request->apt) {
+            $user->apt = $request->apt;
         }
         $user->save();
     }

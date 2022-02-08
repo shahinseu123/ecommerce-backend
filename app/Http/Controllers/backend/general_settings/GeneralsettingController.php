@@ -8,11 +8,13 @@ use Illuminate\Support\Facades\DB;
 
 class GeneralsettingController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('backend.frontend.general_settings.index');
     }
 
-    public function g_settings_update(Request $request){
+    public function g_settings_update(Request $request)
+    {
         $request->validate([
             'website_title' => 'required|max:255',
             'website_slogan' => 'required|max:255',
@@ -69,8 +71,8 @@ class GeneralsettingController extends Controller
         $insert['value'] = $request->street;
         DB::table('settings')->updateOrInsert($where, $insert);
 
-        $where['name'] = 'logo';
-        $insert['value'] = $request->logo;
+        $where['name'] = 'logo_image';
+        $insert['value'] = $request->logo_image;
         DB::table('settings')->updateOrInsert($where, $insert);
 
         $where['name'] = 'favicon';
@@ -105,7 +107,6 @@ class GeneralsettingController extends Controller
         $insert['value'] = $request->keyword;
         DB::table('settings')->updateOrInsert($where, $insert);
 
-        return redirect()->back()->with("success", "Data updated successfully"); 
-        
+        return redirect()->back()->with("success", "Data updated successfully");
     }
 }

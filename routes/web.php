@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\api\GeneralController;
 use App\Http\Controllers\auth\login\LoginController;
 use App\Http\Controllers\auth\login\RegisterController;
+use App\Http\Controllers\backend\accounts\ExpanseController;
+use App\Http\Controllers\backend\accounts\GeneralAccountController;
+use App\Http\Controllers\backend\accounts\ProfitController;
+use App\Http\Controllers\backend\accounts\RevenueController;
 use App\Http\Controllers\backend\admin\AdminController;
 use App\Http\Controllers\backend\attribute\AttributeController;
+use App\Http\Controllers\backend\blog\BlogController;
 use App\Http\Controllers\backend\brand\BrandController;
 use App\Http\Controllers\backend\category\CategoryController;
 use App\Http\Controllers\backend\cupon\CuponController;
@@ -28,6 +34,7 @@ use App\Http\Controllers\backend\stock\prealert\PrealertController;
 use App\Http\Controllers\backend\stock\stockout\StockoutController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\users\ProfileController;
+use App\Http\Controllers\WebinfoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -73,6 +80,7 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   Route::post('/customer/update', [CustomerController::class, 'update_customer'])->name('customer.update');
   //general settings
   Route::get('/general-setting', [GeneralsettingController::class, 'index'])->name('backend.genetal-settings');
+  Route::post('/general-setting/update', [GeneralsettingController::class, 'g_settings_update'])->name('general-settings.update');
   //page
   Route::get('/page', [PageController::class, 'index'])->name('backend.page');
   Route::get('/page/status/change/{id}', [PageController::class, 'change_status'])->name('page.status.change');
@@ -184,6 +192,23 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   Route::get('/backend/cupon/active/{id}', [CuponController::class, 'active_cupon'])->name('backend.cupon.active');
   Route::get('/backend/cupon/inactive/{id}', [CuponController::class, 'inactive_cupon'])->name('backend.cupon.inactive');
   Route::get('/backend/cupon/delete/{id}', [CuponController::class, 'delete_cupon'])->name('cupon.delete');
+  //blog
+  Route::get('/backend/blog', [BlogController::class, 'index'])->name('admin.blog');
+  Route::get('/backend/blog/status/{id}', [BlogController::class, 'change_status'])->name('blog.status.change');
+  Route::get('/backend/blog/delete/{id}', [BlogController::class, 'delete_blog'])->name('blog.delete');
+  Route::get('/backend/blog/edit/{id}', [BlogController::class, 'edit_blog'])->name('blog.edit');
+  Route::get('/backend/blog/add', [BlogController::class, 'add_blog'])->name('backend.blog.add');
+  Route::post('/backend/blog/create', [BlogController::class, 'create_blog'])->name('backend.blog.create');
+  Route::post('/backend/blog/update', [BlogController::class, 'update_blog'])->name('backend.blog.update');
+
+  //accounts/revenue
+  Route::get('/backend/revenue', [RevenueController::class, 'index'])->name('admin.revenue');
+  //accounts/profit
+  Route::get('/backend/profit', [ProfitController::class, 'index'])->name('backend.profit');
+  //accounts/expanses
+  Route::get('/backend/expanses', [ExpanseController::class, 'index'])->name('backend.expanses');
+  //accounts/general account
+  Route::get('/backend/general-account', [GeneralAccountController::class, 'index'])->name('backend.genaral-account');
 });
 //auth check route group
 // user panel routes     
@@ -192,7 +217,7 @@ Route::middleware(['isAuth'])->prefix('user')->group(function () {
 });
 //do not check auth
 Route::get('/fgdfg', [HomeController::class, 'index'])->name('home');
-Route::get('/0', [LoginController::class, 'login_page'])->name('admin.login');
+Route::get('/', [LoginController::class, 'login_page'])->name('admin.login');
 Route::post('/backend/auth/admin/login/action', [LoginController::class, 'login_action'])->name('admin.login.action');
 Route::get('/backend/auth/admin/register', [RegisterController::class, 'register_page'])->name('admin.register');
 Route::post('/backend/auth/admin/register/action', [RegisterController::class, 'register_action'])->name('admin.register.action');

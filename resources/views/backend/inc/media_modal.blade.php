@@ -17,8 +17,7 @@
             class="click_recent_page  mb-2 px-6 block hover:text-blue-500 focus:outline-none border-b-2 border-blue-500 text-blue-500">
             Upload Files
         </button>
-        <button
-            class="click_all_page mb-2 px-6 block hover:text-blue-500 focus:outline-none  border-b-2 font-medium">
+        <button class="click_all_page mb-2 px-6 block hover:text-blue-500 focus:outline-none  border-b-2 font-medium">
             Media Library
         </button>
     </nav>
@@ -39,18 +38,17 @@
             </div>
         </div>
     </div>
-    
+
     <div class="show_all_page hidden">
         <div class="image_main_div grid grid-cols-6 gap-2">
 
-        </div>   
+        </div>
         <div class=" absolute py-2" style="bottom: 27px; right:20%;">
             <button style="position: absolute;width:200px"
-                class="text-white btn-select-image rounded-full set_featured_image_btn  px-2 py-1 bg-green-500 border-2 border-gray-300 ">Set
+                class="text-white btn-select-image rounded-full set_featured_image_btn set-logo  px-2 py-1 bg-green-500 border-2 border-gray-300 ">Set
                 Featured Image</button>
         </div>
     </div>
-   
 </div>
 
 {{-- end modal --}}

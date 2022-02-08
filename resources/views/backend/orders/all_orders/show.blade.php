@@ -40,15 +40,15 @@
                         </h1>
                         <div>
                             <p class="text-gray-600">
-                                Invoice: <span class="ml-2">41234</span>
+                                Invoice: <span class="ml-2">{{ $order->order_number }}</span>
                             </p>
                             <p class="text-gray-600">
-                                Date: <span class="ml-2">{{ $order->created_at }}</span>
+                                Date: <span class="ml-2">{{ $order->created_at->format('Y-m-d') }}</span>
                             </p>
-                            <p class="text-gray-600">
+                            {{-- <p class="text-gray-600">
                                 Due Date:
                                 <span class="ml-2">{{ $order->created_at }}</span>
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
                 </div>
@@ -95,13 +95,21 @@
                     <div class="text-right mr-24 mt-10">
                         <p class="text-gray-600 ">
                             SUB TOTAL
-                            <span class="ml-10 w-24 inline-block">{{ $order->product_total }} TK</span>
+                            <span
+                                class="ml-10 w-24 inline-block">{{ $order->discount_amount == 0 ? $order->product_total - $order->shipping_charge - $order->tax_amount : $order->product_total - $order->shipping_charge - $order->tax_amount + $order->discount_amount }}
+                                TK</span>
                         </p>
                         <p class="text-gray-600 text-right">
-                            TAX <span class="ml-10 w-24 inline-block">0 TK</span>
+                            VAT <span class="ml-10 w-24 inline-block">{{ $order->tax_amount }} TK</span>
                         </p>
                         <p class="text-gray-600 text-right">
-                            Discount <span class="ml-10 w-24 inline-block">0 TK</span>
+                            Discount <span
+                                class="ml-10 w-24 inline-block">{{ $order->discount_amount !== 0 ? $order->discount_amount : 0 }}
+                                TK</span>
+                        </p>
+                        <p class="text-gray-600 text-right">
+                            Shipping <span class="ml-10 w-24 inline-block">{{ $order->shipping_charge }}
+                                TK</span>
                         </p>
                         <span class="w-60 bg-gray-400 inline-block" style="height: 1px;"></span>
                         <p class="font-bold text-gray-700">

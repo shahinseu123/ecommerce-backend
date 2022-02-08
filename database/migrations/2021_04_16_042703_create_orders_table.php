@@ -25,7 +25,7 @@ class CreateOrdersTable extends Migration
             $table->string('name')->nullable();
             $table->bigInteger('order_number')->nullable();
             $table->string('street')->nullable();
-            $table->string('apartment')->nullable();
+            $table->string('apt')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('zip')->nullable();

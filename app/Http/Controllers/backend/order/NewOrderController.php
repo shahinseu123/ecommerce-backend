@@ -47,7 +47,7 @@ class NewOrderController extends Controller
         }
         $order->status = 'Delivered';
         $order->save();
-        return redirect()->back()->with('success', 'Status changed');
+        return redirect()->back()->with('success', 'Status changed to delivered');
     }
     public function order_returned_status($id)
     {

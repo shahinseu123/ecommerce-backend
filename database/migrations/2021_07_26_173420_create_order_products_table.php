@@ -23,6 +23,7 @@ class CreateOrderProductsTable extends Migration
             $table->text('attribute_item_ids')->nullable();
             $table->integer('quantity');
             $table->double('sale_price')->default(0);
+            $table->double('unit_price')->default(0);
             $table->double('total_price')->default(0);
             $table->softDeletes();
             $table->timestamps();
