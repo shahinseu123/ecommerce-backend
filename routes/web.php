@@ -3,10 +3,12 @@
 use App\Http\Controllers\api\GeneralController;
 use App\Http\Controllers\auth\login\LoginController;
 use App\Http\Controllers\auth\login\RegisterController;
+use App\Http\Controllers\backend\accounts\DeliveryController;
 use App\Http\Controllers\backend\accounts\ExpanseController;
 use App\Http\Controllers\backend\accounts\GeneralAccountController;
 use App\Http\Controllers\backend\accounts\ProfitController;
 use App\Http\Controllers\backend\accounts\RevenueController;
+use App\Http\Controllers\backend\accounts\VATController;
 use App\Http\Controllers\backend\admin\AdminController;
 use App\Http\Controllers\backend\attribute\AttributeController;
 use App\Http\Controllers\backend\blog\BlogController;
@@ -200,7 +202,10 @@ Route::middleware(['isAuth'])->prefix('backend/admin')->group(function () {
   Route::get('/backend/blog/add', [BlogController::class, 'add_blog'])->name('backend.blog.add');
   Route::post('/backend/blog/create', [BlogController::class, 'create_blog'])->name('backend.blog.create');
   Route::post('/backend/blog/update', [BlogController::class, 'update_blog'])->name('backend.blog.update');
-
+  // delivery charge
+  Route::get('/backend/delivery-charge', [DeliveryController::class, 'index'])->name('backend.delivery');
+  //vat
+  Route::get('/backend/vat', [VATController::class, 'index'])->name('backend.vat');
   //accounts/revenue
   Route::get('/backend/revenue', [RevenueController::class, 'index'])->name('admin.revenue');
   //accounts/profit

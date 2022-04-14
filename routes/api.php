@@ -52,5 +52,7 @@ Route::get('/all-category', [CategoryController::class, 'get_all_category']);
 //General items
 Route::get('/slider', [GeneralController::class, 'get_slider']);
 Route::get('/brands', [GeneralController::class, 'get_brands']);
+Route::get('/blogs', [GeneralController::class, 'get_blog']);
 Route::get('/coupon', [CouponController::class, 'get_coupons']);
 Route::get('/paralax', [GeneralController::class, 'get_paralax']);
+Route::get('/web-settings', [GeneralController::class, 'get_web_settings']);

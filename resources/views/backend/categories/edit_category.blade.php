@@ -61,7 +61,7 @@
                                 <div class="w-full sssss">
                                     <img class="w-full object-cover h-48 cursor-pointer" id="category-img-tag"
                                         src="{{ $cat->img_path }}" alt="img">
-                                    <input type="hidden" value="" name="category_image" id="news_img" readonly>
+                                    <input type="hidden" value="{{ $product->category_image }}" name="category_image" id="news_img" readonly>
                                 </div>
                             </div>
                         </div>

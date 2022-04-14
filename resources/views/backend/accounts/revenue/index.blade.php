@@ -35,37 +35,45 @@
                             <th class="text-left" data-priority="4">Payment</th>
                             <th class="text-left" data-priority="4">Revenue</th>
                             <th class="text-left" data-priority="4">Profit</th>
-                            <th class="text-left" data-priority="5">Action</th>
+                            {{-- <th class="text-left" data-priority="5">Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
                         @if ($dailay_order)
                             @foreach ($dailay_order as $item)
                                 <tr>
+
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->order_number }}</td>
                                     <td>{{ $item->phone }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>{{ $item->payment_status }}</td>
+                                    {{-- {{ dd($item->OrderProducts) }} --}}
                                     <td>
-                                        {{-- @foreach ($item->OrderProducts as $item)
+                                        @foreach ($item->OrderProducts as $item2)
                                             <span>
-                                                # {{ $item->sale_price * $item->quantity }} <br>
+                                                # {{ $item2->sale_price * $item2->quantity }} <br>
                                             </span>
-                                        @endforeach --}}
-                                        {{-- @php
-                                         $index = 0;
-                                          foreach ($item->OrderProducts => $item) {
-                                              
-                                          }  
-                                        @endphp --}}
+                                        @endforeach
                                     </td>
-                                    <td class="">
+                                    <td>
+                                        {{-- {{ dd($item->OrderProducts) }} --}}
+
+                                        @foreach ($item->OrderProducts as $item3)
+                                            <span>
+                                                #
+                                                {{ $item3->sale_price * $item3->quantity - $item3->unit_price * $item3->quantity - $item->discount_amount }}
+                                                <br>
+                                            </span>
+                                        @endforeach
+                                    </td>
+
+                                    {{-- <td class="">
                                         <a href="{{ route('admin.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
                                         <a href="{{ route('admin.delete', $item->id) }}"><i
                                                 class="fas fa-trash text-red-500"></i></a>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                             @endforeach
                         @endif
@@ -89,26 +97,59 @@
                             <th class="text-left" data-priority="2">Name</th>
                             <th class="text-left" data-priority="2">Email</th>
                             <th class="text-left" data-priority="4">Mobile</th>
-                            <th class="text-left" data-priority="5">Action</th>
+                            <th class="text-left" data-priority="4">Status</th>
+                            <th class="text-left" data-priority="4">Payment</th>
+                            <th class="text-left" data-priority="4">Revenue</th>
+                            <th class="text-left" data-priority="4">Discount</th>
+                            <th class="text-left" data-priority="4">Profit</th>
+                            {{-- <th class="text-left" data-priority="5">Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @if ($admin)
-                       @foreach ($admin as $item)
-                            <tr>
-                                <td>{{$item->id}}</td>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->email}}</td>
-                                <td>{{$item->phone}}</td>
-                                
-                                <td class="">
-                                    <a href="{{route('admin.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
-                                    <a href="{{route('admin.delete', $item->id)}}"><i class="fas fa-trash text-red-500"></i></a>
-                                </td>
-                            </tr>
-                       @endforeach 
-                    @endif --}}
-                        <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
+                        @if ($monthly_order)
+                            @foreach ($monthly_order as $item)
+                                <tr>
+
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->order_number }}</td>
+                                    <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->status }}</td>
+                                    <td>{{ $item->payment_status }}</td>
+                                    {{-- {{ dd($item->OrderProducts) }} --}}
+                                    <td>
+                                        @foreach ($item->OrderProducts as $item2)
+                                            <span>
+                                                # {{ $item2->sale_price * $item2->quantity }} <br>
+                                            </span>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        @foreach ($item->OrderProducts as $item2)
+                                            <span>
+                                                # {{ $item->discount_amount }} <br>
+                                            </span>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        {{-- {{ dd($item->OrderProducts) }} --}}
+                                        @foreach ($item->OrderProducts as $item3)
+                                            <span>
+                                                #
+                                                {{ $item3->sale_price * $item3->quantity - $item3->unit_price * $item3->quantity - $item->discount_amount }}
+                                                <br>
+                                            </span>
+                                        @endforeach
+                                    </td>
+
+                                    {{-- <td class="">
+                                        <a href="{{ route('admin.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('admin.delete', $item->id) }}"><i
+                                                class="fas fa-trash text-red-500"></i></a>
+                                    </td> --}}
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -127,25 +168,50 @@
                             <th class="text-left" data-priority="2">Name</th>
                             <th class="text-left" data-priority="2">Email</th>
                             <th class="text-left" data-priority="4">Mobile</th>
-                            <th class="text-left" data-priority="5">Action</th>
+                            <th class="text-left" data-priority="4">Status</th>
+                            <th class="text-left" data-priority="4">Payment</th>
+                            <th class="text-left" data-priority="4">Revenue</th>
+                            <th class="text-left" data-priority="4">Profit</th>
+                            {{-- <th class="text-left" data-priority="5">Action</th> --}}
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @if ($admin)
-                       @foreach ($admin as $item)
-                            <tr>
-                                <td>{{$item->id}}</td>
-                                <td>{{$item->name}}</td>
-                                <td>{{$item->email}}</td>
-                                <td>{{$item->phone}}</td>
-                                
-                                <td class="">
-                                    <a href="{{route('admin.edit', $item->id)}}"><i class="fas fa-edit"></i></a>
-                                    <a href="{{route('admin.delete', $item->id)}}"><i class="fas fa-trash text-red-500"></i></a>
-                                </td>
-                            </tr>
-                       @endforeach 
-                    @endif --}}
+                        @if ($yearly_order)
+                            @foreach ($yearly_order as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->name }}</td>
+                                    <td>{{ $item->order_number }}</td>
+                                    <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->status }}</td>
+                                    <td>{{ $item->payment_status }}</td>
+                                    {{-- {{ dd($item->OrderProducts) }} --}}
+                                    <td>
+                                        @foreach ($item->OrderProducts as $item2)
+                                            <span>
+                                                # {{ $item2->sale_price * $item2->quantity }} <br>
+                                            </span>
+                                        @endforeach
+                                    </td>
+                                    <td>
+                                        {{-- {{ dd($item->OrderProducts) }} --}}
+                                        @foreach ($item->OrderProducts as $item3)
+                                            <span>
+                                                #
+                                                {{ $item3->sale_price * $item3->quantity - $item3->unit_price * $item3->quantity }}
+                                                <br>
+                                            </span>
+                                        @endforeach
+                                    </td>
+
+                                    {{-- <td class="">
+                                        <a href="{{ route('admin.edit', $item->id) }}"><i class="fas fa-edit"></i></a>
+                                        <a href="{{ route('admin.delete', $item->id) }}"><i
+                                                class="fas fa-trash text-red-500"></i></a>
+                                    </td> --}}
+                                </tr>
+                            @endforeach
+                        @endif
 
                         <!-- Rest of your data (refer to https://datatables.net/examples/server_side/ for server side processing)-->
                     </tbody>

@@ -17,6 +17,8 @@ class PrealertController extends Controller
             ->where('products.stock_pre_alert_quantity', '>', 'product_data.stock')
             ->select('products.*')
             ->get();
+
+        // return $product_array;
         return view("backend.stock.pre_alert.index", ['product_array' => $product_array]);
     }
 }

@@ -18,7 +18,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-
+        // return 'success';
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response([
                 "message" => "Invalid credentials"
@@ -37,6 +37,7 @@ class LoginController extends Controller
 
     public function register(Request $request)
     {
+
 
         $request->validate([
             'name' => 'required|String|max:255',

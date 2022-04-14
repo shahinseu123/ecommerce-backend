@@ -9,7 +9,7 @@
         @include('backend.inc.media_modal')
         <h1 class="py-2 font-semibold text-3xl text-gray-600 uppercase">add brand</h1>
         @if ($brand)
-            <form action="{{ route('brand.update') }}" method="post">
+            <form action="{{ route('user.brand.update') }}" method="post">
                 @csrf
                 <div class="lg:flex xl:flex gap-4 mt-3">
                     <div class="lg:w-2/3 xl:w-2/3">
@@ -74,7 +74,8 @@
                                 <div class="w-full sssss">
                                     <img class="w-full object-cover h-48 cursor-pointer" id="category-img-tag"
                                         src="{{ $brand->image_path }}" alt="img">
-                                    <input type="hidden" value="" name="brand_image" id="news_img" readonly>
+                                    <input type="hidden" value="{{ $product->brand_image }}" name="brand_image"
+                                        id="news_img" readonly>
                                 </div>
                             </div>
                         </div>
@@ -131,7 +132,6 @@
 @endsection
 
 @section('script')
-
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'))

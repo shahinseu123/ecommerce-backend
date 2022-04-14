@@ -1,13 +1,13 @@
 @extends('backend.layout.master')
 
 @section('title')
-    <title>Profit</title>
+    <title>Delivery Charge</title>
 @endsection
 
 @section('content')
     <section>
         <div class="flex justify-between text-white border-b-2 border_secondary pb-4 mb-4">
-            <h1 class="text-3xl font-semibold text-gray-600">Profit</h1>
+            <h1 class="text-3xl font-semibold text-gray-600">Delivery Charge</h1>
 
         </div>
         <div class="bg-blue-700 rounded mb-3">
@@ -24,13 +24,8 @@
                     <p class="mb-5 border-b-2 border-gray-300 pb-2">Date: {{ \Carbon\Carbon::today()->format('M d Y') }}
                     </p>
                     <div class="">
-                        <h3 class="text-lg font-bold">Total Order: {{ $today_order->count() }}</h3>
-                        <h3 class="text-lg font-bold">Total Revenue:
-                            {{ $today_revenue }}
-                        </h3>
-                        <h3 class="text-lg font-bold">Total Sell Price: {{ $today_unit_price }}</h3>
-                        <h3 class="text-lg font-bold">Total Discount: {{ $today_discount }}</h3>
-                        <h3 class="text-lg font-bold">Total Profit: {{ $today_profit }}</h3>
+                        <h1 class="text-xl font-bold">Total Delivery Charge: {{ $today_delivery_charge }}</h1>
+
                     </div>
                 </div>
             </div>
@@ -43,13 +38,8 @@
                     <p class="mb-5 border-b-2 border-gray-300 pb-2">Date: {{ \Carbon\Carbon::today()->format('M d Y') }}
                     </p>
                     <div class="">
-                        <h3 class="text-lg font-bold">Monthly Order: {{ $monthly_order->count() }}</h3>
-                        <h3 class="text-lg font-bold">Monthly Revenue:
-                            {{ $monthly_revenue }}
-                        </h3>
-                        <h3 class="text-lg font-bold">Monthly Sell Price: {{ $monthly_unit_price }}</h3>
-                        <h3 class="text-lg font-bold">Total Discount: {{ $monthly_discount }}</h3>
-                        <h3 class="text-lg font-bold">Monthly Profit: {{ $monthly_profit }}</h3>
+                        <h3 class="text-xl font-bold">Total Delivery Charge: {{ $monthly_delivery_charge }}</h3>
+
                     </div>
                 </div>
             </div>
@@ -62,13 +52,7 @@
                     <p class="mb-5 border-b-2 border-gray-300 pb-2">Date: {{ \Carbon\Carbon::today()->format('M d Y') }}
                     </p>
                     <div class="">
-                        <h3 class="text-lg font-bold">Yearly Order: {{ $yearly_order->count() }}</h3>
-                        <h3 class="text-lg font-bold">Yearly Revenue:
-                            {{ $yearly_revenue }}
-                        </h3>
-                        <h3 class="text-lg font-bold">Yearly Sell Price: {{ $yearly_unit_price }}</h3>
-                        <h3 class="text-lg font-bold">Total Discount: {{ $yearly_discount }}</h3>
-                        <h3 class="text-lg font-bold">Yearly Profit: {{ $yearly_profit }}</h3>
+                        <h3 class="text-xl font-bold">Total Delivery Charge: {{ $monthly_delivery_charge }}</h3>
                     </div>
                 </div>
             </div>
